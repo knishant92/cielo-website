@@ -3,7 +3,7 @@
 import pathlib, re, base64, sys
 D = pathlib.Path(__file__).parent; A = D.parent / "assets"
 head = (D/"_head.html").read_text(); scripts = (D/"_scripts.html").read_text()
-roots = [A/"shoot", A/"work", A]
+roots = [A/"shoot", A/"work", A]  # drive/ resolves via A
 def find(name):
     for r in roots:
         if (r/name).exists(): return r/name
