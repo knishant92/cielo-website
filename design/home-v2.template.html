@@ -1,0 +1,584 @@
+<meta charset="utf-8">
+<title>Cielo Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@87.5,500;87.5,700;100,500;100,700;100,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ink:#0B0E17; --navy:#121828; --navy-2:#182036; --line:#242C44; --line-soft:#1B2338;
+  --text:#F2EFE9; --muted:#9AA3B8; --muted-2:#6B7490;
+  --red:#E00808; --red-deep:#9E0606; --red-soft:rgba(224,8,8,.14);
+  --blue:#4F8CFF; --blue-soft:rgba(79,140,255,.16);
+  --paper:#EEEDE8; --paper-2:#E3E1DA; --paper-ink:#0B0E17; --paper-muted:#5B6275; --paper-line:#D2D0C8;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --max:1180px; --gut:24px; --r:6px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.02em}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--red);flex:none}
+.hl{color:var(--red)}
+.section{padding:96px 0}
+.section h2{font-size:clamp(30px,4.2vw,50px);line-height:1.04;font-weight:700;margin-top:18px;max-width:18ch}
+.lead{color:var(--muted);font-size:18px;max-width:58ch;margin:18px 0 0}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:600;font-size:15px;padding:14px 22px;border-radius:var(--r);border:1px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease,border-color .15s ease}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#F51212}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--muted)}
+.btn svg{width:16px;height:16px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(11,14,23,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.brand svg{width:34px;height:34px}
+.brand small{display:block;font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.16em;color:var(--muted);margin-top:2px}
+.links{display:flex;gap:28px;font-size:14.5px;font-weight:500;color:var(--muted)}
+.links a:hover{color:var(--text)}
+.nav .btn{padding:10px 16px;font-size:14px}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:var(--r);padding:8px 10px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:72px 0 80px;border-bottom:1px solid var(--line-soft)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center;position:relative;z-index:2}
+.hero h1{font-size:clamp(40px,6vw,74px);line-height:.98;font-weight:800;margin-top:22px}
+.hero .lead{font-size:19px;max-width:48ch}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-meta{display:flex;gap:26px;margin-top:38px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
+.hero-meta b{display:block;color:var(--text);font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:2px}
+#gl{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero-glow{position:absolute;right:-10%;top:-20%;width:60%;height:140%;z-index:0;background:radial-gradient(ellipse at 60% 45%,rgba(79,140,255,.16),transparent 55%),radial-gradient(ellipse at 40% 70%,rgba(224,8,8,.14),transparent 50%)}
+
+/* before-after */
+.ba{position:relative;aspect-ratio:288/413;max-height:560px;margin:0 auto;border-radius:10px;overflow:hidden;background:#1c2236;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px var(--line);user-select:none}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .after{clip-path:inset(0 0 0 var(--x,50%))}
+.ba .bar{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
+.ba .knob{position:absolute;top:50%;left:var(--x,50%);width:44px;height:44px;border-radius:50%;background:#fff;color:var(--ink);transform:translate(-50%,-50%);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.4);pointer-events:none}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.tag{position:absolute;top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:6px 9px;border-radius:4px;pointer-events:none}
+.tag.l{left:14px;background:rgba(11,14,23,.72);color:var(--text)}
+.tag.r{right:14px;background:var(--blue);color:#fff}
+.ba-cap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:12px;letter-spacing:.04em}
+
+/* proof band */
+.proof{background:var(--paper);color:var(--paper-ink);padding:56px 0}
+.proof .eyebrow{color:var(--paper-muted)}
+.logos{display:flex;flex-wrap:wrap;gap:12px 34px;align-items:center;margin-top:22px;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.02em;color:#2A3044}
+.logos span{opacity:.72;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--paper-line)}
+.stat{padding:26px 22px 0 0;border-right:1px solid var(--paper-line);margin-right:22px}
+.stat:last-child{border-right:0;margin-right:0}
+.stat b{font-family:var(--display);font-weight:800;font-size:40px;letter-spacing:-.03em;line-height:1;display:block;font-variant-numeric:tabular-nums}
+.stat b em{font-style:normal;color:var(--red)}
+.stat span{display:block;color:var(--paper-muted);font-size:14px;margin-top:8px;max-width:22ch}
+
+/* why */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;position:relative}
+.ladder::before{content:"";position:absolute;left:0;right:0;top:15px;height:1px;background:linear-gradient(90deg,var(--line) 0,var(--line) 75%,var(--blue) 100%)}
+.step{position:relative;padding:0 24px 0 0}
+.step i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--ink);font-family:var(--mono);font-style:normal;font-size:12px;color:var(--muted);position:relative}
+.step:last-child i{background:var(--blue);border-color:var(--blue);color:#fff}
+.step h3{font-size:19px;font-weight:700;margin-top:18px}
+.step:last-child h3{color:var(--blue)}
+.step p{color:var(--muted);margin:6px 0 0;font-size:14.5px}
+.step small{display:block;font-family:var(--mono);font-size:11px;color:var(--muted-2);letter-spacing:.1em;margin-top:14px}
+.costs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:64px}
+.cost{background:var(--navy);border:1px solid var(--line-soft);border-radius:var(--r);padding:22px}
+.cost b{font-family:var(--display);font-size:18px;font-weight:700;display:block}
+.cost p{margin:8px 0 0;color:var(--muted);font-size:14.5px}
+.cost .arrow{color:var(--red);font-family:var(--mono);font-size:12px;letter-spacing:.1em;display:block;margin-bottom:14px}
+
+/* services */
+.services{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
+.svc{background:var(--navy);border:1px solid var(--line-soft);border-radius:8px;padding:28px;display:grid;grid-template-columns:1fr 200px;gap:24px;transition:border-color .2s,transform .2s}
+.svc:hover{border-color:var(--line);transform:translateY(-2px)}
+.svc .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted-2)}
+.svc h3{font-size:28px;font-weight:700;margin-top:12px}
+.svc .promise{color:var(--muted);margin:8px 0 18px;font-size:15.5px}
+.svc ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:14.5px}
+.svc li{display:flex;gap:10px}
+.svc li::before{content:"";width:5px;height:5px;background:var(--red);border-radius:50%;flex:none;margin-top:9px}
+.svc .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line-soft)}
+.svc .nums div{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+.svc .nums b{display:block;font-family:var(--display);font-size:19px;color:var(--text);letter-spacing:-.02em;margin-bottom:3px}
+.svc .more{display:inline-flex;gap:8px;align-items:center;margin-top:20px;font-weight:600;font-size:14.5px;color:var(--text)}
+.svc .more:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.vis{border-radius:6px;overflow:hidden;background:var(--navy-2);border:1px solid var(--line-soft);align-self:start}
+.vis.pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
+.vis.pair img{aspect-ratio:288/413;object-fit:cover;width:100%}
+.vis.pair figure{margin:0;position:relative}
+.vis.pair figcaption{position:absolute;bottom:6px;left:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;padding:3px 6px;border-radius:3px;background:rgba(11,14,23,.75)}
+.vis.pair figure:last-child figcaption{background:var(--blue);color:#fff}
+.mock{padding:14px;font-size:11px;font-family:var(--mono);color:var(--muted)}
+.mock .row{display:flex;gap:6px;margin-bottom:6px}
+.mock .box{background:var(--line-soft);border-radius:3px;height:34px;flex:1}
+.mock .box.img{height:70px;background:linear-gradient(135deg,#243052,#1a2238)}
+.mock .t{height:8px;border-radius:2px;background:#2E3855;margin:6px 0}
+.mock .t.short{width:55%}
+.mock .ok{color:#7CD992}
+.mock .bad{color:#FF6B6B}
+.mock .line{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line-soft)}
+
+/* work */
+.work{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.tile{position:relative;border-radius:8px;overflow:hidden;background:var(--navy);border:1px solid var(--line-soft)}
+.tile>img{aspect-ratio:288/413;object-fit:cover;width:100%;transition:transform .5s ease}
+.tile:hover>img{transform:scale(1.03)}
+.tile .inset{position:absolute;top:10px;left:10px;width:26%;border-radius:4px;border:1px solid rgba(255,255,255,.35);box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.tile .cap{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 12px;background:linear-gradient(transparent,rgba(11,14,23,.9));font-size:13px;display:flex;justify-content:space-between;align-items:baseline}
+.tile .cap small{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.08em}
+
+/* process */
+.process{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:52px}
+.pstep{padding:18px 16px 20px;border-top:2px solid var(--line);position:relative}
+.pstep.hot{border-top-color:var(--red);background:linear-gradient(180deg,var(--red-soft),transparent 80%)}
+.pstep i{font-family:var(--mono);font-style:normal;font-size:11px;color:var(--muted-2);letter-spacing:.1em}
+.pstep h3{font-size:19px;margin-top:10px}
+.pstep p{color:var(--muted);font-size:14px;margin:6px 0 0}
+.need{margin-top:40px;background:var(--navy);border:1px solid var(--line-soft);border-radius:8px;padding:26px 28px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.need .q{font-family:var(--display);font-size:20px;font-weight:700;max-width:16ch;text-wrap:balance}
+.need ul{margin:0;padding:0;list-style:none;display:flex;gap:10px;flex-wrap:wrap}
+.need li{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px}
+.need li b{color:var(--muted);font-weight:500;font-family:var(--mono);font-size:11px;margin-right:6px}
+
+/* quotes */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.quote{background:var(--navy);border:1px solid var(--line-soft);border-radius:8px;padding:26px;display:flex;flex-direction:column;gap:18px}
+.quote p{margin:0;font-size:15.5px;line-height:1.6;color:var(--text)}
+.quote p::before{content:"“";color:var(--red);font-family:var(--display);font-size:34px;line-height:0;vertical-align:-10px;margin-right:4px}
+.quote footer{font-size:13.5px;color:var(--muted);margin-top:auto}
+.quote footer b{display:block;color:var(--text);font-weight:600}
+
+/* pilot */
+.pilot{background:var(--paper);color:var(--paper-ink)}
+.pilot .eyebrow{color:var(--paper-muted)}
+.pilot .lead{color:var(--paper-muted)}
+.pilot-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.pilot ol{margin:30px 0 0;padding:0;list-style:none;counter-reset:s;display:grid;gap:14px}
+.pilot ol li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start}
+.pilot ol li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:12px;color:var(--red);padding-top:4px}
+.pilot ol b{display:block;font-family:var(--display);font-size:18px}
+.pilot ol span{color:var(--paper-muted);font-size:14.5px}
+.picker{background:#fff;border:1px solid var(--paper-line);border-radius:10px;padding:26px;box-shadow:0 20px 60px rgba(11,14,23,.08)}
+.picker .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--paper-muted)}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 20px}
+.chip{border:1px solid var(--paper-line);border-radius:var(--r);padding:14px;cursor:pointer;font-weight:600;font-size:14.5px;display:flex;justify-content:space-between;align-items:center;transition:border-color .15s,background .15s;background:#fff}
+.chip small{display:block;font-weight:400;color:var(--paper-muted);font-size:12.5px;margin-top:3px}
+.chip[aria-pressed="true"]{border-color:var(--red);background:#FFF3F3}
+.chip[aria-pressed="true"]::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--red);flex:none}
+.chip:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.picker .btn{width:100%;justify-content:center}
+.picker p{font-size:13px;color:var(--paper-muted);margin:12px 0 0;text-align:center}
+
+/* footer */
+.foot{border-top:1px solid var(--line-soft);padding:44px 0 36px;color:var(--muted);font-size:14px}
+.foot .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.foot .brand{color:var(--text)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot a:hover{color:var(--text)}
+.foot .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted-2);margin-bottom:12px;display:block}
+.foot .legal{grid-column:1/-1;border-top:1px solid var(--line-soft);padding-top:18px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:11.5px;color:var(--muted-2);flex-wrap:wrap;gap:8px}
+
+@media (max-width:1024px){
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(2){border-right:0}
+  .stat{padding-bottom:22px}
+  .ladder,.costs{grid-template-columns:1fr 1fr;gap:28px 24px}
+  .ladder::before{display:none}
+  .process{grid-template-columns:repeat(3,1fr)}
+  .work{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .links,.nav .btn{display:none}
+  .menu{display:block}
+  .hero{padding:48px 0 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .ba{max-height:none;max-width:360px}
+  .services{grid-template-columns:1fr}
+  .svc{grid-template-columns:1fr}
+  .vis{max-width:320px}
+  .pilot-grid{grid-template-columns:1fr;gap:36px}
+  .need{grid-template-columns:1fr;gap:16px}
+  .foot .wrap{grid-template-columns:1fr 1fr}
+  .section{padding:72px 0}
+}
+@media (max-width:560px){
+  .process{grid-template-columns:1fr 1fr}
+  .work{grid-template-columns:1fr 1fr;gap:10px}
+  .chips{grid-template-columns:1fr}
+  .hero-meta{gap:18px;flex-wrap:wrap}
+  .foot .wrap{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .tile>img,.svc,.btn{transition:none}
+}
+
+/* v2: hero mosaic */
+.mosaic{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:150px;gap:10px;position:relative}
+.mosaic>*{border-radius:8px;overflow:hidden;position:relative;background:var(--navy);border:1px solid var(--line-soft);box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+.mosaic .tall{grid-row:span 2}
+.mosaic .wide{grid-column:span 2}
+.mosaic .lbl{position:absolute;left:10px;bottom:10px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;padding:4px 7px;border-radius:3px;background:rgba(11,14,23,.78);color:var(--text)}
+.mosaic .lbl.blue{background:var(--blue);color:#fff}
+.reel{background:linear-gradient(160deg,#1b2340,#0f1424);display:grid;place-items:center}
+.reel .play{width:44px;height:44px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;box-shadow:0 8px 24px rgba(224,8,8,.45)}
+.reel .play svg{width:16px;height:16px;margin-left:2px}
+.aplus{padding:12px;display:grid;gap:8px;font-family:var(--mono);font-size:9.5px;color:var(--muted)}
+.aplus .band{height:38px;border-radius:3px;background:linear-gradient(90deg,#2a3556,#1b2340);border:1px solid var(--line)}
+.aplus .cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.aplus .cols i{display:block;height:44px;border-radius:3px;background:var(--line-soft)}
+.listing{padding:12px;font-family:var(--mono);font-size:9.5px;color:var(--muted);display:grid;gap:5px;align-content:start}
+.listing .t{height:7px;border-radius:2px;background:#3A4670;width:88%}
+.listing .t.s{width:60%;background:#2E3855}
+.listing .ok{color:#7CD992;display:flex;justify-content:space-between;border-top:1px solid var(--line-soft);padding-top:5px;margin-top:2px}
+.banner{background:linear-gradient(120deg,#E00808 0%,#9E0606 60%,#3b0a0a 100%);padding:12px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;font-family:var(--display);font-weight:800;font-size:15px;line-height:1.05;letter-spacing:-.02em}
+.banner small{font-family:var(--mono);font-weight:400;font-size:9px;letter-spacing:.12em;opacity:.8;margin-bottom:6px}
+.hero-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.hero-chips span{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 12px}
+.hero-chips span b{color:var(--text);font-weight:500}
+
+/* v2: outcomes */
+.outcomes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
+.oc{background:var(--navy);border:1px solid var(--line-soft);border-radius:8px;padding:30px;display:grid;gap:14px;align-content:start}
+.oc .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--red)}
+.oc h3{font-size:26px;font-weight:700;line-height:1.1}
+.oc p{margin:0;color:var(--muted);font-size:15.5px}
+.oc .how{display:grid;gap:6px;margin-top:4px;padding-top:14px;border-top:1px solid var(--line-soft);font-size:14.5px}
+.oc .how span{display:flex;gap:10px}
+.oc .how span::before{content:"→";color:var(--red);font-family:var(--mono);flex:none}
+.oc .fact{margin-top:6px;font-size:12.5px;color:var(--muted-2);line-height:1.45}
+.oc .fact a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+
+/* v2: daily loop */
+.loop{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;margin-top:48px}
+.day{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.day li{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line-soft)}
+.day li:last-child{border-bottom:1px solid var(--line-soft)}
+.day time{font-family:var(--mono);font-size:12px;color:var(--muted-2);padding-top:3px}
+.day b{font-family:var(--display);font-size:17px;display:block}
+.day p{margin:4px 0 0;color:var(--muted);font-size:14.5px}
+.day .ai{color:var(--blue);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;margin-left:8px;vertical-align:middle}
+.day .hu{color:var(--red);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;margin-left:8px;vertical-align:middle}
+.board{background:var(--navy);border:1px solid var(--line-soft);border-radius:10px;overflow:hidden;font-family:var(--mono);font-size:12px}
+.board header{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line-soft);color:var(--muted);letter-spacing:.08em;font-size:11px}
+.board .row{display:grid;grid-template-columns:1.3fr 1fr 1fr .9fr;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line-soft);align-items:center}
+.board .row:last-child{border-bottom:0}
+.board .row span:first-child{color:var(--text);font-family:var(--body);font-size:13.5px}
+.board .row span{color:var(--muted)}
+.pill{display:inline-block;padding:3px 8px;border-radius:999px;font-size:10.5px;letter-spacing:.08em}
+.pill.ai{background:var(--blue-soft);color:var(--blue)}
+.pill.qc{background:var(--red-soft);color:#FF6B6B}
+.pill.done{background:rgba(124,217,146,.14);color:#7CD992}
+.pill.live{background:rgba(242,239,233,.1);color:var(--text)}
+.board .bar{height:4px;background:var(--line-soft);border-radius:2px;overflow:hidden}
+.board .bar i{display:block;height:100%;background:var(--blue);animation:fill 6s ease-in-out infinite}
+@keyframes fill{0%{width:12%}70%{width:86%}100%{width:86%}}
+@media (prefers-reduced-motion:reduce){.board .bar i{animation:none;width:70%}}
+
+/* v2: work row with slider */
+.work2{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:14px;margin-top:48px;align-items:start}
+.work2 .ba{max-height:none}
+.logos-band{padding:40px 0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.logos-band .logos{color:var(--muted);margin-top:16px;font-size:15px}
+.logos-band .logos span{opacity:.85}
+
+@media (max-width:1024px){.work2{grid-template-columns:1fr 1fr}.loop{grid-template-columns:1fr}}
+@media (max-width:860px){.outcomes{grid-template-columns:1fr}.mosaic{grid-auto-rows:120px}.hero .wrap{align-items:start}}
+@media (max-width:560px){.work2{grid-template-columns:1fr 1fr}.work2 .ba{grid-column:span 2;max-width:none}.board .row{grid-template-columns:1.2fr 1fr 1fr}.board .row span:nth-child(4){display:none}}
+</style>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Cielo Ecommerce home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M30 8H16C9.4 8 5 12.6 5 20s4.4 12 11 12h14" fill="none" stroke="#E00808" stroke-width="6" stroke-linecap="square"/><path d="M20 10.5h14M22 20h12M20 29.5h14" stroke="#F2EFE9" stroke-width="5"/></svg>
+      <span>Cielo Ecommerce<small>COMMERCE CONTENT · DELHI</small></span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#ai-shoot">AI Shoot</a><a href="#creatives">Creatives</a><a href="#listings">Listings</a><a href="#pdp">PDP Content</a><a href="#work">Work</a><a href="#how">How we work</a>
+    </nav>
+    <a class="btn btn-red" href="#pilot">Start a pilot</a>
+    <button class="menu" aria-label="Open menu">Menu</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Ecommerce content experts · Delhi · since 2019</div>
+      <h1>Content that gets every SKU live sooner, <span class="hl">and keeps it selling.</span></h1>
+      <p class="lead">Shoots, creatives, listings and PDP content for Indian D2C and marketplace brands. Built with AI in the loop every day, checked by people before it ships. So your catalogue is live before the sale, converts on the page, and comes back less.</p>
+      <div class="cta-row">
+        <a class="btn btn-red" href="#pilot">Start a pilot <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn btn-ghost" href="#work">See the work</a>
+      </div>
+      <div class="hero-chips">
+        <span><b>Live</b> before the sale window closes</span>
+        <span><b>PDPs</b> that answer the buyer</span>
+        <span><b>Photos</b> that match the parcel</span>
+        <span><b>Every SKU</b>, every marketplace</span>
+      </div>
+    </div>
+    <div class="mosaic" aria-label="Examples of Cielo's work across shoots, creatives, listings and video">
+      <div class="tall"><img src="{{IMG:bralette-beige-out3.jpg}}" alt="On-model AI shoot of a beige bralette"><span class="lbl blue">AI SHOOT · ON-MODEL</span></div>
+      <div class="aplus" aria-label="A+ content module"><div class="band"></div><div class="cols"><i></i><i></i><i></i></div><span>A+ · AMAZON · 1464×600</span></div>
+      <div class="reel" aria-label="Product reel"><div class="play"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2l10 6-10 6z"/></svg></div><span class="lbl">REEL · 9:16</span></div>
+      <div class="listing" aria-label="Marketplace listing"><div class="t"></div><div class="t s"></div><div class="t"></div><div class="t s"></div><div class="ok"><span>MYNTRA SPEC</span><span>PASS</span></div><span class="lbl">LISTING</span></div>
+      <div><img src="{{IMG:kids-sweater-out1.jpg}}" alt="Boy in a Guess bear sweater, AI shoot"><span class="lbl blue">AI SHOOT · KIDS</span></div>
+      <div class="banner"><small>STORE BANNER · MYNTRA</small>End of season.<br>Everything must move.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="outcomes">
+  <div class="wrap">
+    <div class="eyebrow">What changes for your brand</div>
+    <h2>Four things you get. <span class="hl">Everything we do sits under one of them.</span></h2>
+    <div class="outcomes">
+      <article class="oc">
+        <span class="k">01 · SPEED TO SHELF</span>
+        <h3>Live sooner. Selling for longer.</h3>
+        <p>A style that goes live two weeks late has two fewer weeks to sell before the season turns. We take out the two slow parts: waiting for a studio, and listings bouncing back from the marketplace.</p>
+        <div class="how"><span>On-model images from a flatlay or mannequin, no studio booking</span><span>Listings written to each marketplace's rules, so they pass first time</span><span>Batches, not one-offs, so the whole drop lands together</span></div>
+        <p class="fact">Amazon.in suppresses listings whose main image misses its spec, and Myntra will not accept a flatlay as a primary apparel image. <a href="https://sellercentral.amazon.in/help/hub/reference/external/G9D4LHG7VDLCMHTY?locale=en-IN">Amazon Seller Central</a></p>
+      </article>
+      <article class="oc">
+        <span class="k">02 · CONVERSION</span>
+        <h3>PDPs that answer the buyer.</h3>
+        <p>Shoppers go to the images first. Then they look for the angle, the fabric, the fit and the one line that settles their doubt. A PDP that answers all of that sells. One that makes them guess does not.</p>
+        <div class="how"><span>Five angles per SKU, on a model, every time</span><span>A+ and infographics that carry the reasons to buy</span><span>Titles, bullets and descriptions written for the buyer and the search box</span></div>
+        <p class="fact">56% of shoppers look at product images before the title or reviews. <a href="https://baymard.com/research/product-page">Baymard Institute</a></p>
+      </article>
+      <article class="oc">
+        <span class="k">03 · RETURNS</span>
+        <h3>Photos that match the parcel.</h3>
+        <p>A return that says "looked different online" is a content failure, and it costs you twice: the shipping and the sale. Our QC checks the print, the colour, the fit and the size chart against the real garment before anything ships.</p>
+        <div class="how"><span>Human sign-off on every AI-generated asset</span><span>Prints, motifs and logos kept true to the input</span><span>Size charts and fit notes built into the page</span></div>
+        <p class="fact">Online apparel in India returned at 24.4% in 2023, the highest of any category. <a href="https://unicommerce.com/india-d2c-report-2026-april/">Unicommerce</a></p>
+      </article>
+      <article class="oc">
+        <span class="k">04 · SCALE</span>
+        <h3>Every SKU, every marketplace. Nothing left unlisted.</h3>
+        <p>The styles that never got shot are the styles that never sold. We produce for the full catalogue, then adapt each asset to Amazon, Flipkart, Myntra, Ajio, Nykaa and your own store.</p>
+        <div class="how"><span>Full-drop production, not hero SKUs only</span><span>Marketplace adapts and uploads included</span><span>Post-production at catalogue volume</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">How we work</div>
+    <h2>AI every day. <span class="hl">A person on every asset.</span></h2>
+    <p class="lead">AI is not a feature we sell you. It is how the team works, on every job, every day. That is where the speed comes from. The judgement stays human: someone looks at every image, every bullet, every banner before it reaches you.</p>
+    <div class="loop">
+      <ol class="day">
+        <li><time>09:30</time><div><b>Brief lands</b><p>Your SKUs, packshots and guidelines come in. A producer sets the batch, formats and the marketplaces it has to pass.</p></div></li>
+        <li><time>10:00</time><div><b>First variants <span class="ai">AI</span></b><p>On-model angles, copy drafts and layout options are generated for the whole batch, not one SKU at a time.</p></div></li>
+        <li><time>12:00</time><div><b>Select and fix <span class="hu">PEOPLE</span></b><p>Stylists and editors pick, correct prints and fit, rewrite what reads like a machine wrote it.</p></div></li>
+        <li><time>15:00</time><div><b>QC against the spec <span class="hu">PEOPLE</span></b><p>Every asset checked against the garment and the marketplace's rules. What fails goes back a step, not to you.</p></div></li>
+        <li><time>17:30</time><div><b>Delivered, named, sized</b><p>Channel-ready files in the naming and dimensions each marketplace wants. Ready to upload, or we upload.</p></div></li>
+      </ol>
+      <div class="board" aria-label="A production board, illustrative">
+        <header><span>TODAY'S BOARD</span><span>ILLUSTRATIVE</span></header>
+        <div class="row"><span>Kidswear drop · on-model</span><span class="pill ai">GENERATING</span><span><div class="bar"><i></i></div></span><span>5 angles</span></div>
+        <div class="row"><span>Innerwear · A+ modules</span><span class="pill qc">IN QC</span><span>Print check</span><span>Amazon</span></div>
+        <div class="row"><span>Footwear · Myntra listings</span><span class="pill done">APPROVED</span><span>Spec pass</span><span>Myntra</span></div>
+        <div class="row"><span>Luggage · product films</span><span class="pill live">DELIVERED</span><span>9:16 + 1:1</span><span>D2C · Meta</span></div>
+        <div class="row"><span>Beauty · PDP revamp</span><span class="pill ai">DRAFTING</span><span>Copy + infographics</span><span>Nykaa</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="logos-band">
+  <div class="wrap">
+    <div class="eyebrow">Brands we do this for</div>
+    <div class="logos">
+      <span>TATA CLiQ</span><span>SWIGGY INSTAMART</span><span>JIOMART</span><span>GUESS</span><span>DKNY</span><span>CALVIN KLEIN</span><span>GANT</span><span>TRUE RELIGION</span><span>RADO</span><span>SAMSONITE</span><span>AMERICAN TOURISTER</span><span>boAt</span><span>NOISE</span><span>SWATCH</span><span>ELLE</span><span>AMAZFIT</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="eyebrow">Selected work</div>
+    <h2>The input we got. <span class="hl">The content that shipped.</span></h2>
+    <p class="lead">Drag the first one. The rest show the flatlay we received in the corner. Same garment, same print, same fit.</p>
+    <div class="work2">
+      <div>
+        <div class="ba" style="--x:52%">
+          <img class="before" src="{{IMG:bralette-beige-in_front.jpg}}" alt="Flatlay photo of a beige Guess bralette, the input">
+          <img class="after" src="{{IMG:bralette-beige-out1.jpg}}" alt="The same bralette on a model, the output">
+          <span class="tag l">INPUT</span><span class="tag r">SHIPPED</span>
+          <div class="bar"></div>
+          <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
+          <input type="range" min="4" max="96" value="52" aria-label="Drag to compare the flatlay input with the shipped image">
+        </div>
+        <div class="ba-cap"><span>GUESS · INNERWEAR</span><span>DRAG</span></div>
+      </div>
+      <a class="tile" href="#"><img src="{{IMG:sportsbra-black-out1.jpg}}" alt="Black sports bra on a model"><img class="inset" src="{{IMG:sportsbra-black-in_front.jpg}}" alt=""><div class="cap"><span>Guess</span><small>ACTIVEWEAR</small></div></a>
+      <a class="tile" href="#"><img src="{{IMG:bodysuit-out1.jpg}}" alt="Model wearing a taupe bodysuit"><img class="inset" src="{{IMG:bodysuit-in_front.jpg}}" alt=""><div class="cap"><span>Guess</span><small>BODYSUIT</small></div></a>
+      <a class="tile" href="#"><img src="{{IMG:kids-tee-out3.jpg}}" alt="Boy wearing a navy Guess tee"><img class="inset" src="{{IMG:kids-tee-in_front.jpg}}" alt=""><div class="cap"><span>Guess Kids</span><small>TEES</small></div></a>
+    </div>
+    <div class="cta-row"><a class="btn btn-ghost" href="#">All work: shoots, reels, A+, listings</a></div>
+  </div>
+</section>
+
+<section class="section" id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">What we do</div>
+    <h2>Four services. <span class="hl">One team, one pipeline.</span></h2>
+    <p class="lead">Shoots to creatives to listings to edits, without stitching four vendors together. Each one exists to move one of the four outcomes above.</p>
+    <div class="services">
+      <article class="svc" id="ai-shoot">
+        <div>
+          <span class="k">AI SHOOT · FOR SPEED AND MATCH</span>
+          <h3>AI Shoot</h3>
+          <p class="promise">Shoot-quality stills and video from a flatlay or mannequin. Prints, motifs and fit stay true to the garment.</p>
+          <ul><li>On-model stills, five angles per SKU</li><li>Lifestyle and outdoor campaign imagery</li><li>Product explainers, reels and films</li></ul>
+          <a class="more" href="#">How an AI shoot works, what we need from you →</a>
+        </div>
+        <div class="vis pair">
+          <figure><img src="{{IMG:sportsbra-black-in_front.jpg}}" alt="Flatlay of a black sports bra"><figcaption>INPUT</figcaption></figure>
+          <figure><img src="{{IMG:sportsbra-black-out1.jpg}}" alt="The sports bra on a model"><figcaption>SHIPPED</figcaption></figure>
+        </div>
+      </article>
+      <article class="svc" id="creatives">
+        <div>
+          <span class="k">CREATIVES · FOR CONVERSION</span>
+          <h3>Creatives</h3>
+          <p class="promise">A+ pages, RPDs, infographics, banners and brand stores, adapted to every marketplace's sizes.</p>
+          <ul><li>Amazon A+, Flipkart RPD, PDP infographics</li><li>Marketplace banners, Amazon and Myntra brand stores, D2C</li><li>Campaign films, reels and collaterals</li></ul>
+          <a class="more" href="#">Formats, adapts and turnarounds →</a>
+        </div>
+        <div class="vis"><div class="mock"><div class="row"><div class="box img"></div></div><div class="row"><div class="box"></div><div class="box"></div><div class="box"></div></div><div class="t"></div><div class="t short"></div><div class="row" style="margin-top:10px"><div class="box img" style="height:46px"></div><div class="box img" style="height:46px"></div></div><div style="margin-top:8px">A+ MODULE · 1464×600</div></div></div>
+      </article>
+      <article class="svc" id="listings">
+        <div>
+          <span class="k">LISTINGS · FOR SPEED AND SCALE</span>
+          <h3>Listings</h3>
+          <p class="promise">Listings built to be found, understood and approved first time, on every major Indian marketplace.</p>
+          <ul><li>Keyword-led titles, bullets and descriptions, to each marketplace's rules</li><li>Compliant catalogue structures, uploads included</li><li>Audits and SKU-scale revamps</li></ul>
+          <a class="more" href="#">Marketplaces, package, what we need →</a>
+        </div>
+        <div class="vis"><div class="mock"><div class="t" style="width:80%;background:#3A4670"></div><div class="t short"></div><div class="line"><span>Title</span><span class="ok">Within limit</span></div><div class="line"><span>Bullets</span><span class="ok">Complete</span></div><div class="line"><span>Keywords</span><span class="ok">Placed</span></div><div class="line"><span>Images</span><span class="ok">Spec pass</span></div><div class="line" style="border:0"><span>Compliance</span><span class="ok">Pass</span></div></div></div>
+      </article>
+      <article class="svc" id="pdp">
+        <div>
+          <span class="k">PDP CONTENT · FOR CONVERSION AND RETURNS</span>
+          <h3>PDP Content</h3>
+          <p class="promise">Audit what is losing the sale, revamp what carries revenue, rebuild the page for each marketplace.</p>
+          <ul><li>Audit: images, copy, compliance, gaps against category leaders</li><li>Revamp: new images, A+ and copy for the SKUs that matter</li><li>Marketplace PDP content, adapted per platform</li></ul>
+          <a class="more" href="#">What an audit and a revamp cover →</a>
+        </div>
+        <div class="vis"><div class="mock"><div class="line"><span>Hero image</span><span class="bad">Low res</span></div><div class="line"><span>Angles</span><span class="bad">Missing</span></div><div class="line"><span>A+ content</span><span class="bad">None</span></div><div class="line"><span>Size chart</span><span class="ok">Present</span></div><div class="line"><span>Bullets</span><span class="bad">Generic</span></div><div class="line" style="border:0"><span>Verdict</span><span class="bad">Revamp</span></div></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="clients" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">In their words</div>
+    <div class="quotes">
+      <div class="quote"><p>Cielo delivered beyond expectations, faster than any agency we've worked with, without compromising quality. They handled last-minute changes calmly and confidently.</p><footer><b>Lalit Sejwal</b>CEO, Kokora Spices</footer></div>
+      <div class="quote"><p>Their category understanding is strong, the designs look fantastic, and everything was delivered super fast. Communication was smooth and responsive, end to end.</p><footer><b>Kushagra Sharma</b>Business Head, Global International Markets, Origami</footer></div>
+      <div class="quote"><p>The Cielo designers bring fresh thinking to every project. Every creative output looked polished and performance-oriented.</p><footer><b>Mala Singh</b>Founder, Mala Singh Designs</footer></div>
+    </div>
+  </div>
+</section>
+
+<section class="section pilot" id="pilot">
+  <div class="wrap pilot-grid">
+    <div>
+      <div class="eyebrow">Start</div>
+      <h2>Start with one real batch. <span class="hl">See it before you scale it.</span></h2>
+      <p class="lead">Pick a set of live SKUs. We run the full pipeline on them and deliver channel-ready files. Then we review the output together and extend what works across the catalogue.</p>
+      <ol>
+        <li><div><b>You select and share SKUs</b><span>A focused, real batch from your live catalogue.</span></div></li>
+        <li><div><b>We create the output</b><span>Full pipeline, AI in the loop, people signing off.</span></div></li>
+        <li><div><b>We both review and scale</b><span>Keep what converts. Extend it across the catalogue.</span></div></li>
+      </ol>
+    </div>
+    <div class="picker">
+      <span class="k">PICK YOUR PILOT</span>
+      <div class="chips" role="group" aria-label="Pilot type">
+        <button class="chip" aria-pressed="true">AI shoot pilot<small>Flatlay to on-model, one SKU set</small></button>
+        <button class="chip" aria-pressed="false">Creative refresh<small>A+, banners or brand store</small></button>
+        <button class="chip" aria-pressed="false">Listing enrichment<small>One marketplace, one batch</small></button>
+        <button class="chip" aria-pressed="false">PDP audit<small>Your top SKUs, what's losing the sale</small></button>
+      </div>
+      <a class="btn btn-red" href="#">Start a pilot <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <p>Commercials depend on SKU count and formats. You get a quote with the pilot plan.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M30 8H16C9.4 8 5 12.6 5 20s4.4 12 11 12h14" fill="none" stroke="#E00808" stroke-width="6" stroke-linecap="square"/><path d="M20 10.5h14M22 20h12M20 29.5h14" stroke="#F2EFE9" stroke-width="5"/></svg><span>Cielo Ecommerce<small>COMMERCE CONTENT · DELHI</small></span></a>
+      <p style="max-width:40ch;margin-top:16px">Ecommerce content experts. Shoots, creatives, listings and PDP content for brands selling in India. Cielo Ecommerce Pvt Ltd, Delhi.</p>
+    </div>
+    <div><span class="k">SERVICES</span><ul><li><a href="#ai-shoot">AI Shoot</a></li><li><a href="#creatives">Creatives</a></li><li><a href="#listings">Listings</a></li><li><a href="#pdp">PDP Content</a></li></ul></div>
+    <div><span class="k">COMPANY</span><ul><li><a href="#work">Work</a></li><li><a href="#how">How we work</a></li><li><a href="#pilot">Start a pilot</a></li><li><a href="https://www.cieloecommerce.com">www.cieloecommerce.com</a></li></ul></div>
+    <div class="legal"><span>© 2026 CIELO ECOMMERCE PVT LTD</span><span>ISO 9001:2015 · ISO 27001:2013 CERTIFIED</span></div>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  // before/after slider
+  document.querySelectorAll('.ba').forEach(function(ba){
+    var r = ba.querySelector('input');
+    r.addEventListener('input', function(){ ba.style.setProperty('--x', r.value + '%'); });
+  });
+  // pilot picker
+  var chips = document.querySelectorAll('.chip');
+  chips.forEach(function(c){ c.addEventListener('click', function(){
+    chips.forEach(function(o){ o.setAttribute('aria-pressed', o===c ? 'true' : 'false'); });
+  }); });
+
+  // 3D hero: wireframe engine + red/blue particle cloud. Skipped on phones and for reduced motion.
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || window.innerWidth < 860 || !window.THREE) return;
+  var canvas = document.getElementById('gl');
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true, antialias: true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  var scene = new THREE.Scene();
+  var cam = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+  cam.position.set(0, 0, 9);
+  var group = new THREE.Group(); scene.add(group);
+  var cube = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(3.2,3.2,3.2)), new THREE.LineBasicMaterial({color: 0x4F8CFF, transparent:true, opacity:.35}));
+  var ico = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.7,1)), new THREE.LineBasicMaterial({color: 0xE00808, transparent:true, opacity:.5}));
+  group.add(cube); group.add(ico);
+  var N = 900, pos = new Float32Array(N*3), col = new Float32Array(N*3), red = new THREE.Color(0xE00808), blue = new THREE.Color(0x4F8CFF), c = new THREE.Color();
+  for (var i=0;i<N;i++){
+    var u=Math.random()*2-1, ph=Math.random()*Math.PI*2, rr=Math.sqrt(1-u*u), v = new THREE.Vector3(rr*Math.cos(ph), rr*Math.sin(ph), u).multiplyScalar(1.2 + Math.random()*2.6);
+    pos.set([v.x,v.y,v.z], i*3);
+    c.copy(red).lerp(blue, (v.x+3.8)/7.6); col.set([c.r,c.g,c.b], i*3);
+  }
+  var pg = new THREE.BufferGeometry(); pg.setAttribute('position', new THREE.BufferAttribute(pos,3)); pg.setAttribute('color', new THREE.BufferAttribute(col,3));
+  var pts = new THREE.Points(pg, new THREE.PointsMaterial({size:.045, vertexColors:true, transparent:true, opacity:.85}));
+  group.add(pts);
+  var mx=0,my=0; hero.addEventListener('pointermove', function(e){ var b=hero.getBoundingClientRect(); mx=(e.clientX-b.left)/b.width-.5; my=(e.clientY-b.top)/b.height-.5; });
+  function size(){ var w=hero.clientWidth, h=hero.clientHeight; renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); group.position.x = w>1100 ? 3.4 : 2.6; }
+  size(); window.addEventListener('resize', size);
+  var t=0; (function loop(){ t+=.004; group.rotation.y = t + mx*.4; group.rotation.x = Math.sin(t*.7)*.25 + my*.3; ico.rotation.z = -t*1.4; renderer.render(scene,cam); requestAnimationFrame(loop); })();
+})();
+</script>

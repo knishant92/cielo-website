@@ -1,0 +1,329 @@
+{{HEAD:Cielo Complete PDP}}
+<style>
+/* pdp page */
+.crumb{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted-2);display:flex;gap:10px;align-items:center;margin-bottom:18px}
+.crumb a{color:var(--muted)}.crumb a:hover{color:var(--text)}
+.hero-chips2{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.hero-chips2 span{font-family:var(--mono);font-size:11px;letter-spacing:.08em;border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--muted)}
+.hero-chips2 span i{font-style:normal;color:var(--blue);margin-right:6px}
+/* anatomy */
+.anatomy{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;margin-top:44px;align-items:start}
+.page{background:var(--paper);color:var(--paper-ink);border-radius:14px;padding:22px;display:grid;grid-template-columns:1.05fr 1fr;gap:16px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.part{position:relative;border-radius:8px;transition:box-shadow .25s,transform .25s}
+.part.on{box-shadow:0 0 0 3px var(--red),0 12px 30px rgba(224,8,8,.25);transform:translateY(-2px);z-index:2}
+.part .pin{position:absolute;left:-10px;top:-10px;width:26px;height:26px;border-radius:50%;background:var(--paper-ink);color:#fff;font-family:var(--mono);font-size:11px;display:grid;place-items:center;z-index:3;border:2px solid var(--paper)}
+.part.on .pin{background:var(--red)}
+.gal{display:grid;grid-template-columns:52px 1fr;gap:8px}
+.gal .thumbs{display:grid;gap:6px;align-content:start}
+.gal .thumbs img{width:52px;height:64px;object-fit:cover;border-radius:3px;border:1px solid var(--paper-line)}
+.gal .thumbs img:first-child{border-color:var(--red)}
+.gal>img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px}
+.copyblk{font-size:12px;display:grid;gap:8px;align-content:start}
+.copyblk b.t{font-family:var(--display);font-size:15px;line-height:1.2;letter-spacing:-.01em}
+.copyblk .price{font-family:var(--display);font-size:18px;font-weight:800}
+.copyblk ul{margin:0;padding-left:16px;color:var(--paper-muted);font-size:11.5px;line-height:1.5}
+.sizes{display:flex;gap:5px;flex-wrap:wrap}
+.sizes span{font-family:var(--mono);font-size:10px;border:1px solid var(--paper-line);border-radius:4px;padding:3px 7px}
+.sizes span.sel{background:var(--paper-ink);color:#fff;border-color:var(--paper-ink)}
+.fit{font-family:var(--mono);font-size:10px;color:var(--paper-muted);letter-spacing:.04em}
+.vid{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:16/9;background:#000}
+.vid video{width:100%;height:100%;object-fit:cover;display:block}
+.aplusrow{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.aplusrow .aph{grid-column:1/-1;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--paper-muted);display:flex;justify-content:space-between;padding-left:22px;padding-top:2px}
+.qa{grid-column:1/-1;border-top:1px solid var(--paper-line);padding-top:10px;font-size:11.5px;color:var(--paper-muted);display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qa b{display:block;color:var(--paper-ink);font-family:var(--display);font-size:12.5px}
+.parts{display:grid;gap:8px}
+.parts button{text-align:left;background:var(--navy);border:1px solid var(--line-soft);border-radius:10px;padding:14px 16px;display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;color:var(--text);cursor:pointer;font-family:var(--body);transition:border-color .2s,background .2s}
+.parts button:hover{border-color:var(--line)}
+.parts button[aria-pressed="true"]{border-color:var(--red);background:rgba(224,8,8,.08)}
+.parts button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.parts .pn{font-family:var(--mono);font-size:11px;color:var(--muted-2)}
+.parts button[aria-pressed="true"] .pn{color:var(--red)}
+.parts b{display:block;font-family:var(--display);font-size:15.5px}
+.parts small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.parts .svc{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;padding:4px 7px;border-radius:3px;background:var(--blue-soft);color:var(--blue);white-space:nowrap}
+.parts .svc.red{background:var(--red-soft);color:#FF6B6B}
+.parts .svc.grey{background:rgba(242,239,233,.08);color:var(--muted)}
+/* offers */
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.offer{background:var(--navy);border:1px solid var(--line-soft);border-radius:12px;padding:26px;display:grid;gap:14px;align-content:start;position:relative;overflow:hidden}
+.offer::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--red)}
+.offer:nth-child(2)::before{background:var(--blue)}
+.offer:nth-child(3)::before{background:var(--muted)}
+.offer .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted-2)}
+.offer h3{font-size:24px;line-height:1.1}
+.offer p{margin:0;color:var(--muted);font-size:14.5px}
+.offer ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:7px;font-size:14px}
+.offer li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start}
+.offer li::before{content:"✓";display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--red);color:#fff;font-size:10px;font-weight:700;margin-top:2px}
+.offer:nth-child(2) li::before{background:var(--blue)}
+.offer .out{margin-top:6px;padding-top:12px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted-2)}
+.offer .out b{color:var(--text);font-weight:500}
+/* timeline */
+.tl{margin-top:44px;background:var(--navy);border:1px solid var(--line-soft);border-radius:12px;padding:26px 28px}
+.tl .bh{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap}
+.tl h3{font-size:22px}
+.tl .bh span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted-2)}
+.lanes{display:grid;gap:10px;margin-top:22px}
+.lane{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center}
+.lane .ln{font-family:var(--display);font-weight:700;font-size:14px}
+.lane .ln small{display:block;font-family:var(--mono);font-weight:400;font-size:9.5px;letter-spacing:.1em;color:var(--muted-2);margin-top:2px}
+.bar2{position:relative;height:34px;background:var(--navy-2);border-radius:6px;overflow:hidden;border:1px solid var(--line-soft)}
+.bar2 i{position:absolute;top:4px;bottom:4px;border-radius:4px;background:var(--line);display:flex;align-items:center;padding:0 10px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--text);white-space:nowrap;overflow:hidden}
+.bar2 i.red{background:var(--red)}.bar2 i.blue{background:var(--blue)}.bar2 i.grey{background:#2E3855}
+.tl .axis{display:grid;grid-template-columns:150px 1fr;gap:14px;margin-top:6px}
+.tl .axis div{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--muted-2)}
+.tl .note{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted-2);margin-top:14px}
+.tbc{color:var(--muted-2);border-bottom:1px dashed var(--muted-2)}
+/* included */
+.incl2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
+.ipanel{position:relative;border-radius:14px;padding:32px 32px 30px;background:linear-gradient(160deg,#1a1224 0%,#141a2e 55%,var(--navy) 100%);border:1px solid rgba(224,8,8,.35);overflow:hidden}
+.ipanel::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 0% 0%,rgba(224,8,8,.22),transparent 70%);pointer-events:none}
+.ipanel.blue{background:linear-gradient(160deg,#101a30 0%,#131a2c 55%,var(--navy) 100%);border-color:rgba(79,140,255,.4)}
+.ipanel.blue::before{background:radial-gradient(60% 50% at 0% 0%,rgba(79,140,255,.22),transparent 70%)}
+.ipanel .ihd{position:relative;margin-bottom:22px}
+.ipanel .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--red)}
+.ipanel.blue .k,.ipanel.blue .hl{color:var(--blue)}
+.ipanel h3{font-size:clamp(28px,3.2vw,40px);font-weight:800;line-height:1;margin-top:10px;letter-spacing:-.03em}
+.ipanel ol{position:relative;list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ipanel li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:14px 16px;border-radius:10px;background:rgba(11,14,23,.55);border:1px solid rgba(242,239,233,.08)}
+.ipanel li::before{content:"✓";display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;font-size:15px;font-weight:800;box-shadow:0 0 0 6px rgba(224,8,8,.16);grid-row:1/span 2}
+.ipanel.blue li::before{background:var(--blue);box-shadow:0 0 0 6px rgba(79,140,255,.16)}
+.ipanel li b{display:block;font-family:var(--display);font-size:18px;letter-spacing:-.01em;grid-column:2}
+.ipanel li span{color:var(--muted);font-size:13.5px;display:block;margin-top:-6px;grid-column:2}
+/* faq */
+.faq{margin-top:40px;display:grid;gap:8px}
+.faq details{background:var(--navy);border:1px solid var(--line-soft);border-radius:10px;padding:0 20px}
+.faq summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:34px 1fr 20px;gap:12px;align-items:center;padding:16px 0;font-family:var(--display);font-weight:700;font-size:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{font-family:var(--mono);font-style:normal;font-size:11px;color:var(--muted-2);letter-spacing:.1em}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--muted);font-size:18px;text-align:right}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0;padding:0 0 18px 46px;color:var(--muted);font-size:14.5px;line-height:1.6}
+.faq details[open]{border-color:var(--line)}
+@media (max-width:1024px){.anatomy{grid-template-columns:1fr}.offers{grid-template-columns:1fr}.incl2{grid-template-columns:1fr}}
+@media (max-width:860px){.page{grid-template-columns:1fr;padding:16px}.lane{grid-template-columns:1fr;gap:6px}.tl .axis{grid-template-columns:1fr}.tl .axis div:first-child{display:none}}
+@media (max-width:560px){.ipanel{padding:24px 20px}.ipanel li{grid-template-columns:36px 1fr;padding:12px}.ipanel li::before{width:28px;height:28px;font-size:13px}.ipanel li b{font-size:16px}.qa{grid-template-columns:1fr}}
+
+/* bralette A+ modules (illustrative, built from the shoot) */
+.apm{background:#fff;border:1px solid var(--paper-line);border-radius:4px;overflow:hidden;position:relative;display:grid;min-height:96px}
+.apm.hero2{grid-template-columns:44% 1fr}
+.apm.hero2 img{width:100%;height:100%;object-fit:cover;object-position:top}
+.apm .apt{padding:8px 9px;display:grid;align-content:center;gap:4px}
+.apm .apt small{font-family:var(--mono);font-size:7.5px;letter-spacing:.12em;color:var(--paper-muted)}
+.apm .apt b{font-family:var(--display);font-size:11.5px;line-height:1.15;letter-spacing:-.01em}
+.apm .apt p{display:none}
+.apm.feat{grid-template-columns:40% 1fr}
+.apm.feat img{order:0}
+.apm.feat img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.apm.feat ul{margin:0;padding:8px 8px 8px 10px;list-style:none;display:grid;gap:5px;align-content:center;font-size:9.5px;line-height:1.2}
+.apm.feat li{display:grid;grid-template-columns:10px 1fr;gap:5px;align-items:start}
+.apm.feat li b{display:block;font-family:var(--display);font-size:9.5px}
+.apm.feat li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);margin-top:2px}
+.apm.size{padding:8px 9px;gap:5px;align-content:start}
+.apm.size b{font-family:var(--display);font-size:10.5px}
+.apm.size table{border-collapse:collapse;font-family:var(--mono);font-size:7.5px;width:100%}
+.apm.size td{border:1px solid var(--paper-line);padding:2px 3px;text-align:center}
+.apm.size tr:first-child td{background:var(--paper);font-weight:600}
+.apm.size .care{font-family:var(--mono);font-size:7px;letter-spacing:.06em;color:var(--paper-muted)}
+.vid.hold{background:#1b2236}
+.vid.hold img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:.85;display:block}
+.vid.hold .badge{position:absolute;left:8px;bottom:8px;right:8px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.vid.hold .pl{width:26px;height:26px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.vid.hold .pl svg{width:10px;height:10px;margin-left:2px}
+</style>
+<canvas id="bg" aria-hidden="true"></canvas>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Cielo E-Commerce home">
+      <img src="{{IMG:logo/mark-dark.png}}" alt="" width="34" height="26" style="width:34px;height:auto">
+      <span>Cielo E-Commerce<small>COMMERCE CONTENT</small></span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#">Services</a><a href="#">Work</a><a href="#">Projects</a><a href="#">How we work</a><a href="#">Why Cielo</a>
+    </nav>
+    <a class="btn btn-red" href="#pilot">Start a pilot</a>
+    <button class="menu" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">MENU</button>
+  </div>
+</header>
+<nav class="drawer" id="drawer" aria-label="Mobile">
+  <a href="#">Services</a><a href="#">Work</a><a href="#">Projects</a><a href="#">How we work</a><a href="#">Why Cielo</a>
+  <a class="btn btn-red" href="#pilot">Start a pilot</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="crumb"><a href="#">Services</a><span>/</span><span>Put together · The complete PDP</span></div>
+      <div class="eyebrow rv">The complete PDP · audit, revamp, marketplace content</div>
+      <h1 class="rv">A PDP that sells is all three, <span class="hl">assembled.</span></h1>
+      <p class="lead rv">Shoot for the gallery. Listing copy for the title, bullets and search. Creatives for A+ and infographics. Film for the reel. One brief, one page, built to answer every question a buyer has before they add to cart.</p>
+      <div class="cta-row rv">
+        <a class="btn btn-red" href="#pilot">Audit or revamp your PDPs <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn btn-ghost" href="#anatomy">See what goes in</a>
+      </div>
+      <div class="hero-chips2 rv-stagger"><span><i>01</i>AI SHOOT</span><span><i>02</i>CREATIVES AND FILMS</span><span><i>03</i>LISTINGS</span><span><i>=</i>ONE PDP</span></div>
+    </div>
+    <div class="rv" data-px="14">
+      <div class="ba" style="--x:50%;aspect-ratio:288/413;max-width:420px;margin:0 auto">
+        <img class="before" src="{{IMG:bodysuit-in_front.jpg}}" alt="Flatlay input"><img class="after" src="{{IMG:bodysuit-out1.jpg}}" alt="On-model gallery image">
+        <span class="tag l">WHAT YOU HAVE</span><span class="tag r">WHAT THE PAGE NEEDS</span><div class="bar"></div>
+        <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
+        <input type="range" min="4" max="96" value="50" aria-label="Drag to compare the flatlay with the gallery image">
+      </div>
+      <div class="ba-cap" style="max-width:420px;margin:12px auto 0"><span>GUESS · BODYSUIT</span><span>DRAG</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section glow-red" id="anatomy">
+  <div class="wrap">
+    <div class="eyebrow rv">What goes in</div>
+    <h2 class="rv">Six parts of a page that sells, <span class="hl">and who makes each.</span></h2>
+    <p class="lead rv">Click a part. The page on the left shows where it lives, and the tag says which of our three services produces it.</p>
+    <div class="anatomy">
+      <div class="page rv" id="pdpmock" aria-label="A product page assembled from Cielo's three services, illustrative">
+        <div class="part on" data-p="1"><span class="pin">1</span><div class="gal"><div class="thumbs"><img src="{{IMG:bralette-beige-out1.jpg}}" alt=""><img src="{{IMG:bralette-beige-out2.jpg}}" alt=""><img src="{{IMG:bralette-beige-out3.jpg}}" alt=""><img src="{{IMG:bralette-beige-out4.jpg}}" alt=""></div><img src="{{IMG:bralette-beige-out1.jpg}}" alt="Gallery image on a product page"></div></div>
+        <div class="copyblk">
+          <div class="part" data-p="2"><span class="pin">2</span><b class="t">Cotton-blend bralette with logo band, beige</b><div class="price">₹1,299 <small style="font-weight:400;color:var(--paper-muted)">· Free delivery</small></div><ul><li>Soft cotton-modal blend, wire-free</li><li>Cross-back straps, signature logo band</li><li>Machine wash cold, do not tumble dry</li></ul></div>
+          <div class="part" data-p="3"><span class="pin">3</span><div class="sizes"><span>XS</span><span class="sel">S</span><span>M</span><span>L</span><span>XL</span></div><div class="fit" style="margin-top:6px">FIT: TRUE TO SIZE · MODEL IS 5'8" AND WEARS S</div></div>
+          <div class="part" data-p="4"><span class="pin">4</span><div class="vid hold"><img src="{{IMG:bralette-beige-out3.jpg}}" alt="Bralette film frame, video to be added"><span class="pl"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2l10 6-10 6z"/></svg></span><span class="badge"><span>FILM · BRALETTE</span><span>VIDEO TO COME</span></span></div></div>
+        </div>
+        <div class="part aplusrow" data-p="5"><span class="pin">5</span><span class="aph"><span>A+ CONTENT · 3 MODULES</span><span>SAME SHOOT</span></span>
+        <div class="apm hero2"><img src="{{IMG:bralette-beige-out5.jpg}}" alt="A+ brand story module"><div class="apt"><small>A+ · BRAND STORY</small><b>Wire-free. Cross-back. Worn all day.</b><p>A bralette made for the hours between the gym and the sofa. Soft cotton-modal, a band that stays put, straps that never dig.</p></div></div>
+        <div class="apm feat"><img src="{{IMG:bralette-beige-out4.jpg}}" alt="A+ feature module"><ul><li>Cotton-modal blend, breathable</li><li>Signature logo band</li><li>Cross-back straps, no dig</li></ul></div>
+        <div class="apm size"><b>Find your size</b><table><tr><td>SIZE</td><td>XS</td><td>S</td><td>M</td><td>L</td><td>XL</td></tr><tr><td>UNDERBUST</td><td>63–67</td><td>68–72</td><td>73–77</td><td>78–82</td><td>83–87</td></tr></table><span class="care">WASH COLD · NO TUMBLE · SHADE DRY · CM</span></div></div>
+        <div class="part qa" data-p="6"><span class="pin">6</span><div><b>Does it show through a white tee?</b>No. Double-layered cups, no padding.</div><div><b>Is the band tight?</b>Soft elastic, sits flat. Size up for a relaxed fit.</div></div>
+      </div>
+      <div class="parts rv" role="group" aria-label="Parts of the page">
+        <button aria-pressed="true" data-p="1"><span class="pn">01</span><span><b>Gallery</b><small>Required angles on a model, marketplace spec, zoomable.</small></span><span class="svc">AI SHOOT</span></button>
+        <button aria-pressed="false" data-p="2"><span class="pn">02</span><span><b>Title and bullets</b><small>Search terms, attributes and the one line that settles the doubt.</small></span><span class="svc red">LISTINGS</span></button>
+        <button aria-pressed="false" data-p="3"><span class="pn">03</span><span><b>Size chart and fit notes</b><small>Fewer returns start here.</small></span><span class="svc red">LISTINGS</span></button>
+        <button aria-pressed="false" data-p="4"><span class="pn">04</span><span><b>Product film</b><small>Six to thirty seconds in the video slot.</small></span><span class="svc grey">FILMS</span></button>
+        <button aria-pressed="false" data-p="5"><span class="pn">05</span><span><b>A+ and infographics</b><small>The reasons to buy, in modules the marketplace ranks.</small></span><span class="svc grey">CREATIVES</span></button>
+        <button aria-pressed="false" data-p="6"><span class="pn">06</span><span><b>Buyer questions answered</b><small>The doubts that cause abandons, written into the page.</small></span><span class="svc red">LISTINGS</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="offers">
+  <div class="wrap">
+    <div class="eyebrow rv">What's covered</div>
+    <h2 class="rv">Audit. Revamp. <span class="hl">Marketplace PDP content.</span></h2>
+    <p class="lead rv">Three ways in. Most brands start with the audit, revamp the SKUs that carry revenue, then adapt per marketplace.</p>
+    <div class="offers rv-stagger">
+      <article class="offer"><span class="k">01 · PDP AUDIT</span><h3>What is losing the sale, per SKU.</h3><p>Your live pages scored against the category leaders on the same marketplace.</p>
+        <ul><li>Gallery: angle count, on-model, spec compliance, zoom</li><li>Copy: title, bullets, keywords, claims, character limits</li><li>A+ or RPD: present, complete, on brand</li><li>Video, size chart, fit notes, buyer questions</li><li>Compliance and rejection risks</li><li>Gap versus the top three in the category</li></ul>
+        <div class="out"><b>YOU GET</b> · a score per SKU, a fix list in priority order, a batch plan</div></article>
+      <article class="offer"><span class="k">02 · PDP REVAMP</span><h3>The SKUs that carry revenue, rebuilt.</h3><p>All three services on one brief, so the page lands together, not in pieces.</p>
+        <ul><li>New gallery from the AI shoot, required angles</li><li>Title, bullets and description rewritten</li><li>A+ or RPD and infographics designed and uploaded</li><li>Product film for the video slot</li><li>Size chart, fit notes, buyer Q&amp;A</li><li>Uploaded, rejections handled, tracked until live</li></ul>
+        <div class="out"><b>YOU GET</b> · a live page per SKU, before and after, in one timeline</div></article>
+      <article class="offer"><span class="k">03 · MARKETPLACE PDP CONTENT</span><h3>The same product, right for each platform.</h3><p>Every marketplace ranks different things. The page is adapted, not copied.</p>
+        <ul><li>Amazon: A+ modules, image slots, video, backend keywords</li><li>Flipkart: RPD, attribute depth, image order</li><li>Myntra, Ajio: on-model rules, size chart, style notes</li><li>Nykaa and beauty: infographics, ingredients, claims</li><li>Your own store: full gallery, film, long-form A+</li><li>Quick commerce: short titles, hero image first</li></ul>
+        <div class="out"><b>YOU GET</b> · a page per marketplace from one master set</div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="timelines">
+  <div class="wrap">
+    <div class="eyebrow rv">How the timelines work</div>
+    <h2 class="rv">Audit first. <span class="hl">Then the three run in parallel.</span></h2>
+    <p class="lead rv">A revamp is not three projects in a row. Once the audit sets the batch, shoot, copy and creatives run side by side and land on the page together.</p>
+    <div class="tl rv">
+      <div class="bh"><h3>A revamp of 100 SKUs, one marketplace</h3><span>ILLUSTRATIVE SEQUENCE · DAYS FROM AUDIT SIGN-OFF</span></div>
+      <div class="lanes">
+        <div class="lane"><div class="ln">Audit<small>SCORE + FIX LIST</small></div><div class="bar2"><i class="grey" style="left:0;width:18%"><span class="tbc">days: to confirm</span></i></div></div>
+        <div class="lane"><div class="ln">AI shoot<small>2–3 DAYS PER 100 SKUS</small></div><div class="bar2"><i class="blue" style="left:20%;width:26%">gallery, required angles</i></div></div>
+        <div class="lane"><div class="ln">Listing copy<small>WITHIN THE 4–7 DAY BATCH</small></div><div class="bar2"><i class="red" style="left:20%;width:40%">title, bullets, size chart, Q&amp;A</i></div></div>
+        <div class="lane"><div class="ln">A+ and film<small>PER STORYBOARD</small></div><div class="bar2"><i class="grey" style="left:24%;width:44%">modules, infographics, film</i></div></div>
+        <div class="lane"><div class="ln">Upload and live<small>REJECTIONS HANDLED</small></div><div class="bar2"><i class="red" style="left:66%;width:24%">upload, QC, tracked live</i></div></div>
+      </div>
+      <div class="axis"><div></div><div><span>AUDIT SIGN-OFF</span><span>WEEK 1</span><span>WEEK 2</span><span>LIVE</span></div></div>
+      <p class="note">DURATIONS SHOWN ARE THE SERVICE TURNAROUNDS ALREADY ON THIS SITE. THE AUDIT DURATION AND THE FULL END-TO-END FIGURE ARE SET IN THE PILOT PLAN.</p>
+    </div>
+    <div class="incl2 rv-stagger">
+      <div class="ipanel"><div class="ihd"><span class="k">EVERY AUDIT</span><h3>Included. <span class="hl">Not extra.</span></h3></div>
+        <ol>
+          <li><b>Score per SKU</b><span>Gallery, copy, A+, video, size and fit, compliance.</span></li>
+          <li><b>Category benchmark</b><span>Against the top three on the same marketplace.</span></li>
+          <li><b>Fix list in priority order</b><span>What to change first, and why.</span></li>
+          <li><b>Batch plan</b><span>Which SKUs to revamp first, by revenue and gap.</span></li>
+        </ol></div>
+      <div class="ipanel blue"><div class="ihd"><span class="k">EVERY REVAMP</span><h3>Included. <span class="hl">Not extra.</span></h3></div>
+        <ol>
+          <li><b>All three services on one brief</b><span>Shoot, copy, creatives and film, one producer.</span></li>
+          <li><b>Upload and go-live</b><span>We upload, handle rejections, track until live.</span></li>
+          <li><b>Before and after per SKU</b><span>The old page and the new one, side by side.</span></li>
+          <li><b>Marketplace adapts</b><span>Every other platform from the same master set.</span></li>
+        </ol></div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="faq">
+  <div class="wrap">
+    <div class="eyebrow rv">Your questions</div>
+    <h2 class="rv">The six things brands ask <span class="hl">about PDPs.</span></h2>
+    <p class="lead rv">Asked by prospects in our own calls, answered here in plain words.</p>
+    <div class="faq rv-stagger">
+      <details><summary><i>01</i>How do the timelines work?</summary><p>The audit comes first and sets the batch. Then the AI shoot, the listing copy and the creatives run in parallel and land on the page together. Shoot runs at 2 to 3 days per 100 SKUs, listings at 4 to 7 days per batch, post production at 3 to 5 days, films per storyboard. The end-to-end figure for your batch is set in the pilot plan.</p></details>
+      <details><summary><i>02</i>What is covered in PDP services?</summary><p>Three offers: the audit, the revamp, and marketplace PDP content. Between them, everything on the page: gallery, title and bullets, size chart and fit notes, product film, A+ or RPD and infographics, buyer questions, upload and go-live.</p></details>
+      <details><summary><i>03</i>What are the commercials?</summary><p>Per SKU, by scope: audit, revamp, or adapt per marketplace. Quoted with the pilot plan once the audit has sized the batch.</p></details>
+      <details><summary><i>04</i>What's covered in a PDP audit?</summary><p>Gallery, copy, A+ or RPD, video, size chart and fit notes, buyer questions, compliance and rejection risks, each scored per SKU against the top three in your category on the same marketplace. You get the score, a fix list in priority order and a batch plan.</p></details>
+      <details><summary><i>05</i>What's covered in a PDP revamp?</summary><p>A new gallery from the AI shoot, rewritten title, bullets and description, A+ or RPD and infographics, a product film, size chart, fit notes and buyer Q&amp;A, all uploaded and tracked until live. One brief, one timeline.</p></details>
+      <details><summary><i>06</i>What's covered in marketplace PDP content?</summary><p>The same product adapted to each platform's modules, image slots, attribute depth and rules: Amazon, Flipkart, Myntra, Ajio, Nykaa, your own store and quick commerce, from one master set.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section pilot" id="pilot">
+  <div class="wrap pilot-grid">
+    <div>
+      <div class="eyebrow rv">Start</div>
+      <h2 class="rv">Audit your top SKUs. <span class="hl">Revamp the ones that matter.</span></h2>
+      <div class="steps rv-stagger">
+        <div><b>You share the SKUs</b><span>Live page links and the data sheet.</span></div>
+        <div><b>We audit, then rebuild</b><span>Score, fix list, then all three services.</span></div>
+        <div><b>We review, then scale</b><span>Extend across the catalogue and marketplaces.</span></div>
+      </div>
+    </div>
+    <div class="picker rv">
+      <span class="k">PDP PILOT</span>
+      <div class="chips" role="group" aria-label="Pilot type">
+        <button class="chip" aria-pressed="true"><span>Audit<small>Your top 20 SKUs, scored</small></span></button>
+        <button class="chip" aria-pressed="false"><span>Revamp<small>10 SKUs, all three services, live</small></span></button>
+        <button class="chip" aria-pressed="false"><span>Marketplace adapt<small>One master set to one more platform</small></span></button>
+        <button class="chip" aria-pressed="false"><span>Audit + revamp<small>Score everything, rebuild the top</small></span></button>
+      </div>
+      <a class="btn btn-red" href="#">Start the pilot <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <p>Quote comes with the pilot plan, by SKU count and scope.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#"><img src="{{IMG:logo/mark-dark.png}}" alt="" width="34" height="26" style="width:34px;height:auto"><span>Cielo E-Commerce<small>COMMERCE CONTENT</small></span></a>
+      <p style="max-width:40ch;margin-top:16px">Ecommerce content experts. Shoots, creatives, listings and films for brands selling online, in any market. Cielo Ecommerce Pvt Ltd, Delhi.</p>
+    </div>
+    <div><span class="k">SERVICES</span><ul><li><a href="#">AI Shoot</a></li><li><a href="#">Creatives and films</a></li><li><a href="#">Listings</a></li><li><a href="#">Post Production</a></li><li><a href="#">The complete PDP</a></li></ul></div>
+    <div><span class="k">COMPANY</span><ul><li><a href="#">Work</a></li><li><a href="#">Projects</a></li><li><a href="#">How we work</a></li><li><a href="#pilot">Start a pilot</a></li><li><a href="https://www.cieloecommerce.com">www.cieloecommerce.com</a></li></ul></div>
+    <div class="legal"><span>© 2026 CIELO ECOMMERCE PVT LTD</span><span>ISO 9001:2015 · ISO 27001:2013 CERTIFIED</span></div>
+  </div>
+</footer>
+<script>
+(function(){
+  var btns = document.querySelectorAll('.parts button'), parts = document.querySelectorAll('#pdpmock .part');
+  var win = document.getElementById('pagescroll');
+  var tw = null; function tween(el, to){ if (tw) cancelAnimationFrame(tw); var from = el.scrollTop, d = 520, t0 = null; function step(ts){ if (!t0) t0 = ts; var k = Math.min(1, (ts - t0)/d); k = 1 - Math.pow(1 - k, 3); el.scrollTop = from + (to - from) * k; if (k < 1) tw = requestAnimationFrame(step); else tw = null; } tw = requestAnimationFrame(step); }
+  function sel(p, scroll){ btns.forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-p')===p ? 'true':'false'); }); parts.forEach(function(x){ x.classList.toggle('on', x.getAttribute('data-p')===p); });  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ sel(b.getAttribute('data-p'), true); }); });
+  parts.forEach(function(x){ x.addEventListener('click', function(){ sel(x.getAttribute('data-p'), false); }); x.style.cursor='pointer'; });
+})();
+</script>
+{{SCRIPTS}}

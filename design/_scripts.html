@@ -1,0 +1,116 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('video').forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); });
+  // before/after slider
+  document.querySelectorAll('.ba').forEach(function(ba){
+    var r = ba.querySelector('input');
+    r.addEventListener('input', function(){ ba.style.setProperty('--x', r.value + '%'); });
+  });
+  // pilot picker
+  var chips = document.querySelectorAll('.chip');
+  chips.forEach(function(c){ c.addEventListener('click', function(){
+    chips.forEach(function(o){ o.setAttribute('aria-pressed', o===c ? 'true' : 'false'); });
+  }); });
+
+  // 3D hero: wireframe engine + red/blue particle cloud. Skipped on phones and for reduced motion.
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || window.innerWidth < 860 || !window.THREE) return;
+  var canvas = document.getElementById('gl');
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true, antialias: true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  var scene = new THREE.Scene();
+  var cam = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+  cam.position.set(0, 0, 9);
+  var group = new THREE.Group(); scene.add(group);
+  var cube = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(3.2,3.2,3.2)), new THREE.LineBasicMaterial({color: 0x4F8CFF, transparent:true, opacity:.35}));
+  var ico = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.7,1)), new THREE.LineBasicMaterial({color: 0xE00808, transparent:true, opacity:.5}));
+  group.add(cube); group.add(ico);
+  var N = 900, pos = new Float32Array(N*3), col = new Float32Array(N*3), red = new THREE.Color(0xE00808), blue = new THREE.Color(0x4F8CFF), c = new THREE.Color();
+  for (var i=0;i<N;i++){
+    var u=Math.random()*2-1, ph=Math.random()*Math.PI*2, rr=Math.sqrt(1-u*u), v = new THREE.Vector3(rr*Math.cos(ph), rr*Math.sin(ph), u).multiplyScalar(1.2 + Math.random()*2.6);
+    pos.set([v.x,v.y,v.z], i*3);
+    c.copy(red).lerp(blue, (v.x+3.8)/7.6); col.set([c.r,c.g,c.b], i*3);
+  }
+  var pg = new THREE.BufferGeometry(); pg.setAttribute('position', new THREE.BufferAttribute(pos,3)); pg.setAttribute('color', new THREE.BufferAttribute(col,3));
+  var pts = new THREE.Points(pg, new THREE.PointsMaterial({size:.045, vertexColors:true, transparent:true, opacity:.85}));
+  group.add(pts);
+  var mx=0,my=0; hero.addEventListener('pointermove', function(e){ var b=hero.getBoundingClientRect(); mx=(e.clientX-b.left)/b.width-.5; my=(e.clientY-b.top)/b.height-.5; });
+  function size(){ var w=hero.clientWidth, h=hero.clientHeight; renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); group.position.x = w>1100 ? 3.4 : 2.6; }
+  size(); window.addEventListener('resize', size);
+  var t=0; (function loop(){ t+=.004; group.rotation.y = t + mx*.4; group.rotation.x = Math.sin(t*.7)*.25 + my*.3; ico.rotation.z = -t*1.4; renderer.render(scene,cam); requestAnimationFrame(loop); })();
+})();
+</script>
+
+<script>
+(function(){
+  var root = document.documentElement; root.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // mobile menu
+  var btn = document.querySelector('.menu'), drawer = document.getElementById('drawer');
+  if (btn && drawer){
+    btn.addEventListener('click', function(){ var o = !drawer.classList.contains('open'); drawer.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); btn.textContent = o ? 'CLOSE' : 'MENU'; document.body.style.overflow = o ? 'hidden' : ''; });
+    drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ drawer.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.textContent='MENU'; document.body.style.overflow=''; }); });
+  }
+  // nav shadow + hero parallax
+  var nav = document.querySelector('.nav'), glow = document.querySelector('.hero-glow');
+  function onScroll(){ var y = window.scrollY; nav.classList.toggle('scrolled', y > 8); if (glow && !reduce) glow.style.transform = 'translateY(' + (y * 0.25) + 'px)'; }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  // scroll reveal
+  var els = document.querySelectorAll('.rv, .rv-stagger');
+  if (reduce || !('IntersectionObserver' in window)) { els.forEach(function(e){ e.classList.add('in'); }); }
+  else {
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:.08});
+    els.forEach(function(e){ io.observe(e); });
+    setTimeout(function(){ els.forEach(function(e){ e.classList.add('in'); }); }, 4000);
+  }
+  // count-up on numbers like 10,000+ / 1M+ / 5M+ / 1.5M+ / 1,500+ / 100+
+  var nums = document.querySelectorAll('.card .nums b, .post .nums b');
+  function countUp(el){
+    var txt = el.textContent.trim(), m = txt.match(/^([\d.,]+)(M\+|\+|x)?$/); if (!m) return;
+    var target = parseFloat(m[1].replace(/,/g,'')), suf = m[2] || '', dec = (m[1].split('.')[1]||'').length, t0 = null, dur = 1100;
+    function fmt(v){ return (dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-IN')) + suf; }
+    function step(ts){ if (!t0) t0 = ts; var k = Math.min(1, (ts - t0)/dur); k = 1 - Math.pow(1-k, 3); el.textContent = fmt(target*k); if (k < 1) requestAnimationFrame(step); else el.textContent = txt; }
+    el.textContent = fmt(0); requestAnimationFrame(step);
+  }
+  if (!reduce && 'IntersectionObserver' in window){
+    var io2 = new IntersectionObserver(function(entries){ entries.forEach(function(en){ if (en.isIntersecting){ countUp(en.target); io2.unobserve(en.target); } }); }, {threshold:.5});
+    nums.forEach(function(n){ io2.observe(n); });
+  }
+  // ambient particle field behind the page (desktop only)
+  var bg = document.getElementById('bg');
+  if (reduce || window.innerWidth < 860 || !bg) { if (bg) bg.remove(); return; }
+  var ctx = bg.getContext('2d'), W, H, pts = [], N = 70, dpr = Math.min(window.devicePixelRatio||1, 1.5);
+  function size(){ W = window.innerWidth; H = window.innerHeight; bg.width = W*dpr; bg.height = H*dpr; bg.style.width = W+'px'; bg.style.height = H+'px'; ctx.setTransform(dpr,0,0,dpr,0,0); }
+  size(); window.addEventListener('resize', size);
+  for (var i=0;i<N;i++) pts.push({x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.12, vy:(Math.random()-.5)*.12, r:Math.random()*1.6+.6, c: Math.random()<.5 ? '224,8,8' : '79,140,255'});
+  var scrollY = 0; window.addEventListener('scroll', function(){ scrollY = window.scrollY; }, {passive:true});
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    for (var i=0;i<N;i++){ var p = pts[i]; p.x += p.vx; p.y += p.vy; if (p.x<0) p.x=W; if (p.x>W) p.x=0; if (p.y<0) p.y=H; if (p.y>H) p.y=0; }
+    for (var i=0;i<N;i++){ for (var j=i+1;j<N;j++){ var a=pts[i], b=pts[j], dx=a.x-b.x, dy=a.y-b.y, d=dx*dx+dy*dy; if (d < 16000){ ctx.strokeStyle='rgba(120,130,170,'+(0.10*(1-d/16000))+')'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); } } }
+    for (var i=0;i<N;i++){ var p = pts[i]; var yy = (p.y - scrollY*0.05) % H; if (yy<0) yy+=H; ctx.fillStyle='rgba('+p.c+',.55)'; ctx.beginPath(); ctx.arc(p.x, yy, p.r, 0, Math.PI*2); ctx.fill(); }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var px = [].slice.call(document.querySelectorAll('[data-px]'));
+  function parallax(){
+    var vh = window.innerHeight;
+    px.forEach(function(el){ var r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh) return; var c = (r.top + r.height/2 - vh/2) / vh; el.style.transform = 'translate3d(0,' + (-c * parseFloat(el.getAttribute('data-px'))).toFixed(2) + 'px,0)'; });
+  }
+  if (reduce || !window.Lenis){ if (!reduce){ window.addEventListener('scroll', function(){ requestAnimationFrame(parallax); }, {passive:true}); parallax(); } return; }
+  var lenis = new Lenis({ lerp: 0.075, wheelMultiplier: 0.95, smoothWheel: true });
+  lenis.on('scroll', parallax);
+  function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener('click', function(e){ var id = a.getAttribute('href'); if (id.length < 2) return; var t = document.querySelector(id); if (!t) return; e.preventDefault(); lenis.scrollTo(t, { offset: -72, duration: 1.4, easing: function(x){ return 1 - Math.pow(1 - x, 4); } }); }); });
+  parallax();
+})();
+</script>

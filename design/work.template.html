@@ -1,0 +1,188 @@
+{{HEAD:Cielo Work}}
+<style>
+/* work page */
+.crumb{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted-2);display:flex;gap:10px;align-items:center;margin-bottom:18px}
+.crumb a{color:var(--muted)}.crumb a:hover{color:var(--text)}
+.hero.short{padding:56px 0 40px}
+.hero.short .wrap{grid-template-columns:1fr}
+.hero.short h1{max-width:16ch}
+.hero-nums{display:flex;gap:28px;margin-top:30px;flex-wrap:wrap}
+.hero-nums div{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted-2)}
+.hero-nums b{display:block;font-family:var(--display);font-size:24px;color:var(--text);letter-spacing:-.02em;margin-bottom:3px;font-variant-numeric:tabular-nums}
+/* filter bar */
+.fbar{position:sticky;top:68px;z-index:15;background:rgba(11,14,23,.86);backdrop-filter:blur(12px);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:14px 0}
+.fbar .wrap{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;align-items:center}
+.fbar .lab{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted-2)}
+.chipsrow{display:flex;gap:6px;flex-wrap:wrap}
+.chipsrow button{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s}
+.chipsrow button:hover{color:var(--text);border-color:var(--muted)}
+.chipsrow button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.chipsrow.cat button[aria-pressed="true"]{background:var(--text);border-color:var(--text);color:var(--ink)}
+.chipsrow button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.count{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted-2);margin-top:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.count button{background:none;border:0;color:var(--blue);font-family:var(--mono);font-size:11px;letter-spacing:.1em;cursor:pointer;padding:0}
+/* gallery */
+.wg{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;grid-auto-flow:dense;gap:12px;margin-top:18px}
+.wi{position:relative;border-radius:10px;overflow:hidden;background:var(--navy);border:1px solid var(--line-soft);grid-row:span 2}
+.wi.tall{grid-row:span 3}
+.wi.wide{grid-column:span 2}
+.wi.big{grid-column:span 2;grid-row:span 3}
+.wi[hidden]{display:none}
+.wi img,.wi video{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .6s ease}
+.wi:hover img{transform:scale(1.03)}
+.wi .ba{position:absolute;inset:0;border-radius:0;box-shadow:none;aspect-ratio:auto;max-height:none;height:100%}
+.wi .ba img{transform:none;transition:none}
+.wi .ba .tag{top:10px}
+.wi .meta{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 11px;background:linear-gradient(transparent,rgba(11,14,23,.94));display:flex;justify-content:space-between;align-items:baseline;gap:4px 8px;flex-wrap:wrap;pointer-events:none}
+.wi .meta b{font-family:var(--display);font-size:14px;font-weight:700}
+.wi .meta small{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--muted);white-space:nowrap}
+.wi .svc{position:absolute;left:10px;top:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;padding:4px 7px;border-radius:3px;background:rgba(11,14,23,.85);color:var(--text);z-index:2;pointer-events:none;white-space:nowrap}
+.wi .svc.blue{background:var(--blue);color:#fff}
+.wi .svc.red{background:var(--red);color:#fff}
+.wi.hasba .svc{display:none}
+.wi .play{position:absolute;right:10px;top:10px;width:28px;height:28px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;z-index:2}
+.wi .play svg{width:11px;height:11px;margin-left:2px}
+.empty{display:none;margin-top:30px;padding:40px;border:1px dashed var(--line);border-radius:12px;text-align:center;color:var(--muted)}
+.empty.show{display:block}
+.empty b{display:block;font-family:var(--display);font-size:20px;color:var(--text);margin-bottom:6px}
+/* ask band */
+.ask{margin-top:64px;background:var(--navy);border:1px solid var(--line-soft);border-radius:14px;padding:32px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+.ask h3{font-size:26px}
+.ask p{margin:8px 0 0;color:var(--muted);font-size:15px;max-width:52ch}
+.ask .cta-row{margin-top:0;justify-content:flex-end}
+@media (max-width:1024px){.wg{grid-template-columns:repeat(3,1fr)}.wi.big{grid-column:span 2}}
+@media (max-width:860px){.fbar{top:68px}.fbar .wrap{grid-template-columns:1fr;gap:8px}.wg{grid-template-columns:1fr 1fr;grid-auto-rows:130px;gap:8px}.wi.wide,.wi.big{grid-column:span 2}.ask{grid-template-columns:1fr}.ask .cta-row{justify-content:flex-start}.hero-nums{gap:18px}.hero-nums b{font-size:20px}}
+</style>
+<canvas id="bg" aria-hidden="true"></canvas>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Cielo E-Commerce home">
+      <img src="{{IMG:logo/mark-dark.png}}" alt="" width="34" height="26" style="width:34px;height:auto">
+      <span>Cielo E-Commerce<small>COMMERCE CONTENT</small></span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#">Services</a><a href="#">Work</a><a href="#">Projects</a><a href="#">How we work</a><a href="#">Why Cielo</a>
+    </nav>
+    <a class="btn btn-red" href="#pilot">Start a pilot</a>
+    <button class="menu" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">MENU</button>
+  </div>
+</header>
+<nav class="drawer" id="drawer" aria-label="Mobile">
+  <a href="#">Services</a><a href="#">Work</a><a href="#">Projects</a><a href="#">How we work</a><a href="#">Why Cielo</a>
+  <a class="btn btn-red" href="#pilot">Start a pilot</a>
+</nav>
+
+<section class="hero short">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="crumb"><a href="#">Home</a><span>/</span><span>Work</span></div>
+      <div class="eyebrow rv">Selected work · every service, every category</div>
+      <h1 class="rv">The input we got. <span class="hl">The content that shipped.</span></h1>
+      <p class="lead rv">Stills, films, creatives, listings and retouching, filtered by what you need and the category you sell in. Drag any frame with a handle to see what we started from.</p>
+      <div class="hero-nums rv-stagger"><div><b>10,000+</b>AI SHOOT ASSETS</div><div><b>1M+</b>CREATIVES</div><div><b>1,000+</b>FILMS AND REELS</div><div><b>5M+</b>SKUS LISTED</div><div><b>1.5M+</b>IMAGES RETOUCHED A MONTH</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="fbar" role="region" aria-label="Filter the work">
+  <div class="wrap">
+    <span class="lab">SERVICE</span>
+    <div class="chipsrow svc-f" role="group" aria-label="Filter by service"><button aria-pressed="true" data-s="all">ALL</button><button aria-pressed="false" data-s="shoot">AI SHOOT</button><button aria-pressed="false" data-s="film">FILMS AND REELS</button><button aria-pressed="false" data-s="creative">CREATIVES</button><button aria-pressed="false" data-s="listing">LISTINGS AND PDP</button><button aria-pressed="false" data-s="post">POST PRODUCTION</button></div>
+    <span class="lab">CATEGORY</span>
+    <div class="chipsrow cat" role="group" aria-label="Filter by category"><button aria-pressed="true" data-c="all">ALL</button><button aria-pressed="false" data-c="fashion">FASHION</button><button aria-pressed="false" data-c="kids">KIDSWEAR</button><button aria-pressed="false" data-c="footwear">FOOTWEAR</button><button aria-pressed="false" data-c="food">FOOD AND BEVERAGE</button><button aria-pressed="false" data-c="health">HEALTH AND NUTRITION</button><button aria-pressed="false" data-c="beauty">BEAUTY AND PERSONAL CARE</button><button aria-pressed="false" data-c="electronics">ELECTRONICS</button><button aria-pressed="false" data-c="luggage">LUGGAGE AND BAGS</button><button aria-pressed="false" data-c="home">HOME AND FITNESS</button><button aria-pressed="false" data-c="eyewear">EYEWEAR</button></div>
+  </div>
+</div>
+
+<section class="section" id="work" style="padding-top:28px">
+  <div class="wrap">
+    <div class="count"><span id="wcount"></span><button type="button" id="wreset">CLEAR FILTERS</button></div>
+    <div class="wg" id="wg">
+      <!-- AI shoot sliders -->
+      <figure class="wi big hasba" data-s="shoot" data-c="fashion"><div class="ba" style="--x:50%"><img class="before" src="{{IMG:bralette-beige-in_front.jpg}}" alt="Flatlay of a beige bralette"><img class="after" src="{{IMG:bralette-beige-out1.jpg}}" alt="The bralette on a model"><span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div><div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div><input type="range" min="4" max="96" value="50" aria-label="Drag to compare"></div><figcaption class="meta"><b>Guess · innerwear</b><small>AI SHOOT</small></figcaption></figure>
+      <figure class="wi hasba" data-s="shoot" data-c="fashion"><div class="ba" style="--x:50%"><img class="before" src="{{IMG:sportsbra-black-in_front.jpg}}" alt="Flatlay of a black sports bra"><img class="after" src="{{IMG:sportsbra-black-out1.jpg}}" alt="The sports bra on a model"><span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div><div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div><input type="range" min="4" max="96" value="50" aria-label="Drag to compare"></div><figcaption class="meta"><b>Guess · activewear</b><small>AI SHOOT</small></figcaption></figure>
+      <figure class="wi hasba" data-s="shoot" data-c="fashion"><div class="ba" style="--x:50%"><img class="before" src="{{IMG:bodysuit-in_front.jpg}}" alt="Flatlay of a taupe bodysuit"><img class="after" src="{{IMG:bodysuit-out1.jpg}}" alt="The bodysuit on a model"><span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div><div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div><input type="range" min="4" max="96" value="50" aria-label="Drag to compare"></div><figcaption class="meta"><b>Guess · bodysuit</b><small>AI SHOOT</small></figcaption></figure>
+      <figure class="wi hasba" data-s="shoot" data-c="kids"><div class="ba" style="--x:50%"><img class="before" src="{{IMG:kids-sweater-in_front.jpg}}" alt="Flatlay of a Guess bear sweater"><img class="after" src="{{IMG:kids-sweater-out1.jpg}}" alt="A boy wearing the sweater"><span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div><div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div><input type="range" min="4" max="96" value="50" aria-label="Drag to compare"></div><figcaption class="meta"><b>Guess Kids · knitwear</b><small>AI SHOOT</small></figcaption></figure>
+      <figure class="wi hasba" data-s="shoot" data-c="kids"><div class="ba" style="--x:50%"><img class="before" src="{{IMG:kids-tee-in_front.jpg}}" alt="Flatlay of a navy tee"><img class="after" src="{{IMG:kids-tee-out3.jpg}}" alt="A boy wearing the tee"><span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div><div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div><input type="range" min="4" max="96" value="50" aria-label="Drag to compare"></div><figcaption class="meta"><b>Guess Kids · tees</b><small>AI SHOOT</small></figcaption></figure>
+      <!-- films -->
+      <figure class="wi tall" data-s="film" data-c="food"><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/icecream.jpg}}" aria-label="Ice cream reel"><source src="{{VID:icecream.mp4}}" type="video/mp4"></video><span class="svc">REEL · 9:16</span><span class="play"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2l10 6-10 6z"/></svg></span><figcaption class="meta"><b>Ice cream · reel</b><small>AI FILM</small></figcaption></figure>
+      <figure class="wi tall" data-s="film" data-c="home"><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/yoga-mats.jpg}}" aria-label="Yoga mats reel"><source src="{{VID:yoga-mats.mp4}}" type="video/mp4"></video><span class="svc">REEL · 9:16</span><span class="play"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2l10 6-10 6z"/></svg></span><figcaption class="meta"><b>Yoga mats · reel</b><small>AI FILM</small></figcaption></figure>
+      <figure class="wi wide" data-s="film" data-c="luggage"><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/at-green.jpg}}" aria-label="American Tourister product film"><source src="{{VID:at-green.mp4}}" type="video/mp4"></video><span class="svc">PRODUCT FILM · 16:9</span><span class="play"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2l10 6-10 6z"/></svg></span><figcaption class="meta"><b>American Tourister · product film</b><small>AI FILM</small></figcaption></figure>
+      <figure class="wi wide" data-s="film" data-c="beauty"><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/origami-kt.jpg}}" aria-label="Origami product film"><source src="{{VID:origami-kt.mp4}}" type="video/mp4"></video><span class="svc">PRODUCT FILM · 16:9</span><span class="play"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2l10 6-10 6z"/></svg></span><figcaption class="meta"><b>Origami · product film</b><small>AI FILM</small></figcaption></figure>
+      <figure class="wi tall" data-s="film" data-c="food"><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/nescafe.jpg}}" aria-label="Nescafe film"><source src="{{VID:nescafe.mp4}}" type="video/mp4"></video><span class="svc">FILM</span><span class="play"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2l10 6-10 6z"/></svg></span><figcaption class="meta"><b>Nescafe · film</b><small>AI FILM</small></figcaption></figure>
+      <figure class="wi" data-s="film" data-c="footwear"><img src="{{IMG:video-sg-out.jpg}}" alt="Cricket shoes on a pitch, film frame"><span class="svc blue">FILM FRAME</span><figcaption class="meta"><b>SG · footwear</b><small>AI VIDEO</small></figcaption></figure>
+      <figure class="wi" data-s="film" data-c="fashion"><img src="{{IMG:video-asics-bra-out.jpg}}" alt="Sports bra top in a gym, film frame"><span class="svc blue">FILM FRAME</span><figcaption class="meta"><b>Asics · apparel</b><small>AI VIDEO</small></figcaption></figure>
+      <figure class="wi" data-s="film" data-c="footwear"><img src="{{IMG:video-asics-shoe-out.jpg}}" alt="Running shoe, film frame"><span class="svc blue">FILM FRAME</span><figcaption class="meta"><b>Asics · footwear</b><small>AI VIDEO</small></figcaption></figure>
+      <!-- creatives -->
+      <figure class="wi tall" data-s="creative" data-c="beauty"><img src="{{IMG:aplus-origami.jpg}}" alt="Amazon A+ page for Origami"><span class="svc">A+ · AMAZON</span><figcaption class="meta"><b>Origami · A+</b><small>CREATIVES</small></figcaption></figure>
+      <figure class="wi" data-s="creative" data-c="health"><img src="{{IMG:campaign-khayal-1.jpg}}" alt="Khayal campaign: still feeling drained"><span class="svc">CAMPAIGN</span><figcaption class="meta"><b>Khayal · campaign</b><small>CREATIVES</small></figcaption></figure>
+      <figure class="wi" data-s="creative" data-c="health"><img src="{{IMG:campaign-khayal-2.jpg}}" alt="Khayal campaign: fuel your cells"><span class="svc">CAMPAIGN</span><figcaption class="meta"><b>Khayal · campaign</b><small>CREATIVES</small></figcaption></figure>
+      <figure class="wi" data-s="creative" data-c="health"><img src="{{IMG:campaign-khayal-3.jpg}}" alt="Khayal campaign: build endurance"><span class="svc">CAMPAIGN</span><figcaption class="meta"><b>Khayal · campaign</b><small>CREATIVES</small></figcaption></figure>
+      <figure class="wi" data-s="creative" data-c="health"><img src="{{IMG:campaign-khayal-4.jpg}}" alt="Khayal campaign: ancient ayurvedic power"><span class="svc">CAMPAIGN</span><figcaption class="meta"><b>Khayal · campaign</b><small>CREATIVES</small></figcaption></figure>
+      <figure class="wi tall" data-s="creative" data-c="electronics"><img src="{{IMG:banner-amazfit.jpg}}" alt="Amazfit marketplace banner"><span class="svc">BANNER</span><figcaption class="meta"><b>Amazfit · banner</b><small>CREATIVES</small></figcaption></figure>
+      <figure class="wi wide" data-s="creative" data-c="luggage"><img src="{{IMG:banner-luggage.jpg}}" alt="Luggage banner: built to explore"><span class="svc">MARKETPLACE BANNER</span><figcaption class="meta"><b>Luggage · store banner</b><small>CREATIVES</small></figcaption></figure>
+      <figure class="wi" data-s="creative" data-c="electronics"><img src="{{IMG:banner-watch.jpg}}" alt="Watch banner: built to take hits"><span class="svc">BANNER</span><figcaption class="meta"><b>Smartwatch · banner</b><small>CREATIVES</small></figcaption></figure>
+      <figure class="wi wide" data-s="creative" data-c="beauty"><img src="{{IMG:film-hairfall.jpg}}" alt="Product film frame: hair fall again?"><span class="svc">PRODUCT FILM</span><figcaption class="meta"><b>Hair care · product film</b><small>CREATIVES</small></figcaption></figure>
+      <!-- listings -->
+      <figure class="wi wide" data-s="listing" data-c="fashion"><img src="{{IMG:listing-tatacliq.jpg}}" alt="A live listing on Tata CLiQ Luxury"><span class="svc red">LIVE LISTING</span><figcaption class="meta"><b>Gant on Tata CLiQ Luxury</b><small>LISTINGS</small></figcaption></figure>
+      <!-- post production -->
+      <figure class="wi hasba" data-s="post" data-c="luggage"><div class="ba" style="--x:50%"><img class="before" src="{{IMG:post-bag-before.jpg}}" alt="Raw shot of a laptop bag"><img class="after" src="{{IMG:post-bag-after.jpg}}" alt="The retouched bag"><span class="tag l">RAW</span><span class="tag r">RETOUCHED</span><div class="bar"></div><div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div><input type="range" min="4" max="96" value="50" aria-label="Drag to compare"></div><figcaption class="meta"><b>Laptop bag · cut-out</b><small>POST PRODUCTION</small></figcaption></figure>
+      <figure class="wi hasba" data-s="post" data-c="eyewear"><div class="ba" style="--x:50%"><img class="before" src="{{IMG:post-sunglasses-before.jpg}}" alt="Raw shot of sunglasses"><img class="after" src="{{IMG:post-sunglasses-after.jpg}}" alt="The retouched sunglasses"><span class="tag l">RAW</span><span class="tag r">RETOUCHED</span><div class="bar"></div><div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div><input type="range" min="4" max="96" value="50" aria-label="Drag to compare"></div><figcaption class="meta"><b>Sunglasses · retouch</b><small>POST PRODUCTION</small></figcaption></figure>
+    </div>
+    <div class="empty" id="wempty"><b>Nothing in that combination yet.</b>Pick another category, or ask us for references in yours.</div>
+    <div class="ask rv">
+      <div><h3>Want references in your category?</h3><p>The gallery shows what is public. Send your category and marketplace and we share closer references, or run a pilot on your own SKUs.</p></div>
+      <div class="cta-row"><a class="btn btn-red" href="#pilot">Start a pilot <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn btn-ghost" href="#">Ask for references</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section pilot" id="pilot">
+  <div class="wrap pilot-grid">
+    <div>
+      <div class="eyebrow rv">Start</div>
+      <h2 class="rv">One real batch. <span class="hl">See it before you scale it.</span></h2>
+      <div class="steps rv-stagger">
+        <div><b>You share SKUs</b><span>A real batch from your live catalogue.</span></div>
+        <div><b>We deliver</b><span>Full pipeline, channel-ready files.</span></div>
+        <div><b>We review, then scale</b><span>Keep what converts. Extend it.</span></div>
+      </div>
+    </div>
+    <div class="picker rv">
+      <span class="k">PICK YOUR PILOT</span>
+      <div class="chips" role="group" aria-label="Pilot type">
+        <button class="chip" aria-pressed="true"><span>AI shoot pilot<small>Flatlay to on-model, one SKU set</small></span></button>
+        <button class="chip" aria-pressed="false"><span>Creative refresh<small>A+, banners or brand store</small></span></button>
+        <button class="chip" aria-pressed="false"><span>Listing enrichment<small>One marketplace, one batch</small></span></button>
+        <button class="chip" aria-pressed="false"><span>PDP revamp<small>Your top SKUs, all three assembled</small></span></button>
+      </div>
+      <a class="btn btn-red" href="#">Start a pilot <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <p>Quote comes with the pilot plan, by SKU count and formats.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#"><img src="{{IMG:logo/mark-dark.png}}" alt="" width="34" height="26" style="width:34px;height:auto"><span>Cielo E-Commerce<small>COMMERCE CONTENT</small></span></a>
+      <p style="max-width:40ch;margin-top:16px">Ecommerce content experts. Shoots, creatives, listings and films for brands selling online, in any market. Cielo Ecommerce Pvt Ltd, Delhi.</p>
+    </div>
+    <div><span class="k">SERVICES</span><ul><li><a href="#">AI Shoot</a></li><li><a href="#">Creatives and films</a></li><li><a href="#">Listings</a></li><li><a href="#">Post Production</a></li><li><a href="#">The complete PDP</a></li></ul></div>
+    <div><span class="k">COMPANY</span><ul><li><a href="#">Work</a></li><li><a href="#">Projects</a></li><li><a href="#">How we work</a></li><li><a href="#pilot">Start a pilot</a></li><li><a href="https://www.cieloecommerce.com">www.cieloecommerce.com</a></li></ul></div>
+    <div class="legal"><span>© 2026 CIELO ECOMMERCE PVT LTD</span><span>ISO 9001:2015 · ISO 27001:2013 CERTIFIED</span></div>
+  </div>
+</footer>
+<script>
+(function(){
+  var sb = document.querySelectorAll('.svc-f button'), cb = document.querySelectorAll('.chipsrow.cat button'), items = document.querySelectorAll('#wg .wi'), count = document.getElementById('wcount'), empty = document.getElementById('wempty');
+  var S = 'all', C = 'all';
+  function apply(){ var n = 0; items.forEach(function(it){ var ok = (S==='all' || it.getAttribute('data-s')===S) && (C==='all' || it.getAttribute('data-c')===C); it.hidden = !ok; if (ok) n++; }); count.textContent = n + ' OF ' + items.length + ' PIECES' + (S!=='all'||C!=='all' ? ' · FILTERED' : ''); empty.classList.toggle('show', n===0); }
+  sb.forEach(function(b){ b.addEventListener('click', function(){ S = b.getAttribute('data-s'); sb.forEach(function(o){ o.setAttribute('aria-pressed', o===b ? 'true':'false'); }); apply(); }); });
+  cb.forEach(function(b){ b.addEventListener('click', function(){ C = b.getAttribute('data-c'); cb.forEach(function(o){ o.setAttribute('aria-pressed', o===b ? 'true':'false'); }); apply(); }); });
+  document.getElementById('wreset').addEventListener('click', function(){ S='all'; C='all'; sb.forEach(function(o){ o.setAttribute('aria-pressed', o.getAttribute('data-s')==='all' ? 'true':'false'); }); cb.forEach(function(o){ o.setAttribute('aria-pressed', o.getAttribute('data-c')==='all' ? 'true':'false'); }); apply(); });
+  apply();
+})();
+</script>
+{{SCRIPTS}}
