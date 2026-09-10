@@ -979,6 +979,7 @@ html.lenis,html.lenis body{height:auto}
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || window.innerWidth < 860 || !window.THREE) return;
   var canvas = document.getElementById('gl');
+  if (!canvas) return;
   var hero = canvas.parentElement;
   var renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true, antialias: true});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
