@@ -24,6 +24,10 @@ def copy_asset(src):
 def img(m): return copy_asset(find(m.group(1)))
 def vid(m): return copy_asset(A/"video"/m.group(1))
 def links(html):
+    MENU = {"AI Shoot":"/ai-shoot/","Creatives and films":"/creatives/","Listings":"/listings/","Post Production":"/#post","The complete PDP":"/complete-pdp/"}
+    for label, path in MENU.items():
+        html = html.replace(f'<a href="#" role="menuitem"><i>', '\u0000', 0)
+        html = re.sub(r'<a href="#" role="menuitem"><i>([^<]*)</i><span>' + re.escape(label) + '<small>', lambda m: f'<a href="{path}" role="menuitem"><i>{m.group(1)}</i><span>{label}<small>', html)
     for label, path in LINKS.items():
         html = html.replace(f'<a href="#">{label}</a>', f'<a href="{path}">{label}</a>')
         html = html.replace(f'href="#">{label}</a>', f'href="{path}">{label}</a>')
