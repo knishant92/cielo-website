@@ -110,19 +110,19 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.
 
 /* services */
 .services{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
-.svc{background:var(--navy);border:1px solid var(--line-soft);border-radius:8px;padding:28px;display:grid;grid-template-columns:1fr 200px;gap:24px;transition:border-color .2s,transform .2s}
-.svc:hover{border-color:var(--line);transform:translateY(-2px)}
-.svc .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted-2)}
-.svc h3{font-size:28px;font-weight:700;margin-top:12px}
-.svc .promise{color:var(--muted);margin:8px 0 18px;font-size:15.5px}
-.svc ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:14.5px}
-.svc li{display:flex;gap:10px}
-.svc li::before{content:"";width:5px;height:5px;background:var(--red);border-radius:50%;flex:none;margin-top:9px}
-.svc .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line-soft)}
-.svc .nums div{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
-.svc .nums b{display:block;font-family:var(--display);font-size:19px;color:var(--text);letter-spacing:-.02em;margin-bottom:3px}
-.svc .more{display:inline-flex;gap:8px;align-items:center;margin-top:20px;font-weight:600;font-size:14.5px;color:var(--text)}
-.svc .more:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.services .svc{background:var(--navy);border:1px solid var(--line-soft);border-radius:8px;padding:28px;display:grid;grid-template-columns:1fr 200px;gap:24px;transition:border-color .2s,transform .2s}
+.services .svc:hover{border-color:var(--line);transform:translateY(-2px)}
+.services .svc .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted-2)}
+.services .svc h3{font-size:28px;font-weight:700;margin-top:12px}
+.services .svc .promise{color:var(--muted);margin:8px 0 18px;font-size:15.5px}
+.services .svc ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:14.5px}
+.services .svc li{display:flex;gap:10px}
+.services .svc li::before{content:"";width:5px;height:5px;background:var(--red);border-radius:50%;flex:none;margin-top:9px}
+.services .svc .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line-soft)}
+.services .svc .nums div{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+.services .svc .nums b{display:block;font-family:var(--display);font-size:19px;color:var(--text);letter-spacing:-.02em;margin-bottom:3px}
+.services .svc .more{display:inline-flex;gap:8px;align-items:center;margin-top:20px;font-weight:600;font-size:14.5px;color:var(--text)}
+.services .svc .more:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
 .vis{border-radius:6px;overflow:hidden;background:var(--navy-2);border:1px solid var(--line-soft);align-self:start}
 .vis.pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
 .vis.pair img{aspect-ratio:288/413;object-fit:cover;width:100%}
@@ -213,7 +213,7 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.
   .hero .wrap{grid-template-columns:1fr;gap:40px}
   .ba{max-height:none;max-width:360px}
   .services{grid-template-columns:1fr}
-  .svc{grid-template-columns:1fr}
+  .services .svc{grid-template-columns:1fr}
   .vis{max-width:320px}
   .pilot-grid{grid-template-columns:1fr;gap:36px}
   .need{grid-template-columns:1fr;gap:16px}
@@ -229,7 +229,7 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .tile>img,.svc,.btn{transition:none}
+  .tile>img,.services .svc,.btn{transition:none}
 }
 
 /* v2: hero mosaic */
@@ -386,7 +386,7 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.
 .node .dot svg{width:30px;height:30px;stroke:var(--text);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .node.ai .dot{border-color:var(--blue);box-shadow:0 0 0 6px var(--blue-soft)}
 .node.hu .dot{border-color:var(--red);box-shadow:0 0 0 6px var(--red-soft)}
-.node .who{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.node .who{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;padding:3px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
 .node.ai .who{border-color:var(--blue);color:var(--blue)}
 .node.hu .who{border-color:var(--red);color:#FF6B6B}
 .node h3{font-size:18px;margin-top:16px}
@@ -647,6 +647,90 @@ html.lenis,html.lenis body{height:auto}
 .drawer .sub{display:grid;gap:0;padding-left:16px;border-left:2px solid var(--line-soft);margin:4px 0 8px}
 .drawer .sub a{font-size:18px;padding:10px 0;border-bottom:0}
 .drawer .grp{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted-2);padding:14px 0 4px}
+
+/* r1: headings never hyphenate; hand-set breaks only on wide screens */
+h1,h2,h3{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:normal}
+.hero h1.h4l{font-size:clamp(40px,5vw,62px)}
+.section h2.w24{max-width:24ch}
+@media (max-width:860px){h1 br.hb,h2 br.hb{display:none}.hero h1.h4l{font-size:clamp(38px,11vw,52px)}}
+
+/* r1: hero strip (outcomes, not buttons) */
+.hero-chips{display:flex;gap:10px 24px;flex-wrap:wrap;margin-top:32px}
+.hero-chips span{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);border:0;border-radius:0;padding:0;display:inline-flex;align-items:center;gap:0;white-space:pre-wrap}
+.hero-chips span::before{content:"";width:6px;height:6px;border-radius:1px;background:var(--red);flex:none;transform:rotate(45deg);margin-right:9px}
+.hero-chips span b{color:var(--text);font-weight:500}
+@media (max-width:860px){.hero-chips{gap:8px 18px;margin-top:26px}.hero-chips span{font-size:11px;padding:0}}
+@media (max-width:400px){.hero-chips span{font-size:10.5px}}
+
+/* r1: shared inner-page pieces (crumb, hero numbers, included panels, faq, spec) */
+.crumb{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted-2);display:flex;gap:10px;align-items:center;margin-bottom:18px}
+.crumb a{color:var(--muted)}.crumb a:hover{color:var(--text)}
+.hero-nums{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap}
+.hero-nums div{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted-2)}
+.hero-nums b{display:block;font-family:var(--display);font-size:26px;color:var(--text);letter-spacing:-.02em;margin-bottom:3px;font-variant-numeric:tabular-nums}
+.incl2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
+.ipanel{position:relative;border-radius:14px;padding:32px 32px 30px;background:linear-gradient(160deg,#1a1224 0%,#141a2e 55%,var(--navy) 100%);border:1px solid rgba(224,8,8,.35);overflow:hidden}
+.ipanel::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 0% 0%,rgba(224,8,8,.22),transparent 70%);pointer-events:none}
+.ipanel.blue{background:linear-gradient(160deg,#101a30 0%,#131a2c 55%,var(--navy) 100%);border-color:rgba(79,140,255,.4)}
+.ipanel.blue::before{background:radial-gradient(60% 50% at 0% 0%,rgba(79,140,255,.22),transparent 70%)}
+.ipanel .ihd{position:relative;margin-bottom:22px}
+.ipanel .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--red)}
+.ipanel.blue .k,.ipanel.blue .hl{color:var(--blue)}
+.ipanel h3{font-size:clamp(28px,3.2vw,40px);font-weight:800;line-height:1;margin-top:10px;letter-spacing:-.03em}
+.ipanel .ihd p{margin:12px 0 0;color:var(--muted);font-size:14.5px;max-width:44ch}
+.ipanel ol{position:relative;list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ipanel li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:14px 16px;border-radius:10px;background:rgba(11,14,23,.55);border:1px solid rgba(242,239,233,.08)}
+.ipanel li::before{content:"✓";display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;font-size:15px;font-weight:800;box-shadow:0 0 0 6px rgba(224,8,8,.16);grid-row:1/span 2}
+.ipanel.blue li::before{background:var(--blue);box-shadow:0 0 0 6px rgba(79,140,255,.16)}
+.ipanel li b{display:block;font-family:var(--display);font-size:18px;letter-spacing:-.01em;grid-column:2}
+.ipanel li span{color:var(--muted);font-size:13.5px;display:block;margin-top:-6px;grid-column:2}
+.ipanel.one li{grid-template-columns:34px 1fr;padding:12px 16px}
+.ipanel.one li::before{width:26px;height:26px;font-size:12px;box-shadow:0 0 0 4px rgba(224,8,8,.16);grid-row:auto}
+.ipanel.one.blue li::before{box-shadow:0 0 0 4px rgba(79,140,255,.16)}
+.ipanel.one li b{font-size:16.5px}
+.faq{margin-top:40px;display:grid;gap:8px}
+.faq details{background:var(--navy);border:1px solid var(--line-soft);border-radius:10px;padding:0 20px}
+.faq summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:34px 1fr 20px;gap:12px;align-items:center;padding:16px 0;font-family:var(--display);font-weight:700;font-size:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{font-family:var(--mono);font-style:normal;font-size:11px;color:var(--muted-2);letter-spacing:.1em}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--muted);font-size:18px;text-align:right}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0;padding:0 0 18px 46px;color:var(--muted);font-size:14.5px;line-height:1.6}
+.faq details[open]{border-color:var(--line)}
+.faq p .tbc{margin-left:6px}
+.tbc{color:var(--muted-2);border-bottom:1px dashed var(--muted-2)}
+.spec-wrap{overflow-x:auto;margin-top:44px;border:1px solid var(--line-soft);border-radius:12px;background:var(--navy)}
+table.spec2{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px}
+.spec2 th,.spec2 td{text-align:left;padding:16px 20px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.spec2 th{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted-2);font-weight:500;background:var(--navy-2)}
+.spec2 td:first-child{font-family:var(--display);font-weight:700;width:26%}
+.spec2 tr:last-child td{border-bottom:0}
+.spec2 td small{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
+.msg{display:none;padding:14px 16px;border-radius:var(--r);font-size:14.5px}
+.msg.ok{display:block;background:rgba(124,217,146,.12);color:#7CD992;border:1px solid rgba(124,217,146,.35)}
+.msg.err{display:block;background:var(--red-soft);color:#FF6B6B;border:1px solid rgba(224,8,8,.4)}
+.hp{position:absolute;left:-9999px;opacity:0}
+@media (max-width:1024px){.incl2{grid-template-columns:1fr}}
+@media (max-width:860px){.hero-nums{gap:18px}.hero-nums b{font-size:22px}}
+@media (max-width:560px){.ipanel{padding:24px 20px}.ipanel li{grid-template-columns:36px 1fr;padding:12px}.ipanel li::before{width:28px;height:28px;font-size:13px}.ipanel li b{font-size:16px}}
+
+/* r1: newsletter and contact band, last before the footer */
+.news{position:relative;padding:72px 0;background:linear-gradient(180deg,#0F1424 0%,#0D1220 100%)}
+.news::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(242,239,233,.08) 30%,rgba(242,239,233,.08) 70%,transparent)}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.news h3{font-size:clamp(26px,3vw,36px);font-weight:700;line-height:1.08;margin-top:16px;max-width:18ch}
+.news p{color:var(--muted);font-size:15.5px;margin:12px 0 0;max-width:44ch}
+.news-form{display:grid;gap:8px}
+.news-form .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted-2)}
+.news-row{display:grid;grid-template-columns:1fr auto;gap:8px}
+.news-row input{width:100%;background:var(--ink);border:1px solid var(--line);border-radius:var(--r);color:var(--text);font-family:var(--body);font-size:15px;padding:12px 14px;outline:none;transition:border-color .15s}
+.news-row input:focus{border-color:var(--blue)}
+.news-row .btn{white-space:nowrap}
+.social{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.social a{display:inline-flex;align-items:center;gap:9px;padding:9px 14px 9px 11px;border:1px solid var(--line);border-radius:999px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);transition:border-color .15s,color .15s,transform .15s}
+.social a:hover{color:var(--text);border-color:var(--muted);transform:translateY(-1px)}
+.social svg{width:18px;height:18px}
+@media (max-width:860px){.news{padding:56px 0}.news-grid{grid-template-columns:1fr;gap:28px}.news-row{grid-template-columns:1fr}.news-row .btn{justify-content:center}}
 </style>
 </head>
 <body>
@@ -685,16 +769,17 @@ html.lenis,html.lenis body{height:auto}
     </a>
     <nav class="links" aria-label="Primary">
       <div class="dd" data-open="false"><button type="button" aria-haspopup="true" aria-expanded="false">Services <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4l4 4 4-4"/></svg></button>
-        <div class="dd-menu" role="menu"><a href="/ai-shoot/" role="menuitem"><i>01</i><span>AI Shoot<small>Stills, lifestyle and video from a flatlay</small></span></a><a href="/creatives/" role="menuitem"><i>02</i><span>Creatives and films<small>A+, banners, stores, reels</small></span></a><a href="/listings/" role="menuitem"><i>03</i><span>Listings<small>Copy, structure, upload, live</small></span></a><a href="/#post" role="menuitem"><i>+</i><span>Post Production<small>Retouch, cut-outs, adapts</small></span></a><a href="/complete-pdp/" role="menuitem"><i>=</i><span>The complete PDP<small>Audit, revamp, marketplace content</small></span></a></div></div><a href="#work">Work</a><a href="#projects">Projects</a><a href="#how">How we work</a><a href="#outcomes">Why Cielo</a>
+        <div class="dd-menu" role="menu"><a href="/ai-shoot/" role="menuitem"><i>01</i><span>AI Shoot<small>Stills, lifestyle and video from a flatlay</small></span></a><a href="/creatives/" role="menuitem"><i>02</i><span>Creatives and films<small>A+, banners, stores, reels</small></span></a><a href="/listings/" role="menuitem"><i>03</i><span>Listings<small>Copy, structure, upload, live</small></span></a><a href="/post-production/" role="menuitem"><i>04</i><span>Post Production<small>Retouch, cut-outs, adapts, at volume</small></span></a><a href="/complete-pdp/" role="menuitem"><i>05</i><span>The complete PDP<small>Audit, revamp, marketplace content</small></span></a></div></div><a href="/work/">Work</a><a href="/projects/">Projects</a><a href="/#how">How we work</a><a href="/about/">Why Cielo</a>
     </nav>
     <a class="btn btn-red" href="/start-a-pilot/">Start a pilot</a>
     <button class="menu" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">MENU</button>
   </div>
 </header>
 <nav class="drawer" id="drawer" aria-label="Mobile">
-  <span class="grp">SERVICES</span><div class="sub"><a href="/ai-shoot/">AI Shoot</a><a href="/creatives/">Creatives and films</a><a href="/listings/">Listings</a><a href="/#post">Post Production</a><a href="/complete-pdp/">The complete PDP</a></div><a href="#work">Work</a><a href="#projects">Projects</a><a href="#how">How we work</a><a href="#outcomes">Why Cielo</a>
+  <span class="grp">SERVICES</span><div class="sub"><a href="/ai-shoot/">AI Shoot</a><a href="/creatives/">Creatives and films</a><a href="/listings/">Listings</a><a href="/post-production/">Post Production</a><a href="/complete-pdp/">The complete PDP</a></div><a href="/work/">Work</a><a href="/projects/">Projects</a><a href="/#how">How we work</a><a href="/about/">Why Cielo</a>
   <a class="btn btn-red" href="/start-a-pilot/">Start a pilot</a>
 </nav>
+
 
 <section class="hero">
   <div class="hero-glow" aria-hidden="true"></div>
@@ -702,7 +787,7 @@ html.lenis,html.lenis body{height:auto}
   <div class="wrap">
     <div>
       <div class="eyebrow rv">Ecommerce content experts · since 2019</div>
-      <h1 class="rv">Content that gets every SKU live sooner, <span class="hl">and keeps it selling.</span></h1>
+      <h1 class="rv h4l">Content That Gets<br class="hb"> Every SKU Live<br class="hb"> Sooner, <span class="hl">and&nbsp;Keeps<br class="hb"> It Selling.</span></h1>
       <p class="lead rv">Shoots, creatives, listings and films for brands selling on marketplaces and their own stores, in any market. AI in the loop every day. A person on every asset before it ships.</p>
       <div class="cta-row">
         <a class="btn btn-red" href="/start-a-pilot/">Start a pilot <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -711,14 +796,14 @@ html.lenis,html.lenis body{height:auto}
       <div class="hero-chips rv-stagger">
         <span><b>Live</b> before the sale window closes</span>
         <span><b>PDPs</b> that answer the buyer</span>
-        <span><b>Photos</b> that match the parcel</span>
+        <span><b>Less returns</b>, content true to the product</span>
         <span><b>Every SKU</b>, every marketplace</span>
       </div>
     </div>
     <div class="mosaic rv-stagger" data-px="18" aria-label="Examples of Cielo's work across A+, shoots, films and banners">
-      <div class="tall"><img src="/media/aplus-origami-kt-top-f560e579.jpg" alt="Amazon A+ page for Origami" style="object-position:top"><span class="lbl">A+ · AMAZON</span></div>
+      <div class="tall"><img src="/media/aplus-origami-kt-top-f560e579.jpg" alt="Amazon A+ page for a kitchen towel range" style="object-position:top"><span class="lbl">A+ · AMAZON</span></div>
       <div class="tall"><img src="/media/bralette-beige-out3-327a3c99.jpg" alt="On-model AI shoot of a beige bralette"><span class="lbl blue">AI SHOOT</span></div>
-      <div><video autoplay muted loop playsinline preload="metadata" poster="/media/nescafe-fefa6cb2.jpg" aria-label="Nescafe AI product film"><source src="/media/nescafe-ef66cb8b.mp4" type="video/mp4"></video><span class="lbl">AI FILM</span></div>
+      <div><video autoplay muted loop playsinline preload="metadata" poster="/media/nescafe-fefa6cb2.jpg" aria-label="Coffee AI product film"><source src="/media/nescafe-ef66cb8b.mp4" type="video/mp4"></video><span class="lbl">AI FILM</span></div>
       <div><img src="/media/banner-luggage-465a01fa.jpg" alt="Marketplace banner for luggage"><span class="lbl">BANNER</span></div>
     </div>
   </div>
@@ -727,7 +812,7 @@ html.lenis,html.lenis body{height:auto}
 <section class="section glow-red" id="services">
   <div class="wrap">
     <div class="eyebrow rv">What we do</div>
-    <h2 class="rv">Three services. <span class="hl">One team, one pipeline.</span></h2>
+    <h2 class="rv">Three Services. <span class="hl">One Team, One Pipeline.</span></h2>
     <p class="lead rv">Shoots, creatives and listings, produced together so nothing waits on another vendor. Post production runs under all three.</p>
     <div class="svc3 rv-stagger" style="grid-template-columns:repeat(3,1fr)">
       <article class="card" id="ai-shoot">
@@ -745,8 +830,8 @@ html.lenis,html.lenis body{height:auto}
           <a class="more" href="/ai-shoot/">How it works →</a></div>
       </article>
       <article class="card" id="creatives">
-        <div class="vis3" data-px="8"><div class="collage"><img src="/media/campaign-khayal-1-fd03df44.jpg" alt="Campaign creative for Khayal"><img src="/media/banner-amazfit-1023b3a4.jpg" alt="Amazfit marketplace banner"><img src="/media/banner-luggage-465a01fa.jpg" alt="Luggage banner"></div></div>
-        <div class="body"><span class="k">02 · DIGITAL AND AI CREATIVES</span><h3>Creatives and films</h3><p class="promise">A+ pages, RPDs, infographics, banners, brand stores, campaign films and reels, adapted to every marketplace.</p>
+        <div class="vis3" data-px="8"><div class="collage"><img src="/media/campaign-khayal-1-fd03df44.jpg" alt="Campaign creative for a nutraceutical brand"><img src="/media/banner-amazfit-1023b3a4.jpg" alt="Smartwatch marketplace banner"><img src="/media/banner-luggage-465a01fa.jpg" alt="Luggage banner"></div></div>
+        <div class="body"><span class="k">02 · DIGITAL AND AI CREATIVES</span><h3>Creatives and&nbsp;Films</h3><p class="promise">A+ pages, RPDs, infographics, banners, brand stores, campaign films and reels, adapted to every marketplace.</p>
           <div class="nums"><div><b>1M+</b>CREATIVES DELIVERED</div><div><b>100+</b>BRAND STORES BUILT</div><div><b>1,000+</b>FILMS AND REELS PRODUCED</div></div>
           <a class="more" href="/creatives/">Formats and turnarounds →</a></div>
       </article>
@@ -759,10 +844,11 @@ html.lenis,html.lenis body{height:auto}
     </div>
     <div class="post rv" id="post">
       <div>
-        <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--red)">UNDER ALL THREE · POST PRODUCTION</span>
-        <h3>Retail-ready editing at catalogue scale.</h3>
+        <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--red)">04 · POST PRODUCTION · UNDER ALL THREE, OR ON ITS OWN</span>
+        <h3>Retail-Ready Editing at&nbsp;Catalogue Scale.</h3>
         <p>Retouching, cut-outs and colour correction. Marketplace formatting, resizing and adaptations. Video editing and finishing. Every shoot and every creative passes through it before it ships.</p>
         <div class="nums"><div><b>1.5M+</b>IMAGES A MONTH</div><div><b>1,500+</b>VIDEOS FINISHED</div><div><b>3–5 days</b>STANDARD TURNAROUND</div></div>
+        <a class="more" href="/post-production/" style="display:inline-block;margin-top:16px;font-weight:600;font-size:14px">Retouching at volume, for brands and retailers →</a>
       </div>
       <div>
   <div class="ba " style="--x:50%">
@@ -776,8 +862,8 @@ html.lenis,html.lenis body{height:auto}
     </div>
     <div class="pdp rv" id="pdp">
       <div class="txt">
-        <span class="k">PUT TOGETHER · THE COMPLETE PDP</span>
-        <h3>A PDP that sells is all three, assembled.</h3>
+        <span class="k">05 · THE COMPLETE PDP · PUT TOGETHER</span>
+        <h3>A&nbsp;PDP That Sells Is All Three, Assembled.</h3>
         <p>Shoot for the gallery. Listing copy for the title, bullets and search. Creatives for A+ and infographics. Film for the reel. One brief, one page, built to answer every question a buyer has before they add to cart.</p>
         <div class="parts"><span><i>01</i>GALLERY</span><span><i>03</i>TITLE + BULLETS</span><span><i>02</i>A+ / INFOGRAPHICS</span><span><i>02</i>PRODUCT FILM</span></div>
         <a class="more" href="/complete-pdp/" style="font-weight:600;font-size:14px">Audit or revamp your PDPs →</a>
@@ -799,7 +885,7 @@ html.lenis,html.lenis body{height:auto}
 <section class="section alt" id="work">
   <div class="wrap">
     <div class="eyebrow rv">Selected work</div>
-    <h2 class="rv">The input we got. <span class="hl">The content that shipped.</span></h2>
+    <h2 class="rv">The&nbsp;Input We Got.<br class="hb"><span class="hl"> The&nbsp;Content<br class="hb"> That Shipped.</span></h2>
     <div class="sub">AI SHOOT · FLATLAY TO ON-MODEL · DRAG ANY FRAME</div>
     <div class="work-row rv-stagger">
       <div>
@@ -809,7 +895,7 @@ html.lenis,html.lenis body{height:auto}
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
     <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a beige bralette with the bralette on a model">
   </div>
-  <div class="ba-cap"><span>GUESS · INNERWEAR</span><span>DRAG</span></div>
+  <div class="ba-cap"><span>INNERWEAR · BRALETTE</span><span>DRAG</span></div>
 </div>
       <div>
   <div class="ba p45" style="--x:50%">
@@ -818,7 +904,7 @@ html.lenis,html.lenis body{height:auto}
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
     <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a black sports bra with the sports bra on a model">
   </div>
-  <div class="ba-cap"><span>GUESS · ACTIVEWEAR</span><span>DRAG</span></div>
+  <div class="ba-cap"><span>ACTIVEWEAR · SPORTS BRA</span><span>DRAG</span></div>
 </div>
       <div>
   <div class="ba p45" style="--x:50%">
@@ -827,33 +913,33 @@ html.lenis,html.lenis body{height:auto}
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
     <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a taupe bodysuit with the bodysuit on a model">
   </div>
-  <div class="ba-cap"><span>GUESS · BODYSUIT</span><span>DRAG</span></div>
+  <div class="ba-cap"><span>INNERWEAR · BODYSUIT</span><span>DRAG</span></div>
 </div>
       <div>
   <div class="ba p45" style="--x:50%">
-    <img class="before" src="/media/kids-sweater-in_front-a926704e.jpg" alt="flatlay of a Guess bear sweater"><img class="after" src="/media/kids-sweater-out1-4baa31ca.jpg" alt="a boy wearing the sweater">
+    <img class="before" src="/media/kids-sweater-in_front-a926704e.jpg" alt="flatlay of a bear-print sweater"><img class="after" src="/media/kids-sweater-out1-4baa31ca.jpg" alt="a boy wearing the sweater">
     <span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div>
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
-    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a Guess bear sweater with a boy wearing the sweater">
+    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a bear-print sweater with a boy wearing the sweater">
   </div>
-  <div class="ba-cap"><span>GUESS KIDS · KNITWEAR</span><span>DRAG</span></div>
+  <div class="ba-cap"><span>KIDSWEAR · KNITWEAR</span><span>DRAG</span></div>
 </div>
     </div>
     <div class="sub">AI FILMS AND REELS</div>
     <div class="reels rv-stagger">
       <figure class="tall"><video autoplay muted loop playsinline preload="metadata" poster="/media/icecream-57cb722f.jpg" aria-label="Guilt-free ice cream reel"><source src="/media/icecream-f4946436.mp4" type="video/mp4"></video><span class="lbl">REEL · 9:16</span><figcaption><span>ICE CREAM</span><span>AI FILM</span></figcaption></figure>
       <figure class="tall"><video autoplay muted loop playsinline preload="metadata" poster="/media/yoga-mats-9136697d.jpg" aria-label="Yoga mats reel"><source src="/media/yoga-mats-e747e0e2.mp4" type="video/mp4"></video><span class="lbl">REEL · 9:16</span><figcaption><span>YOGA MATS</span><span>AI FILM</span></figcaption></figure>
-      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="/media/at-green-fc56ed6e.jpg" aria-label="American Tourister product film"><source src="/media/at-green-9467d99c.mp4" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>AMERICAN TOURISTER</span><span>PRODUCT FILM</span></figcaption></figure>
-      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="/media/origami-kt-2ee972b1.jpg" aria-label="Origami product film"><source src="/media/origami-kt-e662e398.mp4" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>ORIGAMI</span><span>PRODUCT FILM</span></figcaption></figure>
+      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="/media/at-green-fc56ed6e.jpg" aria-label="Luggage product film"><source src="/media/at-green-9467d99c.mp4" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>LUGGAGE</span><span>PRODUCT FILM</span></figcaption></figure>
+      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="/media/origami-kt-2ee972b1.jpg" aria-label="Kitchen towel product film"><source src="/media/origami-kt-e662e398.mp4" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>KITCHEN TOWELS</span><span>PRODUCT FILM</span></figcaption></figure>
     </div>
     <div class="sub">DIGITAL AND AI CREATIVES · CAMPAIGNS AND BANNERS</div>
     <div class="creatives-grid rv-stagger">
-      <a href="/work/"><img src="/media/campaign-khayal-1-fd03df44.jpg" alt="Khayal campaign creative: still feeling drained"><span class="lbl">CAMPAIGN</span></a>
-      <a href="/work/"><img src="/media/campaign-khayal-2-04a66483.jpg" alt="Khayal campaign creative: fuel your cells"><span class="lbl">CAMPAIGN</span></a>
+      <a href="/work/"><img src="/media/campaign-khayal-1-fd03df44.jpg" alt="Nutraceutical campaign creative: still feeling drained"><span class="lbl">CAMPAIGN</span></a>
+      <a href="/work/"><img src="/media/campaign-khayal-2-04a66483.jpg" alt="Nutraceutical campaign creative: fuel your cells"><span class="lbl">CAMPAIGN</span></a>
       <a href="/work/" class="wide"><img src="/media/banner-luggage-465a01fa.jpg" alt="Luggage banner: built to explore"><span class="lbl">MARKETPLACE BANNER</span></a>
-      <a href="/work/"><img src="/media/campaign-khayal-3-b2b962f8.jpg" alt="Khayal campaign creative: build endurance"><span class="lbl">CAMPAIGN</span></a>
-      <a href="/work/"><img src="/media/bn-casio-13775f10.jpg" alt="Casio Edifice banner"><span class="lbl">BANNER</span></a>
-      <a href="/work/" class="wide"><img src="/media/bn-samsonite-3b2c2406.jpg" alt="Samsonite banner"><span class="lbl">MARKETPLACE BANNER</span></a>
+      <a href="/work/"><img src="/media/campaign-khayal-3-b2b962f8.jpg" alt="Nutraceutical campaign creative: build endurance"><span class="lbl">CAMPAIGN</span></a>
+      <a href="/work/"><img src="/media/bn-casio-13775f10.jpg" alt="Watch banner"><span class="lbl">BANNER</span></a>
+      <a href="/work/" class="wide"><img src="/media/bn-samsonite-3b2c2406.jpg" alt="Luggage banner"><span class="lbl">MARKETPLACE BANNER</span></a>
     </div>
     <div class="cta-row"><a class="btn btn-ghost" href="/work/">All work, by service and category</a></div>
   </div>
@@ -862,23 +948,23 @@ html.lenis,html.lenis body{height:auto}
 <section class="section glow-blue" id="projects">
   <div class="wrap">
     <div class="eyebrow rv">Projects</div>
-    <h2 class="rv">What a brief turns into, <span class="hl">and how many days it took.</span></h2>
+    <h2 class="rv">What a&nbsp;Brief Turns<br class="hb"> Into, <span class="hl">and&nbsp;How Many<br class="hb"> Days It Took.</span></h2>
     <div class="projects rv-stagger">
       <article class="proj">
-        <div class="cover" data-px="10"><img src="/media/kids-tee-out3-734758f3.jpg" alt="Guess kidswear AI shoot"><span class="ph">PLACEHOLDER</span></div>
-        <div class="body"><span class="brand">GUESS INDIA · KIDSWEAR</span><h3>Season drop, shot without a shoot</h3>
+        <div class="cover" data-px="10"><img src="/media/kids-tee-out3-734758f3.jpg" alt="Kidswear AI shoot"><span class="ph">PLACEHOLDER</span></div>
+        <div class="body"><span class="brand">KIDSWEAR · FASHION</span><h3>Season Drop, Shot Without a&nbsp;Shoot</h3>
           <dl><dt>BRIEF</dt><dd class="fill">Objective in one line: which SKUs, which channels, what deadline.</dd><dt>APPROACH</dt><dd class="fill">Flatlay in, on-model out; required angles; kids' models matched to age and size.</dd><dt>DELIVERED</dt><dd class="fill">Number of SKUs × angles, formats, marketplace adapts.</dd><dt>DAYS</dt><dd><b>—</b> from brief to files</dd></dl></div>
         <a class="more" href="/projects/">Read the project →</a>
       </article>
       <article class="proj">
-        <div class="cover" data-px="10"><img src="/media/campaign-khayal-3-b2b962f8.jpg" alt="Khayal campaign creatives"><span class="ph">PLACEHOLDER</span></div>
-        <div class="body"><span class="brand">KHAYAL · NUTRACEUTICALS</span><h3>Campaign creatives for a launch</h3>
+        <div class="cover" data-px="10"><img src="/media/campaign-khayal-3-b2b962f8.jpg" alt="Nutraceutical campaign creatives"><span class="ph">PLACEHOLDER</span></div>
+        <div class="body"><span class="brand">NUTRACEUTICALS · FMCG</span><h3>Campaign Creatives for&nbsp;a&nbsp;Launch</h3>
           <dl><dt>BRIEF</dt><dd class="fill">Objective in one line.</dd><dt>APPROACH</dt><dd class="fill">Creative direction, AI-assisted variants, human art direction and copy.</dd><dt>DELIVERED</dt><dd class="fill">Campaign statics, banners, reel cuts, sizes per channel.</dd><dt>DAYS</dt><dd><b>—</b> from brief to files</dd></dl></div>
         <a class="more" href="/projects/">Read the project →</a>
       </article>
       <article class="proj">
-        <div class="cover" data-px="10"><img src="/media/at-green-fc56ed6e.jpg" alt="American Tourister product film"><span class="ph">PLACEHOLDER</span></div>
-        <div class="body"><span class="brand">AMERICAN TOURISTER · LUGGAGE</span><h3>Product films for a colourway launch</h3>
+        <div class="cover" data-px="10"><img src="/media/at-green-fc56ed6e.jpg" alt="Luggage product film"><span class="ph">PLACEHOLDER</span></div>
+        <div class="body"><span class="brand">LUGGAGE · TRAVEL</span><h3>Product Films for&nbsp;a&nbsp;Colourway Launch</h3>
           <dl><dt>BRIEF</dt><dd class="fill">Objective in one line.</dd><dt>APPROACH</dt><dd class="fill">Product shots to AI film, motion and finishing, one edit per colourway.</dd><dt>DELIVERED</dt><dd class="fill">Film lengths and ratios, 9:16 and 16:9, per channel.</dd><dt>DAYS</dt><dd><b>—</b> from brief to files</dd></dl></div>
         <a class="more" href="/projects/">Read the project →</a>
       </article>
@@ -888,13 +974,13 @@ html.lenis,html.lenis body{height:auto}
 
 <section class="section alt" id="outcomes">
   <div class="wrap">
-    <div class="eyebrow rv">Why Cielo</div>
-    <h2 class="rv">Four things change <span class="hl">for your brand.</span></h2>
+    <div class="eyebrow rv">Outcomes</div>
+    <h2 class="rv">Four Things Change <span class="hl">for&nbsp;Your Brand.</span></h2>
     <div class="oc4 rv-stagger">
-      <article><span class="k">01 · SPEED TO SHELF</span><h3>Live sooner. Selling for longer.</h3><p>No studio to wait for. Listings that pass the marketplace first time. The whole drop lands before the sale window closes.</p><span class="via">VIA AI SHOOT + LISTINGS</span></article>
-      <article><span class="k">02 · CONVERSION</span><h3>PDPs that answer the buyer.</h3><p>Required angles, on a model. A+ that carries the reasons to buy. Copy written for the buyer and the search box.</p><span class="via">VIA THE COMPLETE PDP</span></article>
-      <article><span class="k">03 · RETURNS</span><h3>Photos that match the parcel.</h3><p>Print, colour, fit and size chart checked against the real garment before anything ships. Fewer "looked different online".</p><span class="via">VIA HUMAN QC</span></article>
-      <article><span class="k">04 · SCALE</span><h3>Every SKU, every marketplace.</h3><p>Full-drop production, not hero SKUs only. Adapts and uploads for Amazon, Flipkart, Myntra, Nykaa, Shopify and every marketplace you sell on.</p><span class="via">VIA ONE PIPELINE</span></article>
+      <article><span class="k">01 · SPEED TO SHELF</span><h3>Live Sooner. Selling for&nbsp;Longer.</h3><p>No studio to wait for. Listings that pass the marketplace first time. The whole drop lands before the sale window closes.</p><span class="via">VIA AI SHOOT + LISTINGS</span></article>
+      <article><span class="k">02 · CONVERSION</span><h3>PDPs That Answer the&nbsp;Buyer.</h3><p>Required angles, on a model. A+ that carries the reasons to buy. Copy written for the buyer and the search box.</p><span class="via">VIA THE COMPLETE PDP</span></article>
+      <article><span class="k">03 · RETURNS</span><h3>Less Returns.</h3><p>Images and written content true to the actual product. Print, colour, fit, size chart and bullets checked against the real garment before anything ships. Fewer "looked different online" returns, lower RTO.</p><span class="via">VIA HUMAN QC + LISTINGS</span></article>
+      <article><span class="k">04 · SCALE</span><h3>Every SKU, Every Marketplace.</h3><p>Full-drop production, not hero SKUs only. Adapts and uploads for Amazon, Flipkart, Myntra, Nykaa, Shopify and every marketplace you sell on.</p><span class="via">VIA ONE PIPELINE</span></article>
     </div>
   </div>
 </section>
@@ -902,18 +988,18 @@ html.lenis,html.lenis body{height:auto}
 <section class="section" id="how">
   <div class="wrap">
     <div class="eyebrow rv">An engagement, end to end</div>
-    <h2 class="rv">Brief in. <span class="hl">Ready&#8209;to&#8209;use content out.</span></h2>
-    <p class="lead rv">Steps 03 and 04 are where AI speed meets human judgement. Every asset passes expert QC before delivery.</p>
+    <h2 class="rv w24">AI Assisted Speed.<br class="hb"><span class="hl"> Human Assured Quality.</span></h2>
+    <p class="lead rv">Brief in, ready-to-use content out. AI does the volume in step 03. People review every asset in step 04 before it ships.</p>
     <div class="flow rv-stagger" aria-label="An engagement, end to end: Brief, Plan, Create, QC, Deliver, Scale">
       <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M9 12h6M9 16h6"/></svg></div><span class="num">01</span><h3>Brief</h3><p>Goals, SKUs, guidelines in.</p></div>
       <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></div><span class="num">02</span><h3>Plan</h3><p>Formats, batches, timelines.</p></div>
-      <div class="node ai"><div class="dot"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z"/><path d="M5 17l.8 2 2 .8-2 .8L5 22l-.8-1.4-2-.8 2-.8z"/></svg></div><span class="num">03</span><span class="who">AI SPEED</span><h3>Create</h3><p>AI-accelerated production.</p></div>
-      <div class="node hu"><div class="dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/><path d="M15 14l2 2 4-4"/></svg></div><span class="num">04</span><span class="who">HUMAN JUDGEMENT</span><h3>QC</h3><p>Expert review, every asset.</p></div>
+      <div class="node ai"><div class="dot"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z"/><path d="M5 17l.8 2 2 .8-2 .8L5 22l-.8-1.4-2-.8 2-.8z"/></svg></div><span class="num">03</span><span class="who">AI ASSISTED SPEED</span><h3>Create</h3><p>AI-accelerated production.</p></div>
+      <div class="node hu"><div class="dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/><path d="M15 14l2 2 4-4"/></svg></div><span class="num">04</span><span class="who">HUMAN ASSURED QUALITY</span><h3>QC</h3><p>Expert review, every asset.</p></div>
       <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M4 7h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></div><span class="num">05</span><h3>Deliver</h3><p>Channel-ready files out.</p></div>
       <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div><span class="num">06</span><h3>Scale</h3><p>Repeat across catalogue.</p></div>
     </div>
     <div class="need rv">
-      <div class="need-head"><div><span class="k">TO START A BATCH</span><h3>What we need from your side. That's it.</h3></div><p>Send these four and step 01 starts. No shoot day, no studio, no model casting on your side.</p></div>
+      <div class="need-head"><div><span class="k">TO START A BATCH</span><h3>What We Need from&nbsp;Your Side. That's It.</h3></div><p>Send these four and step 01 starts. No shoot day, no studio, no model casting on your side.</p></div>
       <ul class="need-grid rv-stagger">
         <li><span class="n">01</span><div class="ico"><img src="/media/sportsbra-black-in_front-6e726c2b.jpg" alt="A flatlay packshot"></div><b>Product images or packshots</b><span class="d">Flatlay, mannequin or ghost. Front and back.</span></li>
         <li><span class="n">02</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h7"/><circle cx="9.5" cy="8.5" r="1"/></svg></div><b>Brand guidelines, if any</b><span class="d">Fonts, colours, model direction. A PDF is enough.</span></li>
@@ -934,9 +1020,9 @@ html.lenis,html.lenis body{height:auto}
   <div class="wrap">
     <div class="eyebrow rv">In their words</div>
     <div class="quotes rv-stagger">
-      <div class="quote"><p>Cielo delivered beyond expectations, faster than any agency we've worked with, without compromising quality. They handled last-minute changes calmly and confidently.</p><footer><b>Lalit Sejwal</b>CEO, Kokora Spices</footer></div>
-      <div class="quote"><p>Their category understanding is strong, the designs look fantastic, and everything was delivered super fast. Communication was smooth and responsive, end to end.</p><footer><b>Kushagra Sharma</b>Business Head, Global International Markets, Origami</footer></div>
-      <div class="quote"><p>The Cielo designers bring fresh thinking to every project. Every creative output looked polished and performance-oriented.</p><footer><b>Mala Singh</b>Founder, Mala Singh Designs</footer></div>
+      <div class="quote"><p>Cielo delivered beyond expectations, faster than any agency we've worked with, without compromising quality. They handled last-minute changes calmly and confidently.</p><footer><b>Lalit Sejwal</b>CEO, spices brand</footer></div>
+      <div class="quote"><p>Their category understanding is strong, the designs look fantastic, and everything was delivered super fast. Communication was smooth and responsive, end to end.</p><footer><b>Kushagra Sharma</b>Business Head, Global International Markets, home and personal care brand</footer></div>
+      <div class="quote"><p>The Cielo designers bring fresh thinking to every project. Every creative output looked polished and performance-oriented.</p><footer><b>Mala Singh</b>Founder, designer label</footer></div>
     </div>
   </div>
 </section>
@@ -945,7 +1031,7 @@ html.lenis,html.lenis body{height:auto}
   <div class="wrap pilot-grid">
     <div>
       <div class="eyebrow rv">Start</div>
-      <h2 class="rv">One real batch. <span class="hl">See it before you scale it.</span></h2>
+      <h2 class="rv">One Real Batch.<br class="hb"><span class="hl"> See It Before<br class="hb"> You Scale It.</span></h2>
       <div class="steps">
         <div><b>You share SKUs</b><span>A real batch from your live catalogue.</span></div>
         <div><b>We deliver</b><span>Full pipeline, channel-ready files.</span></div>
@@ -966,17 +1052,55 @@ html.lenis,html.lenis body{height:auto}
   </div>
 </section>
 
+<section class="news" id="newsletter" aria-label="Newsletter and contact">
+  <div class="wrap news-grid">
+    <div>
+      <div class="eyebrow rv">Stay in touch</div>
+      <h3 class="rv">Notes From the&nbsp;Studio, <span class="hl">Once a&nbsp;Month.</span></h3>
+      <p class="rv">What changed on the marketplaces, what we shipped, what we learned. One email, no more.</p>
+    </div>
+    <div class="news-side rv">
+      <form class="news-form" id="newsform" action="/api/subscribe" method="post" novalidate>
+        <label for="newsemail" class="k">YOUR WORK EMAIL</label>
+        <div class="news-row"><input id="newsemail" name="email" type="email" required autocomplete="email" placeholder="you@brand.com"><button class="btn btn-red" type="submit">Subscribe</button></div>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="msg" id="newsmsg" role="status" aria-live="polite"></div>
+      </form>
+      <div class="social" aria-label="Contact and social">
+        <a href="mailto:marketing.team@cieloecommerce.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Email</span></a>
+        <a href="https://www.linkedin.com/company/cielo-ecommerce/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.5H3.6V20h2.9V8.5zM5 3.8a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20.4 13c0-3.1-1.7-4.7-4-4.7-1.9 0-2.7 1-3.2 1.8V8.5H10.3V20h2.9v-6.3c0-1.7.7-2.6 2.1-2.6 1.3 0 2.2.9 2.2 2.6V20h2.9v-7z"/></svg><span>LinkedIn</span></a>
+        <a href="https://www.instagram.com/cieloecommerce/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="foot">
   <div class="wrap">
     <div>
       <a class="brand" href="/"><img src="/media/mark-dark-b9517351.png" alt="" width="34" height="26" style="width:34px;height:auto"><span>Cielo E-Commerce<small>COMMERCE CONTENT</small></span></a>
-      <p style="max-width:40ch;margin-top:16px">Ecommerce content experts. Shoots, creatives, listings and films for brands selling online, in any market. Cielo Ecommerce Pvt Ltd, Delhi.</p>
+      <p style="max-width:40ch;margin-top:16px">Ecommerce content experts. Shoots, creatives, listings, post production and films for brands selling online, in any market. Cielo Ecommerce Pvt Ltd, Delhi.</p>
     </div>
-    <div><span class="k">SERVICES</span><ul><li><a href="#ai-shoot">AI Shoot</a></li><li><a href="#creatives">Creatives and films</a></li><li><a href="#listings">Listings</a></li><li><a href="#post">Post Production</a></li><li><a href="#pdp">The complete PDP</a></li></ul></div>
-    <div><span class="k">COMPANY</span><ul><li><a href="#work">Work</a></li><li><a href="#projects">Projects</a></li><li><a href="#how">How we work</a></li><li><a href="/start-a-pilot/">Start a pilot</a></li><li><a href="mailto:marketing.team@cieloecommerce.com">marketing.team@cieloecommerce.com</a></li></ul></div>
+    <div><span class="k">SERVICES</span><ul><li><a href="/ai-shoot/">AI Shoot</a></li><li><a href="/creatives/">Creatives and films</a></li><li><a href="/listings/">Listings</a></li><li><a href="/post-production/">Post Production</a></li><li><a href="/complete-pdp/">The complete PDP</a></li></ul></div>
+    <div><span class="k">COMPANY</span><ul><li><a href="/about/">Why Cielo</a></li><li><a href="/work/">Work</a></li><li><a href="/projects/">Projects</a></li><li><a href="/#how">How we work</a></li><li><a href="/start-a-pilot/">Start a pilot</a></li><li><a href="mailto:marketing.team@cieloecommerce.com">marketing.team@cieloecommerce.com</a></li></ul></div>
     <div class="legal"><span>© 2026 CIELO ECOMMERCE PVT LTD</span><span>ISO 9001:2015 · ISO 27001:2013 CERTIFIED</span></div>
   </div>
 </footer>
+<script>
+(function(){
+  var f = document.getElementById('newsform'), msg = document.getElementById('newsmsg'); if (!f) return;
+  f.addEventListener('submit', function(e){
+    e.preventDefault(); msg.className = 'msg'; msg.textContent = '';
+    var em = f.elements.email; if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){ em.focus(); msg.className = 'msg err'; msg.textContent = 'Please enter a work email.'; return; }
+    var btn = f.querySelector('button'); btn.disabled = true; btn.textContent = 'Sending…';
+    fetch('/api/subscribe', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email: em.value.trim(), website: f.elements.website.value, page: location.href})})
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(function(){ msg.className = 'msg ok'; msg.textContent = 'You are on the list.'; f.reset(); btn.textContent = 'Subscribed'; })
+      .catch(function(){ msg.className = 'msg err'; msg.textContent = 'That did not go through. Email marketing.team@cieloecommerce.com instead.'; btn.disabled = false; btn.textContent = 'Subscribe'; });
+  });
+})();
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
 <script>

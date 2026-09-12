@@ -1,0 +1,170 @@
+{{HEAD:Project · Cielo}}
+<style>
+/* project page (mock for the first real project) */
+.mockbar{background:rgba(242,239,233,.06);border-bottom:1px dashed rgba(242,239,233,.25);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted);text-align:center;padding:9px 16px}
+.mockbar b{color:var(--text);font-weight:500}
+.hero.proj-hero .wrap{grid-template-columns:minmax(0,1fr) minmax(0,.9fr)}
+.pmeta{display:grid;grid-template-columns:repeat(4,auto);gap:18px 32px;margin-top:34px;justify-content:start}
+.pmeta div{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted-2)}
+.pmeta b{display:block;font-family:var(--display);font-size:18px;color:var(--text);letter-spacing:-.01em;margin-bottom:3px}
+.pmeta b.big{font-size:30px;color:var(--red)}
+.ph{font-family:var(--mono);font-size:10px;letter-spacing:.12em;padding:4px 7px;border-radius:3px;background:rgba(242,239,233,.12);color:var(--text);border:1px dashed rgba(242,239,233,.35);display:inline-block;vertical-align:middle}
+.fill{color:var(--muted-2);font-style:italic}
+/* brief card */
+.brief{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-top:44px}
+.bcard{background:var(--navy);border:1px solid var(--line-soft);border-radius:12px;padding:26px;display:grid;gap:14px;align-content:start}
+.bcard .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--red)}
+.bcard h3{font-size:22px}
+.bcard p{margin:0;color:var(--muted);font-size:15px}
+.bcard dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:14px}
+.bcard dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted-2);padding-top:3px;white-space:nowrap}
+.bcard dd{margin:0;color:var(--text)}
+/* approach */
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.step4{background:var(--navy);border:1px solid var(--line-soft);border-radius:12px;padding:22px;display:grid;gap:8px;align-content:start;border-top:2px solid var(--line)}
+.step4.ai{border-top-color:var(--blue)}.step4.hu{border-top-color:var(--red)}
+.step4 i{font-family:var(--mono);font-style:normal;font-size:10.5px;letter-spacing:.12em;color:var(--muted-2)}
+.step4.ai i{color:var(--blue)}.step4.hu i{color:#FF6B6B}
+.step4 h3{font-size:18px}
+.step4 p{margin:0;color:var(--muted);font-size:14px}
+/* delivered */
+.dgrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;grid-auto-flow:dense;gap:12px;margin-top:40px}
+.di{position:relative;border-radius:10px;overflow:hidden;background:var(--navy);border:1px solid var(--line-soft);grid-row:span 2}
+.di.big{grid-column:span 2;grid-row:span 3}
+.di img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.di .ba{position:absolute;inset:0;border-radius:0;box-shadow:none;aspect-ratio:auto;max-height:none;height:100%}
+.di .ba img{transform:none}
+.di .meta{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 11px;background:linear-gradient(transparent,rgba(11,14,23,.94));display:flex;justify-content:space-between;align-items:baseline;gap:8px;pointer-events:none}
+.di .meta b{font-family:var(--display);font-size:14px}
+.di .meta small{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--muted)}
+.dlist{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.dlist div{background:var(--navy);border:1px solid var(--line-soft);border-radius:10px;padding:18px;display:grid;gap:4px}
+.dlist b{font-family:var(--display);font-size:24px;letter-spacing:-.02em}
+.dlist span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted-2)}
+/* days */
+.days-band{margin-top:44px;background:var(--navy);border:1px solid var(--line-soft);border-radius:12px;padding:26px 28px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
+.days-band .big{font-family:var(--display);font-size:64px;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--red)}
+.days-band .big small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted-2);font-weight:400;margin-top:8px}
+.tline{display:grid;gap:8px}
+.tline .lane{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--muted)}
+.tline .bar2{position:relative;height:26px;background:var(--navy-2);border-radius:5px;overflow:hidden;border:1px solid var(--line-soft)}
+.tline .bar2 i{position:absolute;top:3px;bottom:3px;border-radius:3px;background:var(--line)}
+.tline .bar2 i.blue{background:var(--blue)}.tline .bar2 i.red{background:var(--red)}
+.pnext{margin-top:44px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line-soft);padding-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted)}
+.pnext a{color:var(--text)}
+@media (max-width:1024px){.brief{grid-template-columns:1fr}.steps4{grid-template-columns:1fr 1fr}.dgrid{grid-template-columns:repeat(3,1fr)}.dlist{grid-template-columns:1fr 1fr 1fr}}
+@media (max-width:860px){.hero.proj-hero .wrap{grid-template-columns:1fr}.pmeta{grid-template-columns:1fr 1fr}.steps4{grid-template-columns:1fr}.dgrid{grid-template-columns:1fr 1fr;grid-auto-rows:130px;gap:8px}.di.big{grid-column:span 2}.days-band{grid-template-columns:1fr}.dlist{grid-template-columns:1fr}}
+</style>
+{{NAV}}
+<div class="mockbar"><b>MOCK PROJECT PAGE</b> · LAYOUT FOR THE FIRST REAL PROJECT · TEXT IN ITALICS IS PLACEHOLDER</div>
+
+<section class="hero proj-hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="crumb"><a href="/projects/">Projects</a><span>/</span><span>Kidswear · AI Shoot</span></div>
+      <div class="eyebrow rv">Project · kidswear · AI shoot and listings</div>
+      <h1 class="rv">A&nbsp;Season Drop, <span class="hl">Shot Without a&nbsp;Shoot.</span></h1>
+      <p class="lead rv fill">One line on what the brand needed and by when: the drop, the channels, the deadline that made a studio shoot impossible.</p>
+      <div class="pmeta rv-stagger">
+        <div><b>Kidswear</b>CATEGORY</div>
+        <div><b>AI Shoot + Listings</b>SERVICES</div>
+        <div><b class="fill">Amazon, Myntra</b>MARKETPLACES</div>
+        <div><b class="big">—</b>DAYS, BRIEF TO FILES</div>
+      </div>
+    </div>
+    <div class="rv" data-px="14">
+      <div class="ba" style="--x:50%;max-width:420px;margin:0 auto">
+        <img class="before" src="{{IMG:kids-sweater-in_front.jpg}}" alt="Flatlay of a bear-print sweater, the input"><img class="after" src="{{IMG:kids-sweater-out1.jpg}}" alt="A boy wearing the sweater, the shipped image">
+        <span class="tag l">INPUT · FLATLAY</span><span class="tag r">SHIPPED</span><div class="bar"></div>
+        <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
+        <input type="range" min="4" max="96" value="50" aria-label="Drag to compare the flatlay with the shipped image">
+      </div>
+      <div class="ba-cap" style="max-width:420px;margin:12px auto 0"><span>KIDSWEAR · KNITWEAR</span><span>DRAG TO COMPARE</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section glow-red" id="brief">
+  <div class="wrap">
+    <div class="eyebrow rv">Brief</div>
+    <h2 class="rv">What the&nbsp;Brand Needed, <span class="hl">and&nbsp;by&nbsp;When.</span></h2>
+    <div class="brief rv-stagger">
+      <div class="bcard"><span class="k">OBJECTIVE</span><h3 class="fill">One sentence: the outcome the brand wanted from this batch.</h3><p class="fill">Two or three lines of context. What was in the way: no studio slot, a sale window, a marketplace rejecting flatlays as the primary image.</p></div>
+      <div class="bcard"><span class="k">THE BATCH</span><dl><dt>SKUS</dt><dd class="fill">Count and range, e.g. 48 SKUs across tees, knitwear and joggers</dd><dt>INPUT</dt><dd>Flatlays, front and back, from the brand's own packshots</dd><dt>CHANNELS</dt><dd class="fill">Amazon, Myntra, own store</dd><dt>DEADLINE</dt><dd class="fill">The date, and why it mattered</dd></dl></div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="approach">
+  <div class="wrap">
+    <div class="eyebrow rv">Approach</div>
+    <h2 class="rv">Flatlay In. <span class="hl">On-Model Out, Every Angle.</span></h2>
+    <div class="steps4 rv-stagger">
+      <div class="step4"><i>01 · BRIEF AND PLAN</i><h3>Moodboard and Model Brief</h3><p>Age, body and styling matched to the range. One look agreed before generation, so the drop reads as one shoot.</p></div>
+      <div class="step4 ai"><i>02 · CREATE · AI ASSISTED SPEED</i><h3>Required Angles, Every SKU</h3><p>Front, back, side, detail and full length from each flatlay, the same set for every SKU in the batch.</p></div>
+      <div class="step4 hu"><i>03 · QC · HUMAN ASSURED QUALITY</i><h3>Print and Fit Checked</h3><p>Every frame checked against the flatlay for print placement, colour and fit. Drifts went back to generation, not to the brand.</p></div>
+      <div class="step4"><i>04 · DELIVER</i><h3>Listed and Live</h3><p>Files at each marketplace's spec and naming, titles and bullets written, uploaded and tracked until live.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="delivered">
+  <div class="wrap">
+    <div class="eyebrow rv">Delivery assets</div>
+    <h2 class="rv">What Shipped, <span class="hl">Frame by&nbsp;Frame.</span></h2>
+    <div class="dlist rv-stagger">
+      <div><b class="fill">—</b><span>SKUS SHOT</span></div>
+      <div><b class="fill">—</b><span>IMAGES DELIVERED</span></div>
+      <div><b class="fill">—</b><span>MARKETPLACE ADAPTS</span></div>
+    </div>
+    <div class="dgrid rv-stagger">
+      <figure class="di big"><div class="ba" style="--x:50%"><img class="before" src="{{IMG:kids-tee-in_front.jpg}}" alt="Flatlay of a navy tee"><img class="after" src="{{IMG:kids-tee-out3.jpg}}" alt="A boy wearing the tee"><span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div><div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div><input type="range" min="4" max="96" value="50" aria-label="Drag to compare"></div><figcaption class="meta"><b>Tee · on model</b><small>AI SHOOT</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:kids-sweater-out2.jpg}}" alt="Back angle"><figcaption class="meta"><b>Knitwear · back</b><small>ANGLE 02</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:kids-sweater-out3.jpg}}" alt="Side angle"><figcaption class="meta"><b>Knitwear · side</b><small>ANGLE 03</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:kids-sweater-out4.jpg}}" alt="Detail angle"><figcaption class="meta"><b>Knitwear · detail</b><small>ANGLE 04</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:kids-sweater-out5.jpg}}" alt="Full length"><figcaption class="meta"><b>Knitwear · full length</b><small>ANGLE 05</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:kids-tee-out1.jpg}}" alt="Tee, front"><figcaption class="meta"><b>Tee · front</b><small>ANGLE 01</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:kids-tee-out5.jpg}}" alt="Tee, full length"><figcaption class="meta"><b>Tee · full length</b><small>ANGLE 05</small></figcaption></figure>
+    </div>
+    <div class="days-band rv">
+      <div class="big"><span class="fill">—</span><small>DAYS, BRIEF TO FILES</small></div>
+      <div class="tline" aria-label="Illustrative timeline">
+        <div class="lane"><span>BRIEF + PLAN</span><div class="bar2"><i style="left:0;width:18%"></i></div></div>
+        <div class="lane"><span>CREATE</span><div class="bar2"><i class="blue" style="left:18%;width:34%"></i></div></div>
+        <div class="lane"><span>QC</span><div class="bar2"><i class="red" style="left:44%;width:26%"></i></div></div>
+        <div class="lane"><span>DELIVER + LIVE</span><div class="bar2"><i style="left:70%;width:30%"></i></div></div>
+      </div>
+    </div>
+    <div class="pnext"><span>NEXT PROJECT · <span class="fill">TITLE TO COME</span></span><a href="/projects/">ALL PROJECTS →</a></div>
+  </div>
+</section>
+
+<section class="section pilot" id="pilot">
+  <div class="wrap pilot-grid">
+    <div>
+      <div class="eyebrow rv">Start</div>
+      <h2 class="rv">Your Drop, <span class="hl">the&nbsp;Same Way.</span></h2>
+      <div class="steps rv-stagger">
+        <div><b>You share SKUs</b><span>Flatlays or mannequin shots, front and back.</span></div>
+        <div><b>We deliver</b><span>The required angles, marketplace-ready.</span></div>
+        <div><b>We review, then scale</b><span>Extend to the full drop.</span></div>
+      </div>
+    </div>
+    <div class="picker rv">
+      <span class="k">PICK YOUR PILOT</span>
+      <div class="chips" role="group" aria-label="Pilot type">
+        <button class="chip" aria-pressed="true"><span>AI shoot pilot<small>Flatlay to on-model, one SKU set</small></span></button>
+        <button class="chip" aria-pressed="false"><span>Creative refresh<small>A+, banners or brand store</small></span></button>
+        <button class="chip" aria-pressed="false"><span>Listing enrichment<small>One marketplace, one batch</small></span></button>
+        <button class="chip" aria-pressed="false"><span>PDP revamp<small>Your top SKUs, all three assembled</small></span></button>
+      </div>
+      <a class="btn btn-red" href="#">Start a pilot <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <p>Quote comes with the pilot plan, by SKU count and formats.</p>
+    </div>
+  </div>
+</section>
+
+{{FOOT}}
+{{SCRIPTS}}

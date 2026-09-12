@@ -25,25 +25,7 @@
 .pdp .vid.hold .pl{width:26px;height:26px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
 .pdp .vid.hold .pl svg{width:10px;height:10px;margin-left:2px}
 </style>
-<canvas id="bg" aria-hidden="true"></canvas>
-<header class="nav">
-  <div class="wrap">
-    <a class="brand" href="#" aria-label="Cielo E-Commerce home">
-      <img src="{{IMG:logo/mark-dark.png}}" alt="" width="34" height="26" style="width:34px;height:auto">
-      <span>Cielo E-Commerce<small>COMMERCE CONTENT</small></span>
-    </a>
-    <nav class="links" aria-label="Primary">
-      <div class="dd" data-open="false"><button type="button" aria-haspopup="true" aria-expanded="false">Services <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4l4 4 4-4"/></svg></button>
-        <div class="dd-menu" role="menu"><a href="#" role="menuitem"><i>01</i><span>AI Shoot<small>Stills, lifestyle and video from a flatlay</small></span></a><a href="#" role="menuitem"><i>02</i><span>Creatives and films<small>A+, banners, stores, reels</small></span></a><a href="#" role="menuitem"><i>03</i><span>Listings<small>Copy, structure, upload, live</small></span></a><a href="#" role="menuitem"><i>+</i><span>Post Production<small>Retouch, cut-outs, adapts</small></span></a><a href="#" role="menuitem"><i>=</i><span>The complete PDP<small>Audit, revamp, marketplace content</small></span></a></div></div><a href="#work">Work</a><a href="#projects">Projects</a><a href="#how">How we work</a><a href="#outcomes">Why Cielo</a>
-    </nav>
-    <a class="btn btn-red" href="#pilot">Start a pilot</a>
-    <button class="menu" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">MENU</button>
-  </div>
-</header>
-<nav class="drawer" id="drawer" aria-label="Mobile">
-  <span class="grp">SERVICES</span><div class="sub"><a href="#">AI Shoot</a><a href="#">Creatives and films</a><a href="#">Listings</a><a href="#">Post Production</a><a href="#">The complete PDP</a></div><a href="#work">Work</a><a href="#projects">Projects</a><a href="#how">How we work</a><a href="#outcomes">Why Cielo</a>
-  <a class="btn btn-red" href="#pilot">Start a pilot</a>
-</nav>
+{{NAV}}
 
 <section class="hero">
   <div class="hero-glow" aria-hidden="true"></div>
@@ -51,7 +33,7 @@
   <div class="wrap">
     <div>
       <div class="eyebrow rv">Ecommerce content experts · since 2019</div>
-      <h1 class="rv">Content that gets every SKU live sooner, <span class="hl">and keeps it selling.</span></h1>
+      <h1 class="rv h4l">Content That Gets<br class="hb"> Every SKU Live<br class="hb"> Sooner, <span class="hl">and&nbsp;Keeps<br class="hb"> It Selling.</span></h1>
       <p class="lead rv">Shoots, creatives, listings and films for brands selling on marketplaces and their own stores, in any market. AI in the loop every day. A person on every asset before it ships.</p>
       <div class="cta-row">
         <a class="btn btn-red" href="#pilot">Start a pilot <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -60,14 +42,14 @@
       <div class="hero-chips rv-stagger">
         <span><b>Live</b> before the sale window closes</span>
         <span><b>PDPs</b> that answer the buyer</span>
-        <span><b>Photos</b> that match the parcel</span>
+        <span><b>Less returns</b>, content true to the product</span>
         <span><b>Every SKU</b>, every marketplace</span>
       </div>
     </div>
     <div class="mosaic rv-stagger" data-px="18" aria-label="Examples of Cielo's work across A+, shoots, films and banners">
-      <div class="tall"><img src="{{IMG:drive/aplus-origami-kt-top.jpg}}" alt="Amazon A+ page for Origami" style="object-position:top"><span class="lbl">A+ · AMAZON</span></div>
+      <div class="tall"><img src="{{IMG:drive/aplus-origami-kt-top.jpg}}" alt="Amazon A+ page for a kitchen towel range" style="object-position:top"><span class="lbl">A+ · AMAZON</span></div>
       <div class="tall"><img src="{{IMG:bralette-beige-out3.jpg}}" alt="On-model AI shoot of a beige bralette"><span class="lbl blue">AI SHOOT</span></div>
-      <div><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/nescafe.jpg}}" aria-label="Nescafe AI product film"><source src="{{VID:nescafe.mp4}}" type="video/mp4"></video><span class="lbl">AI FILM</span></div>
+      <div><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/nescafe.jpg}}" aria-label="Coffee AI product film"><source src="{{VID:nescafe.mp4}}" type="video/mp4"></video><span class="lbl">AI FILM</span></div>
       <div><img src="{{IMG:banner-luggage.jpg}}" alt="Marketplace banner for luggage"><span class="lbl">BANNER</span></div>
     </div>
   </div>
@@ -76,7 +58,7 @@
 <section class="section glow-red" id="services">
   <div class="wrap">
     <div class="eyebrow rv">What we do</div>
-    <h2 class="rv">Three services. <span class="hl">One team, one pipeline.</span></h2>
+    <h2 class="rv">Three Services. <span class="hl">One Team, One Pipeline.</span></h2>
     <p class="lead rv">Shoots, creatives and listings, produced together so nothing waits on another vendor. Post production runs under all three.</p>
     <div class="svc3 rv-stagger" style="grid-template-columns:repeat(3,1fr)">
       <article class="card" id="ai-shoot">
@@ -94,8 +76,8 @@
           <a class="more" href="#">How it works →</a></div>
       </article>
       <article class="card" id="creatives">
-        <div class="vis3" data-px="8"><div class="collage"><img src="{{IMG:campaign-khayal-1.jpg}}" alt="Campaign creative for Khayal"><img src="{{IMG:banner-amazfit.jpg}}" alt="Amazfit marketplace banner"><img src="{{IMG:banner-luggage.jpg}}" alt="Luggage banner"></div></div>
-        <div class="body"><span class="k">02 · DIGITAL AND AI CREATIVES</span><h3>Creatives and films</h3><p class="promise">A+ pages, RPDs, infographics, banners, brand stores, campaign films and reels, adapted to every marketplace.</p>
+        <div class="vis3" data-px="8"><div class="collage"><img src="{{IMG:campaign-khayal-1.jpg}}" alt="Campaign creative for a nutraceutical brand"><img src="{{IMG:banner-amazfit.jpg}}" alt="Smartwatch marketplace banner"><img src="{{IMG:banner-luggage.jpg}}" alt="Luggage banner"></div></div>
+        <div class="body"><span class="k">02 · DIGITAL AND AI CREATIVES</span><h3>Creatives and&nbsp;Films</h3><p class="promise">A+ pages, RPDs, infographics, banners, brand stores, campaign films and reels, adapted to every marketplace.</p>
           <div class="nums"><div><b>1M+</b>CREATIVES DELIVERED</div><div><b>100+</b>BRAND STORES BUILT</div><div><b>1,000+</b>FILMS AND REELS PRODUCED</div></div>
           <a class="more" href="#">Formats and turnarounds →</a></div>
       </article>
@@ -108,10 +90,11 @@
     </div>
     <div class="post rv" id="post">
       <div>
-        <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--red)">UNDER ALL THREE · POST PRODUCTION</span>
-        <h3>Retail-ready editing at catalogue scale.</h3>
+        <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--red)">04 · POST PRODUCTION · UNDER ALL THREE, OR ON ITS OWN</span>
+        <h3>Retail-Ready Editing at&nbsp;Catalogue Scale.</h3>
         <p>Retouching, cut-outs and colour correction. Marketplace formatting, resizing and adaptations. Video editing and finishing. Every shoot and every creative passes through it before it ships.</p>
         <div class="nums"><div><b>1.5M+</b>IMAGES A MONTH</div><div><b>1,500+</b>VIDEOS FINISHED</div><div><b>3–5 days</b>STANDARD TURNAROUND</div></div>
+        <a class="more" href="/post-production/" style="display:inline-block;margin-top:16px;font-weight:600;font-size:14px">Retouching at volume, for brands and retailers →</a>
       </div>
       <div>
   <div class="ba " style="--x:50%">
@@ -125,8 +108,8 @@
     </div>
     <div class="pdp rv" id="pdp">
       <div class="txt">
-        <span class="k">PUT TOGETHER · THE COMPLETE PDP</span>
-        <h3>A PDP that sells is all three, assembled.</h3>
+        <span class="k">05 · THE COMPLETE PDP · PUT TOGETHER</span>
+        <h3>A&nbsp;PDP That Sells Is All Three, Assembled.</h3>
         <p>Shoot for the gallery. Listing copy for the title, bullets and search. Creatives for A+ and infographics. Film for the reel. One brief, one page, built to answer every question a buyer has before they add to cart.</p>
         <div class="parts"><span><i>01</i>GALLERY</span><span><i>03</i>TITLE + BULLETS</span><span><i>02</i>A+ / INFOGRAPHICS</span><span><i>02</i>PRODUCT FILM</span></div>
         <a class="more" href="#" style="font-weight:600;font-size:14px">Audit or revamp your PDPs →</a>
@@ -148,7 +131,7 @@
 <section class="section alt" id="work">
   <div class="wrap">
     <div class="eyebrow rv">Selected work</div>
-    <h2 class="rv">The input we got. <span class="hl">The content that shipped.</span></h2>
+    <h2 class="rv">The&nbsp;Input We Got.<br class="hb"><span class="hl"> The&nbsp;Content<br class="hb"> That Shipped.</span></h2>
     <div class="sub">AI SHOOT · FLATLAY TO ON-MODEL · DRAG ANY FRAME</div>
     <div class="work-row rv-stagger">
       <div>
@@ -158,7 +141,7 @@
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
     <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a beige bralette with the bralette on a model">
   </div>
-  <div class="ba-cap"><span>GUESS · INNERWEAR</span><span>DRAG</span></div>
+  <div class="ba-cap"><span>INNERWEAR · BRALETTE</span><span>DRAG</span></div>
 </div>
       <div>
   <div class="ba p45" style="--x:50%">
@@ -167,7 +150,7 @@
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
     <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a black sports bra with the sports bra on a model">
   </div>
-  <div class="ba-cap"><span>GUESS · ACTIVEWEAR</span><span>DRAG</span></div>
+  <div class="ba-cap"><span>ACTIVEWEAR · SPORTS BRA</span><span>DRAG</span></div>
 </div>
       <div>
   <div class="ba p45" style="--x:50%">
@@ -176,33 +159,33 @@
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
     <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a taupe bodysuit with the bodysuit on a model">
   </div>
-  <div class="ba-cap"><span>GUESS · BODYSUIT</span><span>DRAG</span></div>
+  <div class="ba-cap"><span>INNERWEAR · BODYSUIT</span><span>DRAG</span></div>
 </div>
       <div>
   <div class="ba p45" style="--x:50%">
-    <img class="before" src="{{IMG:kids-sweater-in_front.jpg}}" alt="flatlay of a Guess bear sweater"><img class="after" src="{{IMG:kids-sweater-out1.jpg}}" alt="a boy wearing the sweater">
+    <img class="before" src="{{IMG:kids-sweater-in_front.jpg}}" alt="flatlay of a bear-print sweater"><img class="after" src="{{IMG:kids-sweater-out1.jpg}}" alt="a boy wearing the sweater">
     <span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div>
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
-    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a Guess bear sweater with a boy wearing the sweater">
+    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a bear-print sweater with a boy wearing the sweater">
   </div>
-  <div class="ba-cap"><span>GUESS KIDS · KNITWEAR</span><span>DRAG</span></div>
+  <div class="ba-cap"><span>KIDSWEAR · KNITWEAR</span><span>DRAG</span></div>
 </div>
     </div>
     <div class="sub">AI FILMS AND REELS</div>
     <div class="reels rv-stagger">
       <figure class="tall"><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/icecream.jpg}}" aria-label="Guilt-free ice cream reel"><source src="{{VID:icecream.mp4}}" type="video/mp4"></video><span class="lbl">REEL · 9:16</span><figcaption><span>ICE CREAM</span><span>AI FILM</span></figcaption></figure>
       <figure class="tall"><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/yoga-mats.jpg}}" aria-label="Yoga mats reel"><source src="{{VID:yoga-mats.mp4}}" type="video/mp4"></video><span class="lbl">REEL · 9:16</span><figcaption><span>YOGA MATS</span><span>AI FILM</span></figcaption></figure>
-      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/at-green.jpg}}" aria-label="American Tourister product film"><source src="{{VID:at-green.mp4}}" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>AMERICAN TOURISTER</span><span>PRODUCT FILM</span></figcaption></figure>
-      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/origami-kt.jpg}}" aria-label="Origami product film"><source src="{{VID:origami-kt.mp4}}" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>ORIGAMI</span><span>PRODUCT FILM</span></figcaption></figure>
+      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/at-green.jpg}}" aria-label="Luggage product film"><source src="{{VID:at-green.mp4}}" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>LUGGAGE</span><span>PRODUCT FILM</span></figcaption></figure>
+      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="{{IMG:video/origami-kt.jpg}}" aria-label="Kitchen towel product film"><source src="{{VID:origami-kt.mp4}}" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>KITCHEN TOWELS</span><span>PRODUCT FILM</span></figcaption></figure>
     </div>
     <div class="sub">DIGITAL AND AI CREATIVES · CAMPAIGNS AND BANNERS</div>
     <div class="creatives-grid rv-stagger">
-      <a href="#"><img src="{{IMG:campaign-khayal-1.jpg}}" alt="Khayal campaign creative: still feeling drained"><span class="lbl">CAMPAIGN</span></a>
-      <a href="#"><img src="{{IMG:campaign-khayal-2.jpg}}" alt="Khayal campaign creative: fuel your cells"><span class="lbl">CAMPAIGN</span></a>
+      <a href="#"><img src="{{IMG:campaign-khayal-1.jpg}}" alt="Nutraceutical campaign creative: still feeling drained"><span class="lbl">CAMPAIGN</span></a>
+      <a href="#"><img src="{{IMG:campaign-khayal-2.jpg}}" alt="Nutraceutical campaign creative: fuel your cells"><span class="lbl">CAMPAIGN</span></a>
       <a href="#" class="wide"><img src="{{IMG:banner-luggage.jpg}}" alt="Luggage banner: built to explore"><span class="lbl">MARKETPLACE BANNER</span></a>
-      <a href="#"><img src="{{IMG:campaign-khayal-3.jpg}}" alt="Khayal campaign creative: build endurance"><span class="lbl">CAMPAIGN</span></a>
-      <a href="#"><img src="{{IMG:drive/bn-casio.jpg}}" alt="Casio Edifice banner"><span class="lbl">BANNER</span></a>
-      <a href="#" class="wide"><img src="{{IMG:drive/bn-samsonite.jpg}}" alt="Samsonite banner"><span class="lbl">MARKETPLACE BANNER</span></a>
+      <a href="#"><img src="{{IMG:campaign-khayal-3.jpg}}" alt="Nutraceutical campaign creative: build endurance"><span class="lbl">CAMPAIGN</span></a>
+      <a href="#"><img src="{{IMG:drive/bn-casio.jpg}}" alt="Watch banner"><span class="lbl">BANNER</span></a>
+      <a href="#" class="wide"><img src="{{IMG:drive/bn-samsonite.jpg}}" alt="Luggage banner"><span class="lbl">MARKETPLACE BANNER</span></a>
     </div>
     <div class="cta-row"><a class="btn btn-ghost" href="#">All work, by service and category</a></div>
   </div>
@@ -211,23 +194,23 @@
 <section class="section glow-blue" id="projects">
   <div class="wrap">
     <div class="eyebrow rv">Projects</div>
-    <h2 class="rv">What a brief turns into, <span class="hl">and how many days it took.</span></h2>
+    <h2 class="rv">What a&nbsp;Brief Turns<br class="hb"> Into, <span class="hl">and&nbsp;How Many<br class="hb"> Days It Took.</span></h2>
     <div class="projects rv-stagger">
       <article class="proj">
-        <div class="cover" data-px="10"><img src="{{IMG:kids-tee-out3.jpg}}" alt="Guess kidswear AI shoot"><span class="ph">PLACEHOLDER</span></div>
-        <div class="body"><span class="brand">GUESS INDIA · KIDSWEAR</span><h3>Season drop, shot without a shoot</h3>
+        <div class="cover" data-px="10"><img src="{{IMG:kids-tee-out3.jpg}}" alt="Kidswear AI shoot"><span class="ph">PLACEHOLDER</span></div>
+        <div class="body"><span class="brand">KIDSWEAR · FASHION</span><h3>Season Drop, Shot Without a&nbsp;Shoot</h3>
           <dl><dt>BRIEF</dt><dd class="fill">Objective in one line: which SKUs, which channels, what deadline.</dd><dt>APPROACH</dt><dd class="fill">Flatlay in, on-model out; required angles; kids' models matched to age and size.</dd><dt>DELIVERED</dt><dd class="fill">Number of SKUs × angles, formats, marketplace adapts.</dd><dt>DAYS</dt><dd><b>—</b> from brief to files</dd></dl></div>
         <a class="more" href="#">Read the project →</a>
       </article>
       <article class="proj">
-        <div class="cover" data-px="10"><img src="{{IMG:campaign-khayal-3.jpg}}" alt="Khayal campaign creatives"><span class="ph">PLACEHOLDER</span></div>
-        <div class="body"><span class="brand">KHAYAL · NUTRACEUTICALS</span><h3>Campaign creatives for a launch</h3>
+        <div class="cover" data-px="10"><img src="{{IMG:campaign-khayal-3.jpg}}" alt="Nutraceutical campaign creatives"><span class="ph">PLACEHOLDER</span></div>
+        <div class="body"><span class="brand">NUTRACEUTICALS · FMCG</span><h3>Campaign Creatives for&nbsp;a&nbsp;Launch</h3>
           <dl><dt>BRIEF</dt><dd class="fill">Objective in one line.</dd><dt>APPROACH</dt><dd class="fill">Creative direction, AI-assisted variants, human art direction and copy.</dd><dt>DELIVERED</dt><dd class="fill">Campaign statics, banners, reel cuts, sizes per channel.</dd><dt>DAYS</dt><dd><b>—</b> from brief to files</dd></dl></div>
         <a class="more" href="#">Read the project →</a>
       </article>
       <article class="proj">
-        <div class="cover" data-px="10"><img src="{{IMG:video/at-green.jpg}}" alt="American Tourister product film"><span class="ph">PLACEHOLDER</span></div>
-        <div class="body"><span class="brand">AMERICAN TOURISTER · LUGGAGE</span><h3>Product films for a colourway launch</h3>
+        <div class="cover" data-px="10"><img src="{{IMG:video/at-green.jpg}}" alt="Luggage product film"><span class="ph">PLACEHOLDER</span></div>
+        <div class="body"><span class="brand">LUGGAGE · TRAVEL</span><h3>Product Films for&nbsp;a&nbsp;Colourway Launch</h3>
           <dl><dt>BRIEF</dt><dd class="fill">Objective in one line.</dd><dt>APPROACH</dt><dd class="fill">Product shots to AI film, motion and finishing, one edit per colourway.</dd><dt>DELIVERED</dt><dd class="fill">Film lengths and ratios, 9:16 and 16:9, per channel.</dd><dt>DAYS</dt><dd><b>—</b> from brief to files</dd></dl></div>
         <a class="more" href="#">Read the project →</a>
       </article>
@@ -237,13 +220,13 @@
 
 <section class="section alt" id="outcomes">
   <div class="wrap">
-    <div class="eyebrow rv">Why Cielo</div>
-    <h2 class="rv">Four things change <span class="hl">for your brand.</span></h2>
+    <div class="eyebrow rv">Outcomes</div>
+    <h2 class="rv">Four Things Change <span class="hl">for&nbsp;Your Brand.</span></h2>
     <div class="oc4 rv-stagger">
-      <article><span class="k">01 · SPEED TO SHELF</span><h3>Live sooner. Selling for longer.</h3><p>No studio to wait for. Listings that pass the marketplace first time. The whole drop lands before the sale window closes.</p><span class="via">VIA AI SHOOT + LISTINGS</span></article>
-      <article><span class="k">02 · CONVERSION</span><h3>PDPs that answer the buyer.</h3><p>Required angles, on a model. A+ that carries the reasons to buy. Copy written for the buyer and the search box.</p><span class="via">VIA THE COMPLETE PDP</span></article>
-      <article><span class="k">03 · RETURNS</span><h3>Photos that match the parcel.</h3><p>Print, colour, fit and size chart checked against the real garment before anything ships. Fewer "looked different online".</p><span class="via">VIA HUMAN QC</span></article>
-      <article><span class="k">04 · SCALE</span><h3>Every SKU, every marketplace.</h3><p>Full-drop production, not hero SKUs only. Adapts and uploads for Amazon, Flipkart, Myntra, Nykaa, Shopify and every marketplace you sell on.</p><span class="via">VIA ONE PIPELINE</span></article>
+      <article><span class="k">01 · SPEED TO SHELF</span><h3>Live Sooner. Selling for&nbsp;Longer.</h3><p>No studio to wait for. Listings that pass the marketplace first time. The whole drop lands before the sale window closes.</p><span class="via">VIA AI SHOOT + LISTINGS</span></article>
+      <article><span class="k">02 · CONVERSION</span><h3>PDPs That Answer the&nbsp;Buyer.</h3><p>Required angles, on a model. A+ that carries the reasons to buy. Copy written for the buyer and the search box.</p><span class="via">VIA THE COMPLETE PDP</span></article>
+      <article><span class="k">03 · RETURNS</span><h3>Less Returns.</h3><p>Images and written content true to the actual product. Print, colour, fit, size chart and bullets checked against the real garment before anything ships. Fewer "looked different online" returns, lower RTO.</p><span class="via">VIA HUMAN QC + LISTINGS</span></article>
+      <article><span class="k">04 · SCALE</span><h3>Every SKU, Every Marketplace.</h3><p>Full-drop production, not hero SKUs only. Adapts and uploads for Amazon, Flipkart, Myntra, Nykaa, Shopify and every marketplace you sell on.</p><span class="via">VIA ONE PIPELINE</span></article>
     </div>
   </div>
 </section>
@@ -251,18 +234,18 @@
 <section class="section" id="how">
   <div class="wrap">
     <div class="eyebrow rv">An engagement, end to end</div>
-    <h2 class="rv">Brief in. <span class="hl">Ready&#8209;to&#8209;use content out.</span></h2>
-    <p class="lead rv">Steps 03 and 04 are where AI speed meets human judgement. Every asset passes expert QC before delivery.</p>
+    <h2 class="rv w24">AI Assisted Speed.<br class="hb"><span class="hl"> Human Assured Quality.</span></h2>
+    <p class="lead rv">Brief in, ready-to-use content out. AI does the volume in step 03. People review every asset in step 04 before it ships.</p>
     <div class="flow rv-stagger" aria-label="An engagement, end to end: Brief, Plan, Create, QC, Deliver, Scale">
       <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M9 12h6M9 16h6"/></svg></div><span class="num">01</span><h3>Brief</h3><p>Goals, SKUs, guidelines in.</p></div>
       <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></div><span class="num">02</span><h3>Plan</h3><p>Formats, batches, timelines.</p></div>
-      <div class="node ai"><div class="dot"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z"/><path d="M5 17l.8 2 2 .8-2 .8L5 22l-.8-1.4-2-.8 2-.8z"/></svg></div><span class="num">03</span><span class="who">AI SPEED</span><h3>Create</h3><p>AI-accelerated production.</p></div>
-      <div class="node hu"><div class="dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/><path d="M15 14l2 2 4-4"/></svg></div><span class="num">04</span><span class="who">HUMAN JUDGEMENT</span><h3>QC</h3><p>Expert review, every asset.</p></div>
+      <div class="node ai"><div class="dot"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z"/><path d="M5 17l.8 2 2 .8-2 .8L5 22l-.8-1.4-2-.8 2-.8z"/></svg></div><span class="num">03</span><span class="who">AI ASSISTED SPEED</span><h3>Create</h3><p>AI-accelerated production.</p></div>
+      <div class="node hu"><div class="dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/><path d="M15 14l2 2 4-4"/></svg></div><span class="num">04</span><span class="who">HUMAN ASSURED QUALITY</span><h3>QC</h3><p>Expert review, every asset.</p></div>
       <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M4 7h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></div><span class="num">05</span><h3>Deliver</h3><p>Channel-ready files out.</p></div>
       <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div><span class="num">06</span><h3>Scale</h3><p>Repeat across catalogue.</p></div>
     </div>
     <div class="need rv">
-      <div class="need-head"><div><span class="k">TO START A BATCH</span><h3>What we need from your side. That's it.</h3></div><p>Send these four and step 01 starts. No shoot day, no studio, no model casting on your side.</p></div>
+      <div class="need-head"><div><span class="k">TO START A BATCH</span><h3>What We Need from&nbsp;Your Side. That's It.</h3></div><p>Send these four and step 01 starts. No shoot day, no studio, no model casting on your side.</p></div>
       <ul class="need-grid rv-stagger">
         <li><span class="n">01</span><div class="ico"><img src="{{IMG:sportsbra-black-in_front.jpg}}" alt="A flatlay packshot"></div><b>Product images or packshots</b><span class="d">Flatlay, mannequin or ghost. Front and back.</span></li>
         <li><span class="n">02</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h7"/><circle cx="9.5" cy="8.5" r="1"/></svg></div><b>Brand guidelines, if any</b><span class="d">Fonts, colours, model direction. A PDF is enough.</span></li>
@@ -283,9 +266,9 @@
   <div class="wrap">
     <div class="eyebrow rv">In their words</div>
     <div class="quotes rv-stagger">
-      <div class="quote"><p>Cielo delivered beyond expectations, faster than any agency we've worked with, without compromising quality. They handled last-minute changes calmly and confidently.</p><footer><b>Lalit Sejwal</b>CEO, Kokora Spices</footer></div>
-      <div class="quote"><p>Their category understanding is strong, the designs look fantastic, and everything was delivered super fast. Communication was smooth and responsive, end to end.</p><footer><b>Kushagra Sharma</b>Business Head, Global International Markets, Origami</footer></div>
-      <div class="quote"><p>The Cielo designers bring fresh thinking to every project. Every creative output looked polished and performance-oriented.</p><footer><b>Mala Singh</b>Founder, Mala Singh Designs</footer></div>
+      <div class="quote"><p>Cielo delivered beyond expectations, faster than any agency we've worked with, without compromising quality. They handled last-minute changes calmly and confidently.</p><footer><b>Lalit Sejwal</b>CEO, spices brand</footer></div>
+      <div class="quote"><p>Their category understanding is strong, the designs look fantastic, and everything was delivered super fast. Communication was smooth and responsive, end to end.</p><footer><b>Kushagra Sharma</b>Business Head, Global International Markets, home and personal care brand</footer></div>
+      <div class="quote"><p>The Cielo designers bring fresh thinking to every project. Every creative output looked polished and performance-oriented.</p><footer><b>Mala Singh</b>Founder, designer label</footer></div>
     </div>
   </div>
 </section>
@@ -294,7 +277,7 @@
   <div class="wrap pilot-grid">
     <div>
       <div class="eyebrow rv">Start</div>
-      <h2 class="rv">One real batch. <span class="hl">See it before you scale it.</span></h2>
+      <h2 class="rv">One Real Batch.<br class="hb"><span class="hl"> See It Before<br class="hb"> You Scale It.</span></h2>
       <div class="steps">
         <div><b>You share SKUs</b><span>A real batch from your live catalogue.</span></div>
         <div><b>We deliver</b><span>Full pipeline, channel-ready files.</span></div>
@@ -315,15 +298,5 @@
   </div>
 </section>
 
-<footer class="foot">
-  <div class="wrap">
-    <div>
-      <a class="brand" href="#"><img src="{{IMG:logo/mark-dark.png}}" alt="" width="34" height="26" style="width:34px;height:auto"><span>Cielo E-Commerce<small>COMMERCE CONTENT</small></span></a>
-      <p style="max-width:40ch;margin-top:16px">Ecommerce content experts. Shoots, creatives, listings and films for brands selling online, in any market. Cielo Ecommerce Pvt Ltd, Delhi.</p>
-    </div>
-    <div><span class="k">SERVICES</span><ul><li><a href="#ai-shoot">AI Shoot</a></li><li><a href="#creatives">Creatives and films</a></li><li><a href="#listings">Listings</a></li><li><a href="#post">Post Production</a></li><li><a href="#pdp">The complete PDP</a></li></ul></div>
-    <div><span class="k">COMPANY</span><ul><li><a href="#work">Work</a></li><li><a href="#projects">Projects</a></li><li><a href="#how">How we work</a></li><li><a href="#pilot">Start a pilot</a></li><li><a href="mailto:marketing.team@cieloecommerce.com">marketing.team@cieloecommerce.com</a></li></ul></div>
-    <div class="legal"><span>© 2026 CIELO ECOMMERCE PVT LTD</span><span>ISO 9001:2015 · ISO 27001:2013 CERTIFIED</span></div>
-  </div>
-</footer>
+{{FOOT}}
 {{SCRIPTS}}

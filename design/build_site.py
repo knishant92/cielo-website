@@ -2,11 +2,12 @@
 """Production build: design/*.template.html -> site/ with real asset files, page links, and shared partials."""
 import pathlib, re, shutil, hashlib, base64
 D = pathlib.Path(__file__).parent; ROOT = D.parent; A = ROOT/"assets"; OUT = ROOT/"site"
-head = (D/"_head.html").read_text(); scripts = (D/"_scripts.html").read_text()
-PAGES = {"home":"index.html","ai-shoot":"ai-shoot/index.html","creatives":"creatives/index.html","listings":"listings/index.html","pdp":"complete-pdp/index.html","work":"work/index.html","start-a-pilot":"start-a-pilot/index.html"}
+head = (D/"_head.html").read_text(); scripts = (D/"_scripts.html").read_text(); nav = (D/"_nav.html").read_text(); foot = (D/"_foot.html").read_text()
+PAGES = {"home":"index.html","ai-shoot":"ai-shoot/index.html","creatives":"creatives/index.html","listings":"listings/index.html","post-production":"post-production/index.html","pdp":"complete-pdp/index.html","work":"work/index.html","about":"about/index.html","start-a-pilot":"start-a-pilot/index.html","project":"projects/sample-project/index.html"}
+NOINDEX = {"project"}  # mock page: reachable by URL, not listed or indexed
 LINKS = {  # label -> path (site nav + footer)
- "Services":"/#services","Work":"/work/","Projects":"/projects/","How we work":"/#how","Why Cielo":"/#outcomes",
- "AI Shoot":"/ai-shoot/","Creatives and films":"/creatives/","Listings":"/listings/","Post Production":"/#post","The complete PDP":"/complete-pdp/","Start a pilot":"/start-a-pilot/","Home":"/",
+ "Services":"/#services","Work":"/work/","Projects":"/projects/","How we work":"/#how","Why Cielo":"/about/",
+ "AI Shoot":"/ai-shoot/","Creatives and films":"/creatives/","Listings":"/listings/","Post Production":"/post-production/","The complete PDP":"/complete-pdp/","Start a pilot":"/start-a-pilot/","Home":"/",
 }
 roots = [A/"shoot", A/"work", A]
 def find(name):
@@ -24,10 +25,6 @@ def copy_asset(src):
 def img(m): return copy_asset(find(m.group(1)))
 def vid(m): return copy_asset(A/"video"/m.group(1))
 def links(html):
-    MENU = {"AI Shoot":"/ai-shoot/","Creatives and films":"/creatives/","Listings":"/listings/","Post Production":"/#post","The complete PDP":"/complete-pdp/"}
-    for label, path in MENU.items():
-        html = html.replace(f'<a href="#" role="menuitem"><i>', '\u0000', 0)
-        html = re.sub(r'<a href="#" role="menuitem"><i>([^<]*)</i><span>' + re.escape(label) + '<small>', lambda m: f'<a href="{path}" role="menuitem"><i>{m.group(1)}</i><span>{label}<small>', html)
     for label, path in LINKS.items():
         html = html.replace(f'<a href="#">{label}</a>', f'<a href="{path}">{label}</a>')
         html = html.replace(f'href="#">{label}</a>', f'href="{path}">{label}</a>')
@@ -47,11 +44,15 @@ SEO = {
  "ai-shoot": ("AI Shoot · Cielo E-Commerce", "Shoot-quality stills, lifestyle and video from a flatlay or mannequin. Required angles, every SKU, checked by people."),
  "creatives": ("Creatives and films · Cielo E-Commerce", "A+ pages, RPDs, infographics, banners, brand stores, campaign films and reels, adapted to every marketplace."),
  "listings": ("Listings · Cielo E-Commerce", "Listings built to be found, understood and approved first time. Copy, structure, images and upload, on every major marketplace."),
+ "post-production": ("Post Production · Cielo E-Commerce", "Retouching, cut-outs, colour, marketplace formatting, adapts and video finishing. Under every shoot we make, and on its own for brands and retailers at volume."),
+ "about": ("Why Cielo · Cielo E-Commerce", "Ecommerce content experts since 2019. Studios in New Delhi and Gurugram, AI in the loop every day, a person on every asset. The company, the founders and the pillars."),
+ "project": ("Project · Cielo E-Commerce", "A season drop, shot without a shoot. Brief, approach, delivery assets and days."),
  "pdp": ("The complete PDP · Cielo E-Commerce", "Audit, revamp and marketplace PDP content. A PDP that sells is all three services, assembled."),
  "work": ("Work · Cielo E-Commerce", "Stills, films, creatives, listings and retouching, by service and category."),
  "start-a-pilot": ("Start a pilot · Cielo E-Commerce", "One real batch of your SKUs through the full pipeline. Quote comes with the plan."),
 }
-def wrap(title, desc, body, canonical):
+def wrap(title, desc, body, canonical, noindex=False):
+    robots = '<meta name="robots" content="noindex,nofollow">\n' if noindex else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -64,11 +65,11 @@ def wrap(title, desc, body, canonical):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.png" type="image/png">
 <meta name="theme-color" content="#0B0E17">
-{body}
+{robots}{body}
 </html>"""
 for n, outpath in PAGES.items():
     t = (D/f"{n}.template.html").read_text()
-    t = re.sub(r"\{\{HEAD:([^}]+)\}\}", lambda m: head, t).replace("{{SCRIPTS}}", scripts)
+    t = re.sub(r"\{\{HEAD:([^}]+)\}\}", lambda m: head, t).replace("{{SCRIPTS}}", scripts).replace("{{NAV}}", nav).replace("{{FOOT}}", foot)
     # head partial starts with meta charset/viewport/title/link fonts + <style>; strip the meta/title lines (we write our own) but keep fonts + style
     t = re.sub(r'<meta charset="utf-8">\n<meta name="viewport"[^>]*>\n<title>\{\{TITLE\}\}</title>\n', '', t, count=1)
     t = re.sub(r"\{\{IMG:([^}]+)\}\}", img, t); t = re.sub(r"\{\{VID:([^}]+)\}\}", vid, t)
@@ -77,13 +78,13 @@ for n, outpath in PAGES.items():
     # split head-ish part (fonts+style) from body
     style_end = t.index("</style>") + len("</style>")
     headpart, bodypart = t[:style_end], t[style_end:]
-    page = wrap(title, desc, headpart + "\n</head>\n<body>" + bodypart + "\n</body>", "/" + outpath.replace("index.html","")) 
+    page = wrap(title, desc, headpart + "\n</head>\n<body>" + bodypart + "\n</body>", "/" + outpath.replace("index.html",""), noindex=n in NOINDEX)
     dst = OUT/outpath; dst.parent.mkdir(parents=True, exist_ok=True); dst.write_text(page)
     print(f"{outpath:26s} {len(page)//1024} KB")
 # coming-soon pages
 for slug, title in [("projects","Projects")]:
     t = (D/"coming-soon.template.html").read_text().replace("{{PAGE}}", title)
-    t = re.sub(r"\{\{HEAD:([^}]+)\}\}", lambda m: head, t).replace("{{SCRIPTS}}", scripts)
+    t = re.sub(r"\{\{HEAD:([^}]+)\}\}", lambda m: head, t).replace("{{SCRIPTS}}", scripts).replace("{{NAV}}", nav).replace("{{FOOT}}", foot)
     t = re.sub(r'<meta charset="utf-8">\n<meta name="viewport"[^>]*>\n<title>\{\{TITLE\}\}</title>\n', '', t, count=1)
     t = re.sub(r"\{\{IMG:([^}]+)\}\}", img, t); t = links(t)
     style_end = t.index("</style>") + len("</style>")
@@ -103,7 +104,7 @@ d.text((72, 200), "Content that gets", font=fb, fill=(242, 239, 233)); d.text((7
 d.text((72, 470), "AI shoots · creatives · listings · films", font=fs, fill=(154, 163, 184)); d.text((72, 508), "cieloecommerce.com", font=fs, fill=(154, 163, 184))
 og.save(OUT/"media"/"og.jpg", quality=88)
 (OUT/"robots.txt").write_text("User-agent: *\nAllow: /\nSitemap: https://cieloecommerce.com/sitemap.xml\n")
-urls = ["/"] + [f"/{p.replace('index.html','')}" for p in PAGES.values() if p != "index.html"] + ["/projects/"]
+urls = ["/"] + [f"/{p.replace('index.html','')}" for n, p in PAGES.items() if p != "index.html" and n not in NOINDEX] + ["/projects/"]
 (OUT/"sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(f"  <url><loc>https://cieloecommerce.com{u}</loc></url>" for u in urls) + "\n</urlset>\n")
 (OUT/"_headers").write_text("/media/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n")
 total = sum(f.stat().st_size for f in OUT.rglob("*") if f.is_file())

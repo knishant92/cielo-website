@@ -1,6 +1,7 @@
 // Cielo website → leads. Google Apps Script web app.
 // Receives the pilot form as JSON, appends a row to the Sheet this script is bound to,
 // and emails marketing.team@ with nishant.kumar@ in cc. Deploy as: Web app, Execute as Me, Anyone.
+// Newsletter sign-ups from the site arrive through the same endpoint with pilot = "Newsletter" and only the email filled.
 // Then paste the web-app URL into Cloudflare Pages → Settings → Variables and Secrets → LEAD_WEBHOOK.
 
 var TO = "marketing.team@cieloecommerce.com";
@@ -13,7 +14,7 @@ function doPost(e) {
   var sh = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
   if (sh.getLastRow() === 0) sh.appendRow(HEADERS);
   sh.appendRow(HEADERS.map(function (k) { return lead[k] || ""; }));
-  var subject = "Pilot enquiry · " + (lead.pilot || "") + " · " + (lead.brand || "");
+  var subject = lead.pilot === "Newsletter" ? "Newsletter sign-up · " + (lead.email || "") : "Pilot enquiry · " + (lead.pilot || "") + " · " + (lead.brand || "");
   var body = HEADERS.filter(function (k) { return k !== "ip"; }).map(function (k) { return k.toUpperCase() + ": " + (lead[k] || ""); }).join("\n");
   MailApp.sendEmail({ to: TO, cc: CC, replyTo: lead.email || TO, subject: subject, body: body + "\n\nSheet: " + SpreadsheetApp.getActiveSpreadsheet().getUrl() });
   return out({ ok: true });

@@ -1,0 +1,242 @@
+{{HEAD:Cielo Post Production}}
+<style>
+/* post production page */
+.hero .ba.wide{aspect-ratio:3/2;max-height:none;max-width:560px;margin:0 auto;border-radius:12px}
+.ops{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.op{background:var(--navy);border:1px solid var(--line-soft);border-radius:12px;padding:22px;display:grid;gap:10px;align-content:start;position:relative;overflow:hidden}
+.op::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--red)}
+.op:nth-child(2)::before,.op:nth-child(5)::before{background:var(--blue)}
+.op:nth-child(3)::before,.op:nth-child(6)::before{background:var(--muted)}
+.op .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted-2)}
+.op h3{font-size:20px;line-height:1.12}
+.op p{margin:0;color:var(--muted);font-size:14px}
+.op ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:13.5px}
+.op li{display:flex;gap:9px}
+.op li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--red);flex:none;margin-top:9px}
+.op:nth-child(2) li::before,.op:nth-child(5) li::before{background:var(--blue)}
+.op:nth-child(3) li::before,.op:nth-child(6) li::before{background:var(--muted)}
+/* pairs */
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+.pairs .ba{aspect-ratio:3/2;max-height:none;border-radius:10px}
+/* retail band */
+.retail{margin-top:0;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+.retail .lead{margin-top:16px}
+.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rgrid div{background:var(--navy);border:1px solid var(--line-soft);border-radius:10px;padding:18px;display:grid;gap:6px}
+.rgrid b{font-family:var(--display);font-size:16px}
+.rgrid span{color:var(--muted);font-size:13.5px}
+.rgrid i{font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.12em;color:var(--red)}
+/* queue mock */
+.queue{background:var(--navy);border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;font-family:var(--mono);font-size:11.5px;margin-top:22px}
+.queue header{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line-soft);color:var(--muted);letter-spacing:.1em;font-size:10.5px}
+.queue .row{display:grid;grid-template-columns:1.4fr 1fr .9fr .8fr;gap:10px;padding:11px 16px;border-bottom:1px solid var(--line-soft);align-items:center;color:var(--muted)}
+.queue .row:last-child{border-bottom:0}
+.queue .row span:first-child{color:var(--text);font-family:var(--body);font-size:13.5px}
+.queue .pill{display:inline-block;white-space:nowrap;padding:3px 8px;border-radius:999px;font-size:10px;letter-spacing:.08em}
+.queue .pill.qc{background:var(--red-soft);color:#FF6B6B}.queue .pill.done{background:rgba(124,217,146,.14);color:#7CD992}.queue .pill.ai{background:var(--blue-soft);color:var(--blue)}
+@media (max-width:1024px){.ops{grid-template-columns:1fr 1fr}.retail{grid-template-columns:1fr}}
+@media (max-width:860px){.ops{grid-template-columns:1fr}.pairs{grid-template-columns:1fr}.queue .row{grid-template-columns:1.2fr 1fr .9fr}.queue .row span:nth-child(4){display:none}.rgrid{grid-template-columns:1fr}}
+</style>
+{{NAV}}
+
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="crumb"><a href="/#services">Services</a><span>/</span><span>04 · Post Production</span></div>
+      <div class="eyebrow rv">Post Production · retouch, cut-outs, adapts, video</div>
+      <h1 class="rv">Retail-Ready Editing <span class="hl">at&nbsp;Catalogue Scale.</span></h1>
+      <p class="lead rv">Retouching, cut-outs and colour correction. Marketplace formatting, resizing and adaptations. Video editing and finishing. It runs under every shoot and creative we make, and on its own for brands and large-format retailers with volume of their own.</p>
+      <div class="cta-row rv">
+        <a class="btn btn-red" href="#pilot">Send a test batch <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn btn-ghost" href="#retail">For retailers</a>
+      </div>
+      <div class="hero-nums rv-stagger"><div><b>1.5M+</b>IMAGES A MONTH</div><div><b>1,500+</b>VIDEOS FINISHED</div><div><b>3–5 days</b>STANDARD TURNAROUND</div></div>
+    </div>
+    <div class="rv" data-px="14">
+      <div class="ba wide" style="--x:50%">
+        <img class="before" src="{{IMG:post-bag-before.jpg}}" alt="Raw shot of a striped laptop bag"><img class="after" src="{{IMG:post-bag-after.jpg}}" alt="The retouched, cut-out bag">
+        <span class="tag l">RAW</span><span class="tag r">RETOUCHED</span><div class="bar"></div>
+        <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
+        <input type="range" min="4" max="96" value="50" aria-label="Drag to compare the raw shot with the retouched image">
+      </div>
+      <div class="ba-cap" style="max-width:560px;margin:12px auto 0"><span>LAPTOP BAG · RETOUCH AND CUT-OUT</span><span>DRAG TO COMPARE</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section glow-red" id="what">
+  <div class="wrap">
+    <div class="eyebrow rv">What we do</div>
+    <h2 class="rv">Six Jobs, <span class="hl">One Queue.</span></h2>
+    <p class="lead rv">Every image and every film passes through here before it ships. Send your own shoot and it goes through the same hands.</p>
+    <div class="ops rv-stagger">
+      <article class="op"><span class="k">01 · RETOUCHING</span><h3>Skin, Fabric, Product.</h3><p>Clean, not plastic. The garment stays the garment.</p><ul><li>Dust, creases, stray threads, tags</li><li>Skin and hair, kept natural</li><li>Shape and symmetry corrections</li></ul></article>
+      <article class="op"><span class="k">02 · CUT-OUTS AND CLIPPING</span><h3>Pure White, Transparent, Ghost.</h3><p>Hand-drawn paths where the edge matters: hair, fur, glass, mesh.</p><ul><li>Marketplace white backgrounds</li><li>Ghost mannequin and invisible-model</li><li>Layered PSDs on request</li></ul></article>
+      <article class="op"><span class="k">03 · COLOUR CORRECTION</span><h3>The Colour on&nbsp;the&nbsp;Screen Is the&nbsp;Colour in&nbsp;the&nbsp;Box.</h3><p>Matched to a physical swatch or your reference, per SKU, across every angle.</p><ul><li>Colourway matching</li><li>Consistent exposure across a batch</li><li>Shadow and reflection, natural</li></ul></article>
+      <article class="op"><span class="k">04 · MARKETPLACE FORMATTING</span><h3>Every Size, Every Spec, Every Name.</h3><p>One master, then every marketplace's dimensions, background rules and file naming.</p><ul><li>Amazon, Flipkart, Myntra, Nykaa, Shopify, quick commerce</li><li>Crops for square, portrait and zoom</li><li>Naming per SKU and slot, ready to upload</li></ul></article>
+      <article class="op"><span class="k">05 · ADAPTATIONS</span><h3>One Creative, Every Placement.</h3><p>Banners, A+ modules and infographics resized and re-laid, not squashed.</p><ul><li>Store and campaign placements per channel</li><li>Desktop and mobile crops</li><li>Language and price variants on request</li></ul></article>
+      <article class="op"><span class="k">06 · VIDEO EDITING AND FINISHING</span><h3>Cuts, Colour, Captions, End Card.</h3><p>From rushes or AI generations to channel-ready films.</p><ul><li>9:16, 1:1 and 16:9 from one master</li><li>Music, captions, supers, end card</li><li>Colour grade and product consistency across frames</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="pairs">
+  <div class="wrap">
+    <div class="eyebrow rv">Raw in, retail-ready out</div>
+    <h2 class="rv">Drag the&nbsp;Frame. <span class="hl">See What Changed.</span></h2>
+    <div class="pairs rv-stagger">
+      <div>
+        <div class="ba" style="--x:50%">
+          <img class="before" src="{{IMG:post-sunglasses-before.jpg}}" alt="Raw shot of sunglasses"><img class="after" src="{{IMG:post-sunglasses-after.jpg}}" alt="The retouched sunglasses on white">
+          <span class="tag l">RAW</span><span class="tag r">RETOUCHED</span><div class="bar"></div>
+          <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
+          <input type="range" min="4" max="96" value="50" aria-label="Drag to compare the raw sunglasses shot with the retouched one">
+        </div>
+        <div class="ba-cap"><span>SUNGLASSES · RETOUCH, REFLECTION, WHITE BACKGROUND</span><span>DRAG</span></div>
+      </div>
+      <div>
+        <div class="ba" style="--x:50%">
+          <img class="before" src="{{IMG:post-bag-before.jpg}}" alt="Raw shot of a laptop bag"><img class="after" src="{{IMG:post-bag-after.jpg}}" alt="The cut-out bag on white">
+          <span class="tag l">RAW</span><span class="tag r">RETOUCHED</span><div class="bar"></div>
+          <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
+          <input type="range" min="4" max="96" value="50" aria-label="Drag to compare the raw bag shot with the cut-out"></div>
+        <div class="ba-cap"><span>LAPTOP BAG · CUT-OUT, COLOUR, MARKETPLACE CROP</span><span>DRAG</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="retail">
+  <div class="wrap">
+    <div class="retail">
+      <div>
+        <div class="eyebrow rv">For large-format retailers</div>
+        <h2 class="rv">Your Shoot, Our&nbsp;Post. <span class="hl">Every Day, at&nbsp;Volume.</span></h2>
+        <p class="lead rv">Multi-brand catalogues produce images faster than an in-house desk can finish them. We take the daily drop from your studio, return it to your spec and naming, and keep the SLA through the season peaks.</p>
+        <div class="queue rv" aria-label="Illustrative post-production queue">
+          <header><span>TODAY'S DROP · ILLUSTRATIVE</span><span>SLA 3–5 DAYS</span></header>
+          <div class="row"><span>Womenswear · 240 frames</span><span>Cut-out + colour</span><span><span class="pill done">DELIVERED</span></span><span>DAY 2</span></div>
+          <div class="row"><span>Footwear · 180 frames</span><span>Retouch + white bg</span><span><span class="pill qc">IN QC</span></span><span>DAY 3</span></div>
+          <div class="row"><span>Home · 96 frames</span><span>Adapts, 4 sizes</span><span><span class="pill ai">IN PRODUCTION</span></span><span>DAY 1</span></div>
+          <div class="row"><span>Product films · 12</span><span>Cut + captions</span><span><span class="pill ai">IN PRODUCTION</span></span><span>DAY 1</span></div>
+        </div>
+      </div>
+      <div class="rgrid rv-stagger">
+        <div><i>SCALE</i><b>Daily drops, not projects</b><span>A standing team sized to your studio's output, with room for sale-season peaks.</span></div>
+        <div><i>SPEC</i><b>Your spec sheet, your naming</b><span>Retailer PIM naming, background, margins and crops applied per category, checked before delivery.</span></div>
+        <div><i>TURNAROUND</i><b>3 to 5 days standard</b><span>Faster lanes agreed per batch when a launch needs it.</span></div>
+        <div><i>SECURITY</i><b>ISO 27001 handling</b><span>Secure transfer, access-controlled storage, unreleased products stay unreleased.</span></div>
+        <div><i>CONSISTENCY</i><b>One look across brands</b><span>Style guides per category so a catalogue reads as one store, whoever shot it.</span></div>
+        <div><i>QC</i><b>Every frame, by a person</b><span>Edge, colour, spec and naming checked before the batch goes back.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="process">
+  <div class="wrap">
+    <div class="eyebrow rv">An engagement, end to end</div>
+    <h2 class="rv w24">AI Assisted Speed.<br class="hb"><span class="hl"> Human Assured Quality.</span></h2>
+    <p class="lead rv">Files in, retail-ready files out. Software does the first pass in step 03. People finish and check every frame in step 04 before it ships.</p>
+    <div class="flow rv-stagger" aria-label="An engagement, end to end: Brief, Plan, Create, QC, Deliver, Scale">
+      <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M9 12h6M9 16h6"/></svg></div><span class="num">01</span><h3>Brief</h3><p>Spec, naming, references in.</p></div>
+      <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></div><span class="num">02</span><h3>Plan</h3><p>Batches, lanes, SLA.</p></div>
+      <div class="node ai"><div class="dot"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z"/><path d="M5 17l.8 2 2 .8-2 .8L5 22l-.8-1.4-2-.8 2-.8z"/></svg></div><span class="num">03</span><span class="who">AI ASSISTED SPEED</span><h3>Create</h3><p>First pass at volume.</p></div>
+      <div class="node hu"><div class="dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/><path d="M15 14l2 2 4-4"/></svg></div><span class="num">04</span><span class="who">HUMAN ASSURED QUALITY</span><h3>QC</h3><p>Every frame finished and checked.</p></div>
+      <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M4 7h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></div><span class="num">05</span><h3>Deliver</h3><p>To spec, named, ready to upload.</p></div>
+      <div class="node"><div class="dot"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div><span class="num">06</span><h3>Scale</h3><p>Same lane, every drop.</p></div>
+    </div>
+    <div class="need rv">
+      <div class="need-head"><div><span class="k">TO START A BATCH</span><h3>What We Need from&nbsp;Your Side. That's It.</h3></div><p>Send these four and step 01 starts. A shared drive or FTP is enough for the files.</p></div>
+      <ul class="need-grid rv-stagger">
+        <li><span class="n">01</span><div class="ico"><img src="{{IMG:post-bag-before.jpg}}" alt="A raw camera file"></div><b>Raw files</b><span class="d">Camera JPGs, RAW or TIFF. Any volume.</span></li>
+        <li><span class="n">02</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h7"/><circle cx="9.5" cy="8.5" r="1"/></svg></div><b>Spec sheet</b><span class="d">Sizes, background, margins, naming. Or the marketplace, and we apply its rules.</span></li>
+        <li><span class="n">03</span><div class="ico"><table class="sheet"><tr><td>SKU</td><td>COLOUR</td><td>REF</td></tr><tr><td>LB-01</td><td>Navy stripe</td><td>Swatch</td></tr><tr><td>LB-02</td><td>Olive</td><td>Swatch</td></tr><tr><td>LB-03</td><td>Black</td><td>Pantone</td></tr></table></div><b>Colour references</b><span class="d">Swatches, Pantone or an approved image per colourway.</span></li>
+        <li><span class="n">04</span><div class="ico"><div class="mk"><span>AMAZON</span><span>FLIPKART</span><span>MYNTRA</span><span>NYKAA</span><span>SHOPIFY</span><span>D2C</span></div></div><b>Where it will run</b><span class="d">We format and name per channel.</span></li>
+      </ul>
+    </div>
+    <div class="incl2 rv-stagger">
+      <div class="ipanel"><div class="ihd"><span class="k">EVERY POST BATCH</span><h3>Included. <span class="hl">Not Extra.</span></h3></div>
+        <ol>
+          <li><b>Style guide per category</b><span>Agreed on the first batch, applied to every one after.</span></li>
+          <li><b>Marketplace spec and naming</b><span>Every channel's sizes, backgrounds and file names.</span></li>
+          <li><b>QC by a person, every frame</b><span>Edge, colour, spec and naming before delivery.</span></li>
+          <li><b>Rework on our side</b><span>A frame that misses the spec comes back to us, not to you.</span></li>
+        </ol></div>
+      <div class="ipanel blue"><div class="ihd"><span class="k">EVERY VIDEO FINISH</span><h3>Included. <span class="hl">Not Extra.</span></h3></div>
+        <ol>
+          <li><b>Cuts per channel</b><span>9:16, 1:1 and 16:9 from one master.</span></li>
+          <li><b>Captions, supers, end card</b><span>In your brand system.</span></li>
+          <li><b>Colour grade</b><span>Product colour matched across frames.</span></li>
+          <li><b>Delivery in each platform's spec</b><span>MP4 at 1080p, sized and named per channel.</span></li>
+        </ol></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="spec">
+  <div class="wrap">
+    <div class="eyebrow rv">Speed, formats, commercials</div>
+    <h2 class="rv">What a&nbsp;Batch Looks Like <span class="hl">on&nbsp;Paper.</span></h2>
+    <div class="spec-wrap rv">
+      <table class="spec2">
+        <thead><tr><th>ITEM</th><th>IMAGES</th><th>VIDEO</th></tr></thead>
+        <tbody>
+          <tr><td>Turnaround</td><td>3 to 5 days, standard.<small>Faster lanes agreed per batch.</small></td><td>Set per film at brief.<small>Length, cuts and channels decide it.</small></td></tr>
+          <tr><td>Volume</td><td>1.5M+ images a month across the studio.<small>A standing lane sized to your drop.</small></td><td>1,500+ videos finished.</td></tr>
+          <tr><td>Formats in</td><td>JPG, RAW, TIFF, PSD.</td><td>Rushes, edits or AI generations. MP4, MOV, ProRes.</td></tr>
+          <tr><td>Formats out</td><td>JPG or PNG at each marketplace's spec, layered PSD on request.<small>Named per SKU and slot.</small></td><td>MP4, 1080p, in 9:16, 1:1 and 16:9.<small>Other ratios on request.</small></td></tr>
+          <tr><td>Commercials</td><td>Per image, by job type and volume.<small>Quoted with the pilot plan.</small></td><td>Per video, by length and cuts.<small>Quoted with the pilot plan.</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="faq">
+  <div class="wrap">
+    <div class="eyebrow rv">Your questions</div>
+    <h2 class="rv">What Brands Ask <span class="hl">Before a&nbsp;Post Batch.</span></h2>
+    <p class="lead rv">The questions a post batch raises, answered in plain words.</p>
+    <div class="faq rv-stagger">
+      <details><summary><i>01</i>Can we send our own shoot, without using your AI shoot or creatives?</summary><p>Yes. Post production runs under our own shoots and on its own. Send the raw files and the spec and it goes through the same queue.</p></details>
+      <details><summary><i>02</i>What is the turnaround?</summary><p>3 to 5 days standard for images. Faster lanes are agreed per batch when a launch needs it. Video is set per film at the brief.</p></details>
+      <details><summary><i>03</i>How much volume can you take?</summary><p>The studio finishes 1.5M+ images a month. For a retailer we set up a standing lane sized to your daily drop, with headroom for sale-season peaks.</p></details>
+      <details><summary><i>04</i>Do you follow marketplace image rules?</summary><p>Yes. Each marketplace's background, size, margin and naming rules are applied per channel, and checked in QC before delivery.</p></details>
+      <details><summary><i>05</i>What formats do you take and return?</summary><p>In: JPG, RAW, TIFF, PSD, and for video MP4, MOV or ProRes. Out: JPG or PNG to spec, layered PSD on request, MP4 at 1080p per channel.</p></details>
+      <details><summary><i>06</i>How do we send files?</summary><p>A shared drive, FTP or your DAM. Transfer and storage are access-controlled under our ISO 27001 process.</p></details>
+      <details><summary><i>07</i>What if a frame comes back wrong?</summary><p>It comes back to us. Rework against the agreed style guide is part of the batch, not a new job.</p></details>
+      <details><summary><i>08</i>What are the commercials?</summary><p>Per image by job type and volume, per video by length and cuts. Quoted with the pilot plan after a test batch.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section pilot" id="pilot">
+  <div class="wrap pilot-grid">
+    <div>
+      <div class="eyebrow rv">Start</div>
+      <h2 class="rv">One Test Batch. <span class="hl">See the&nbsp;Finish Before You Move the&nbsp;Volume.</span></h2>
+      <div class="steps rv-stagger">
+        <div><b>You share raw files</b><span>One real batch and your spec.</span></div>
+        <div><b>We finish and return</b><span>To spec, named, QC'd.</span></div>
+        <div><b>We review, then scale</b><span>Set the lane for the daily drop.</span></div>
+      </div>
+    </div>
+    <div class="picker rv">
+      <span class="k">POST PRODUCTION PILOT</span>
+      <div class="chips" role="group" aria-label="Pilot type">
+        <button class="chip" aria-pressed="true"><span>Retouch and cut-out<small>One batch of your shoot</small></span></button>
+        <button class="chip" aria-pressed="false"><span>Marketplace adapts<small>One master set, every channel</small></span></button>
+        <button class="chip" aria-pressed="false"><span>Retailer lane<small>One daily drop, your spec</small></span></button>
+        <button class="chip" aria-pressed="false"><span>Video finishing<small>One film, cuts per channel</small></span></button>
+      </div>
+      <a class="btn btn-red" href="#">Start the pilot <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <p>Quote comes with the pilot plan, by volume and job type.</p>
+    </div>
+  </div>
+</section>
+
+{{FOOT}}
+{{SCRIPTS}}
