@@ -4,3 +4,15 @@ __pycache__/
 *.pyc
 .claude/launch.json
 .wrangler/
+
+# --- markdown ignore rules (managed by wire-brain) ---
+*.md
+!readme.md
+!README.md
+# --- end markdown rules ---
+
+# --- env ignore rules (managed by wire-brain) ---
+.env
+.env.*
+!.env.example
+# --- end env rules ---
