@@ -3,10 +3,10 @@
 import pathlib, re, shutil, hashlib, base64
 D = pathlib.Path(__file__).parent; ROOT = D.parent; A = ROOT/"assets"; OUT = ROOT/"site"
 head = (D/"_head.html").read_text(); scripts = (D/"_scripts.html").read_text(); nav = (D/"_nav.html").read_text(); foot = (D/"_foot.html").read_text()
-PAGES = {"home":"index.html","ai-shoot":"ai-shoot/index.html","creatives":"creatives/index.html","listings":"listings/index.html","post-production":"post-production/index.html","pdp":"complete-pdp/index.html","work":"work/index.html","about":"about/index.html","start-a-pilot":"start-a-pilot/index.html","project":"projects/sample-project/index.html"}
+PAGES = {"home":"index.html","ai-shoot":"ai-shoot/index.html","creatives":"creatives/index.html","listings":"listings/index.html","post-production":"post-production/index.html","pdp":"complete-pdp/index.html","work":"work/index.html","about":"why-cielo/index.html","start-a-pilot":"start-a-pilot/index.html","project":"projects/sample-project/index.html"}
 NOINDEX = {"project"}  # mock page: reachable by URL, not listed or indexed
 LINKS = {  # label -> path (site nav + footer)
- "Services":"/#services","Work":"/work/","Projects":"/projects/","Why Cielo":"/about/","About Cielo":"/about/",
+ "Services":"/#services","Work":"/work/","Projects":"/projects/","Why Cielo":"/why-cielo/",
  "AI Shoot":"/ai-shoot/","Creatives and films":"/creatives/","Listings":"/listings/","Post Production":"/post-production/","The complete PDP":"/complete-pdp/","Start a pilot":"/start-a-pilot/","Home":"/",
 }
 roots = [A/"shoot", A/"work", A]
@@ -45,7 +45,7 @@ SEO = {
  "creatives": ("Creatives and films · Cielo E-Commerce", "A+ pages, RPDs, infographics, banners, brand stores, campaign films and reels, adapted to every marketplace."),
  "listings": ("Listings · Cielo E-Commerce", "Listings built to be found, understood and approved first time. Copy, structure, images and upload, on every major marketplace."),
  "post-production": ("Post Production · Cielo E-Commerce", "Retouching, cut-outs, colour, marketplace formatting, adapts and video finishing. Under every shoot we make, and on its own for brands and retailers at volume."),
- "about": ("About Cielo · Cielo E-Commerce", "One content engine: AI speed, human quality. Six years, 150+ clients, 50+ full-time content experts, one pipeline from shoot to live listing. The company, the operating model and the people."),
+ "about": ("Why Cielo · Cielo E-Commerce", "One content engine: AI speed, human quality. Six years, 150+ clients, 50+ full-time content experts, one pipeline from shoot to live listing. The company, the operating model and the people."),
  "project": ("Project · Cielo E-Commerce", "A season drop, shot without a shoot. Brief, approach, delivery assets and days."),
  "pdp": ("The complete PDP · Cielo E-Commerce", "Audit, revamp and marketplace PDP content. A PDP that sells is all three services, assembled."),
  "work": ("Work · Cielo E-Commerce", "Stills, films, creatives, listings and retouching, by service and category."),
@@ -106,6 +106,7 @@ og.save(OUT/"media"/"og.jpg", quality=88)
 (OUT/"robots.txt").write_text("User-agent: *\nAllow: /\nSitemap: https://cieloecommerce.com/sitemap.xml\n")
 urls = ["/"] + [f"/{p.replace('index.html','')}" for n, p in PAGES.items() if p != "index.html" and n not in NOINDEX] + ["/projects/"]
 (OUT/"sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(f"  <url><loc>https://cieloecommerce.com{u}</loc></url>" for u in urls) + "\n</urlset>\n")
+(OUT/"_redirects").write_text("/about/ /why-cielo/ 301\n/about /why-cielo/ 301\n")
 (OUT/"_headers").write_text("/media/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n")
 total = sum(f.stat().st_size for f in OUT.rglob("*") if f.is_file())
 print(f"media files: {len(used)} · site total: {total//1024//1024} MB")
