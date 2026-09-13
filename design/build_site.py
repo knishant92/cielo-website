@@ -45,7 +45,7 @@ SEO = {
  "creatives": ("Creatives and films · Cielo E-Commerce", "A+ pages, RPDs, infographics, banners, brand stores, campaign films and reels, adapted to every marketplace."),
  "listings": ("Listings · Cielo E-Commerce", "Listings built to be found, understood and approved first time. Copy, structure, images and upload, on every major marketplace."),
  "post-production": ("Post Production · Cielo E-Commerce", "Retouching, cut-outs, colour, marketplace formatting, adapts and video finishing. Under every shoot we make, and on its own for brands and retailers at volume."),
- "about": ("Why Cielo · Cielo E-Commerce", "Ecommerce content experts since 2019. Studios in New Delhi and Gurugram, AI in the loop every day, a person on every asset. The company, the founders and the pillars."),
+ "about": ("Why Cielo · Cielo E-Commerce", "One content engine: AI speed, human quality. Six years, 150+ clients, 50+ full-time content experts, one pipeline from shoot to live listing. The company, the operating model and the people."),
  "project": ("Project · Cielo E-Commerce", "A season drop, shot without a shoot. Brief, approach, delivery assets and days."),
  "pdp": ("The complete PDP · Cielo E-Commerce", "Audit, revamp and marketplace PDP content. A PDP that sells is all three services, assembled."),
  "work": ("Work · Cielo E-Commerce", "Stills, films, creatives, listings and retouching, by service and category."),
