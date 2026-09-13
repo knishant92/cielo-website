@@ -32,14 +32,18 @@
 .pillar .how{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--blue);margin-top:4px}
 /* people */
 .people{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
-.person{background:var(--navy);border:1px solid var(--line-soft);border-radius:12px;padding:24px;display:grid;gap:12px;align-content:start}
-.person .av{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;background:linear-gradient(135deg,var(--red-deep),var(--red));color:#fff}
-.person:nth-child(2) .av{background:linear-gradient(135deg,#2a4a8f,var(--blue))}
-.person:nth-child(3) .av{background:linear-gradient(135deg,#2E3855,#4a5680)}
+.person{background:var(--navy);border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.person .photo{aspect-ratio:4/5;position:relative;overflow:hidden;background:linear-gradient(160deg,#1b2340,#0f1424);border-bottom:1px solid var(--line-soft);display:grid;place-items:center}
+.person .photo img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.person .photo .av{font-family:var(--display);font-weight:800;font-size:64px;letter-spacing:-.03em;color:rgba(242,239,233,.18)}
+.person .photo .lbl{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted-2)}
+.person:nth-child(1) .photo{background:linear-gradient(160deg,#2a1420,#141a2e)}
+.person:nth-child(2) .photo{background:linear-gradient(160deg,#101a30,#131a2c)}
+.person .body{padding:22px 22px 24px;display:grid;gap:10px;align-content:start;flex:1}
 .person h3{font-size:20px}
-.person .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--red);margin-top:-6px}
+.person .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--red);margin-top:-4px}
 .person p{margin:0;color:var(--muted);font-size:14.5px}
-.person a.li{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted);margin-top:4px}
+.person a.li{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted);margin-top:auto;padding-top:8px}
 .person a.li:hover{color:var(--text)}
 .person a.li svg{width:14px;height:14px}
 /* where */
@@ -135,9 +139,9 @@
     <h2 class="rv">Who You Will Be <span class="hl">Working With.</span></h2>
     <p class="lead rv">The people behind the engine, and the person who runs your pipeline.</p>
     <div class="people rv-stagger">
-      <article class="person"><div class="av" aria-hidden="true">VA</div><h3>Vibhum Agarwal</h3><span class="role">MANAGING DIRECTOR</span><p>Runs Cielo day to day: the teams, the delivery and the client relationships behind them.</p><a class="li" href="https://www.linkedin.com/in/vibhum-agarwal-2308b752/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.5H3.6V20h2.9V8.5zM5 3.8a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20.4 13c0-3.1-1.7-4.7-4-4.7-1.9 0-2.7 1-3.2 1.8V8.5H10.3V20h2.9v-6.3c0-1.7.7-2.6 2.1-2.6 1.3 0 2.2.9 2.2 2.6V20h2.9v-7z"/></svg>LINKEDIN</a></article>
-      <article class="person"><div class="av" aria-hidden="true">PL</div><h3>Pinki Lamba</h3><span class="role">CO-FOUNDER</span><p>Co-founded Cielo in 2019. With Vibhum, set up the company and the content operation it runs on today.</p><a class="li" href="https://www.linkedin.com/in/pinki-lamba-191b0647/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.5H3.6V20h2.9V8.5zM5 3.8a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20.4 13c0-3.1-1.7-4.7-4-4.7-1.9 0-2.7 1-3.2 1.8V8.5H10.3V20h2.9v-6.3c0-1.7.7-2.6 2.1-2.6 1.3 0 2.2.9 2.2 2.6V20h2.9v-7z"/></svg>LINKEDIN</a></article>
-      <article class="person"><div class="av" aria-hidden="true">NK</div><h3>Nishant Kumar</h3><span class="role">HEAD OF ECOMMERCE CONTENT</span><p>Heads the ecommerce content department: AI shoots, A+ and infographics, banners, AI reels and product films. Runs the pipeline end to end, from the first brief to the files on the marketplace.</p></article>
+      <article class="person"><div class="photo"><span class="av" aria-hidden="true">VA</span><span class="lbl">PHOTO</span></div><div class="body"><h3>Vibhum Agarwal</h3><span class="role">MANAGING DIRECTOR</span><p>Runs Cielo day to day: the teams, the delivery and the client relationships behind them.</p><a class="li" href="https://www.linkedin.com/in/vibhum-agarwal-2308b752/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.5H3.6V20h2.9V8.5zM5 3.8a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20.4 13c0-3.1-1.7-4.7-4-4.7-1.9 0-2.7 1-3.2 1.8V8.5H10.3V20h2.9v-6.3c0-1.7.7-2.6 2.1-2.6 1.3 0 2.2.9 2.2 2.6V20h2.9v-7z"/></svg>LINKEDIN</a></div></article>
+      <article class="person"><div class="photo"><span class="av" aria-hidden="true">PL</span><span class="lbl">PHOTO</span></div><div class="body"><h3>Pinki Lamba</h3><span class="role">CO-FOUNDER</span><p>Co-founded Cielo in 2019. With Vibhum, set up the company and the content operation it runs on today.</p><a class="li" href="https://www.linkedin.com/in/pinki-lamba-191b0647/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.5H3.6V20h2.9V8.5zM5 3.8a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20.4 13c0-3.1-1.7-4.7-4-4.7-1.9 0-2.7 1-3.2 1.8V8.5H10.3V20h2.9v-6.3c0-1.7.7-2.6 2.1-2.6 1.3 0 2.2.9 2.2 2.6V20h2.9v-7z"/></svg>LINKEDIN</a></div></article>
+      <article class="person"><div class="photo"><span class="av" aria-hidden="true">NK</span><span class="lbl">PHOTO</span></div><div class="body"><h3>Nishant Kumar</h3><span class="role">HEAD OF ECOMMERCE CONTENT</span><p>Heads the ecommerce content department: AI shoots, A+ and infographics, banners, AI reels and product films. Runs the pipeline end to end, from the first brief to the files on the marketplace.</p><a class="li" href="https://www.linkedin.com/in/knishant92/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.5H3.6V20h2.9V8.5zM5 3.8a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20.4 13c0-3.1-1.7-4.7-4-4.7-1.9 0-2.7 1-3.2 1.8V8.5H10.3V20h2.9v-6.3c0-1.7.7-2.6 2.1-2.6 1.3 0 2.2.9 2.2 2.6V20h2.9v-7z"/></svg>LINKEDIN</a></div></article>
     </div>
   </div>
 </section>
