@@ -29,7 +29,7 @@
 .step4 p{margin:0;color:var(--muted);font-size:14px}
 /* delivered */
 .dgrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;grid-auto-flow:dense;gap:12px;margin-top:40px}
-.di{position:relative;border-radius:10px;overflow:hidden;background:var(--navy);border:1px solid var(--line-soft);grid-row:span 2}
+.di{margin:0;position:relative;border-radius:10px;overflow:hidden;background:var(--navy);border:1px solid var(--line-soft);grid-row:span 2}
 .di.big{grid-column:span 2;grid-row:span 3}
 .di img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .di .ba{position:absolute;inset:0;border-radius:0;box-shadow:none;aspect-ratio:auto;max-height:none;height:100%}
@@ -76,7 +76,7 @@
     </div>
     <div class="rv" data-px="14">
       <div class="ba" style="--x:50%;max-width:420px;margin:0 auto">
-        <img class="before" src="{{IMG:kids-sweater-in_front.jpg}}" alt="Flatlay of a bear-print sweater, the input"><img class="after" src="{{IMG:kids-sweater-out1.jpg}}" alt="A boy wearing the sweater, the shipped image">
+        <img class="before" src="{{IMG:site/ai-knit-bear-kids-in.jpg}}" alt="Flatlay of a bear-print knit, the input"><img class="after" src="{{IMG:site/ai-knit-bear-kids-out.jpg}}" alt="A boy wearing the knit, the shipped image">
         <span class="tag l">INPUT · FLATLAY</span><span class="tag r">SHIPPED</span><div class="bar"></div>
         <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
         <input type="range" min="4" max="96" value="50" aria-label="Drag to compare the flatlay with the shipped image">
@@ -120,13 +120,13 @@
       <div><b class="fill">—</b><span>MARKETPLACE ADAPTS</span></div>
     </div>
     <div class="dgrid rv-stagger">
-      <figure class="di big"><div class="ba" style="--x:50%"><img class="before" src="{{IMG:kids-tee-in_front.jpg}}" alt="Flatlay of a navy tee"><img class="after" src="{{IMG:kids-tee-out3.jpg}}" alt="A boy wearing the tee"><span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div><div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div><input type="range" min="4" max="96" value="50" aria-label="Drag to compare"></div><figcaption class="meta"><b>Tee · on model</b><small>AI SHOOT</small></figcaption></figure>
-      <figure class="di"><img src="{{IMG:kids-sweater-out2.jpg}}" alt="Back angle"><figcaption class="meta"><b>Knitwear · back</b><small>ANGLE 02</small></figcaption></figure>
-      <figure class="di"><img src="{{IMG:kids-sweater-out3.jpg}}" alt="Side angle"><figcaption class="meta"><b>Knitwear · side</b><small>ANGLE 03</small></figcaption></figure>
-      <figure class="di"><img src="{{IMG:kids-sweater-out4.jpg}}" alt="Detail angle"><figcaption class="meta"><b>Knitwear · detail</b><small>ANGLE 04</small></figcaption></figure>
-      <figure class="di"><img src="{{IMG:kids-sweater-out5.jpg}}" alt="Full length"><figcaption class="meta"><b>Knitwear · full length</b><small>ANGLE 05</small></figcaption></figure>
-      <figure class="di"><img src="{{IMG:kids-tee-out1.jpg}}" alt="Tee, front"><figcaption class="meta"><b>Tee · front</b><small>ANGLE 01</small></figcaption></figure>
-      <figure class="di"><img src="{{IMG:kids-tee-out5.jpg}}" alt="Tee, full length"><figcaption class="meta"><b>Tee · full length</b><small>ANGLE 05</small></figcaption></figure>
+      <figure class="di big"><div class="ba" style="--x:50%"><img class="before" src="{{IMG:site/ai-tee-kids-yellow-in.jpg}}" alt="Flatlay of a kids' tee"><img class="after" src="{{IMG:site/ai-tee-kids-yellow-out.jpg}}" alt="A girl wearing the tee"><span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div><div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div><input type="range" min="4" max="96" value="50" aria-label="Drag to compare"></div><figcaption class="meta"><b>Tee · on model</b><small>AI SHOOT</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:site/ai-knit-bear-kids-out.jpg}}" alt="Knit on model"><figcaption class="meta"><b>Knitwear · on model</b><small>SKU 02</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:site/ai-puffer-kids-out.jpg}}" alt="Puffer on model"><figcaption class="meta"><b>Puffer · on model</b><small>SKU 03</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:site/ai-romper-kids-out.jpg}}" alt="Romper on model"><figcaption class="meta"><b>Romper · on model</b><small>SKU 04</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:site/ai-puffer-kids-in.jpg}}" alt="Puffer, ghost input"><figcaption class="meta"><b>Puffer · input</b><small>GHOST</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:site/ai-romper-kids-in.jpg}}" alt="Romper, flatlay input"><figcaption class="meta"><b>Romper · input</b><small>FLATLAY</small></figcaption></figure>
+      <figure class="di"><img src="{{IMG:site/ai-tee-kids-yellow-out.jpg}}" alt="Tee on model"><figcaption class="meta"><b>Tee · on model</b><small>SKU 01</small></figcaption></figure>
     </div>
     <div class="days-band rv">
       <div class="big"><span class="fill">—</span><small>DAYS, BRIEF TO FILES</small></div>

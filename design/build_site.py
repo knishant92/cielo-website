@@ -23,7 +23,7 @@ def copy_asset(src):
     dst = OUT/"media"/f"{src.stem}-{h}{src.suffix}"; shutil.copy2(src, dst)
     used[src] = "/media/" + dst.name; return used[src]
 def img(m): return copy_asset(find(m.group(1)))
-def vid(m): return copy_asset(A/"video"/m.group(1))
+def vid(m): return copy_asset((A/"site"/"video"/m.group(1)) if (A/"site"/"video"/m.group(1)).exists() else A/"video"/m.group(1))
 def links(html):
     for label, path in LINKS.items():
         html = html.replace(f'<a href="#">{label}</a>', f'<a href="{path}">{label}</a>')
@@ -98,7 +98,7 @@ try:
     fb = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial Bold.ttf", 64); fs = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial.ttf", 26)
 except Exception:
     fb = ImageFont.load_default(); fs = ImageFont.load_default()
-hero = Image.open(A/"shoot"/"bralette-beige-out1.jpg").convert("RGB"); hero = hero.resize((int(630*hero.width/hero.height), 630)); og.paste(hero, (1200-hero.width, 0))
+hero = Image.open(A/"site"/"ai-bodysuit-taupe-out.jpg").convert("RGB"); hero = hero.resize((int(630*hero.width/hero.height), 630)); og.paste(hero, (1200-hero.width, 0))
 mark = Image.open(A/"logo"/"mark-dark.png").convert("RGBA"); mark.thumbnail((110, 84)); og.paste(mark, (72, 60), mark)
 d.text((72, 200), "Content that gets", font=fb, fill=(242, 239, 233)); d.text((72, 275), "every SKU live sooner,", font=fb, fill=(242, 239, 233)); d.text((72, 350), "and keeps it selling.", font=fb, fill=(224, 8, 8))
 d.text((72, 470), "AI shoots · creatives · listings · films", font=fs, fill=(154, 163, 184)); d.text((72, 508), "cieloecommerce.com", font=fs, fill=(154, 163, 184))

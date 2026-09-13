@@ -11,7 +11,9 @@ def find(name):
 def img(m):
     f = find(m.group(1)); mime = "image/png" if f.suffix == ".png" else "image/jpeg"
     return f"data:{mime};base64,"+base64.b64encode(f.read_bytes()).decode()
-def vid(m): return "data:video/mp4;base64,"+base64.b64encode((A/"video"/m.group(1)).read_bytes()).decode()
+def vid(m):
+    f = (A/"site"/"video"/m.group(1)) if (A/"site"/"video"/m.group(1)).exists() else A/"video"/m.group(1)
+    return "data:video/mp4;base64,"+base64.b64encode(f.read_bytes()).decode()
 names = sys.argv[1:] or [p.name[:-len(".template.html")] for p in D.glob("*.template.html") if not p.name.startswith("home-v")]
 for n in names:
     t = (D/f"{n}.template.html").read_text()

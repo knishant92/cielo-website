@@ -762,6 +762,10 @@ table.spec2{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px
 .pdp .vid.hold .badge{position:absolute;left:8px;bottom:8px;right:8px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8)}
 .pdp .vid.hold .pl{width:26px;height:26px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
 .pdp .vid.hold .pl svg{width:10px;height:10px;margin-left:2px}
+.post-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.post-grid figure{margin:0;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line-soft);aspect-ratio:4/3;background:#fff}
+.post-grid img{width:100%;height:100%;object-fit:cover;display:block}
+.post-grid figcaption{position:absolute;left:8px;bottom:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;padding:3px 6px;border-radius:3px;background:rgba(11,14,23,.85);color:var(--text)}
 </style>
 <canvas id="bg" aria-hidden="true"></canvas>
 <header class="nav">
@@ -804,10 +808,10 @@ table.spec2{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px
       </div>
     </div>
     <div class="mosaic rv-stagger" data-px="18" aria-label="Examples of Cielo's work across A+, shoots, films and banners">
-      <div class="tall"><img src="/media/aplus-origami-kt-top-f560e579.jpg" alt="Amazon A+ page for a kitchen towel range" style="object-position:top"><span class="lbl">A+ · AMAZON</span></div>
-      <div class="tall"><img src="/media/bralette-beige-out3-327a3c99.jpg" alt="On-model AI shoot of a beige bralette"><span class="lbl blue">AI SHOOT</span></div>
-      <div><video autoplay muted loop playsinline preload="metadata" poster="/media/nescafe-fefa6cb2.jpg" aria-label="Coffee AI product film"><source src="/media/nescafe-ef66cb8b.mp4" type="video/mp4"></video><span class="lbl">AI FILM</span></div>
-      <div><img src="/media/banner-luggage-465a01fa.jpg" alt="Marketplace banner for luggage"><span class="lbl">BANNER</span></div>
+      <div class="tall"><img src="/media/aplus-towel-top-20122f33.jpg" alt="Amazon A+ page for a kitchen towel range" style="object-position:top"><span class="lbl">A+ · AMAZON</span></div>
+      <div class="tall"><img src="/media/ai-bodysuit-taupe-out-89d82ce8.jpg" alt="On-model AI shoot of a taupe bodysuit"><span class="lbl blue">AI SHOOT</span></div>
+      <div><video autoplay muted loop playsinline preload="metadata" poster="/media/reel-coffee-f6732442.jpg" aria-label="Coffee AI reel"><source src="/media/reel-coffee-d557d48c.mp4" type="video/mp4"></video><span class="lbl">AI FILM</span></div>
+      <div><img src="/media/banner-yoga-mat-46ae25b1.jpg" alt="Yoga mat marketplace banner"><span class="lbl">BANNER</span></div>
     </div>
   </div>
 </section>
@@ -821,10 +825,10 @@ table.spec2{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px
       <article class="card" id="ai-shoot">
         <div class="vis3" data-px="8"><div>
   <div class="ba " style="--x:50%">
-    <img class="before" src="/media/sportsbra-black-in_front-6e726c2b.jpg" alt="flatlay of a black sports bra"><img class="after" src="/media/sportsbra-black-out1-2d7c5452.jpg" alt="the sports bra on a model">
+    <img class="before" src="/media/ai-bra-top-black-in-22c18eb3.jpg" alt="flatlay of a black bra top"><img class="after" src="/media/ai-bra-top-black-out-26800c92.jpg" alt="the bra top on a model">
     <span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div>
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
-    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a black sports bra with the sports bra on a model">
+    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a black bra top with the bra top on a model">
   </div>
   <div class="ba-cap"><span></span><span></span></div>
 </div></div>
@@ -833,13 +837,13 @@ table.spec2{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px
           <a class="more" href="/ai-shoot/">How it works →</a></div>
       </article>
       <article class="card" id="creatives">
-        <div class="vis3" data-px="8"><div class="collage"><img src="/media/campaign-khayal-1-fd03df44.jpg" alt="Campaign creative for a nutraceutical brand"><img src="/media/banner-amazfit-1023b3a4.jpg" alt="Smartwatch marketplace banner"><img src="/media/banner-luggage-465a01fa.jpg" alt="Luggage banner"></div></div>
+        <div class="vis3" data-px="8"><div class="collage"><img src="/media/meta-drained-1a94c367.jpg" alt="Performance creative for a nutraceutical brand"><img src="/media/info-smartwatch-nits-09a592b2.jpg" alt="Smartwatch infographic"><img src="/media/banner-yoga-mat-46ae25b1.jpg" alt="Yoga mat banner"></div></div>
         <div class="body"><span class="k">02 · DIGITAL AND AI CREATIVES</span><h3>Creatives and&nbsp;Films</h3><p class="promise">A+ pages, RPDs, infographics, banners, brand stores, campaign films and reels, adapted to every marketplace.</p>
           <div class="nums"><div><b>1M+</b>CREATIVES DELIVERED</div><div><b>100+</b>BRAND STORES BUILT</div><div><b>1,000+</b>FILMS AND REELS PRODUCED</div></div>
           <a class="more" href="/creatives/">Formats and turnarounds →</a></div>
       </article>
       <article class="card" id="listings">
-        <div class="vis3" data-px="8"><img src="/media/listing-tatacliq-d02bddbc.jpg" alt="A finished product listing on Tata CLiQ Luxury"></div>
+        <div class="vis3" data-px="8"><img src="/media/store-nutra-pdp-top-85bfbbf1.jpg" alt="A live product page on a D2C store"></div>
         <div class="body"><span class="k">03 · LISTINGS</span><h3>Listings</h3><p class="promise">Listings built to be found, understood and approved first time, on every major marketplace.</p>
           <div class="nums"><div><b>5M+</b>SKUS ENRICHED</div><div><b>4–7 days</b>PER BATCH, AVERAGE</div><div><b>All</b>MAJOR MARKETPLACES</div></div>
           <a class="more" href="/listings/">Marketplaces and package →</a></div>
@@ -853,15 +857,12 @@ table.spec2{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px
         <div class="nums"><div><b>1.5M+</b>IMAGES A MONTH</div><div><b>1,500+</b>VIDEOS FINISHED</div><div><b>3–5 days</b>STANDARD TURNAROUND</div></div>
         <a class="more" href="/post-production/" style="display:inline-block;margin-top:16px;font-weight:600;font-size:14px">Retouching at volume, for brands and retailers →</a>
       </div>
-      <div>
-  <div class="ba " style="--x:50%">
-    <img class="before" src="/media/post-bag-before-0c468cb1.jpg" alt="raw shot of a striped laptop bag"><img class="after" src="/media/post-bag-after-23ec52a3.jpg" alt="the retouched, cut-out bag">
-    <span class="tag l">RAW</span><span class="tag r">RETOUCHED</span><div class="bar"></div>
-    <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
-    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare raw shot of a striped laptop bag with the retouched, cut-out bag">
-  </div>
-  <div class="ba-cap"><span>LAPTOP BAG · RETOUCH AND CUT-OUT</span><span>DRAG</span></div>
-</div>
+      <div class="post-grid" aria-label="What post production touches: cut-outs, colour, adapts, video finishing">
+        <figure><img src="/media/info-luggage-handle-1506bcb6.jpg" alt="Cut-out luggage on white"><figcaption>CUT-OUT · WHITE BG</figcaption></figure>
+        <figure><img src="/media/banner-yoga-mat-46ae25b1.jpg" alt="Colour-matched product on white"><figcaption>COLOUR · MARKETPLACE</figcaption></figure>
+        <figure><img src="/media/banner-stretch-7ed93a24.jpg" alt="Banner adapted to a wide placement"><figcaption>ADAPT · PLACEMENT</figcaption></figure>
+        <figure><img src="/media/film-speaker-400c15f2.jpg" alt="Finished product film frame"><figcaption>VIDEO · FINISHED</figcaption></figure>
+      </div>
     </div>
     <div class="pdp rv" id="pdp">
       <div class="txt">
@@ -872,14 +873,14 @@ table.spec2{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px
         <a class="more" href="/complete-pdp/" style="font-weight:600;font-size:14px">Audit or revamp your PDPs →</a>
       </div>
       <div class="page" data-px="12" aria-label="A product page assembled from Cielo's three services, illustrative">
-        <div class="gal"><div class="thumbs"><img src="/media/bralette-beige-out1-28221d29.jpg" alt=""><img src="/media/bralette-beige-out2-ef35cf06.jpg" alt=""><img src="/media/bralette-beige-out3-327a3c99.jpg" alt=""><img src="/media/bralette-beige-out4-2716dea5.jpg" alt=""></div><img src="/media/bralette-beige-out1-28221d29.jpg" alt="Gallery image on a product page"><span class="tag2" style="left:82px;top:8px">AI SHOOT</span></div>
-        <div class="copy"><b>Cotton-blend bralette with logo band, beige</b><span class="price">₹1,299 <small style="font-weight:400;color:var(--paper-muted)">· Free delivery</small></span>
-          <ul><li>Soft cotton-modal blend, wire-free</li><li>Cross-back straps, signature logo band</li><li>Machine wash cold, do not tumble dry</li></ul>
-          <div class="vid hold" style="margin-top:4px"><img src="/media/bralette-beige-out3-327a3c99.jpg" alt="Bralette film frame, video to be added"><span class="pl"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2l10 6-10 6z"/></svg></span><span class="badge"><span>FILM · BRALETTE</span><span>VIDEO TO COME</span></span></div>
+        <div class="gal"><div class="thumbs"><img src="/media/ai-bodysuit-taupe-out-89d82ce8.jpg" alt=""><img src="/media/ai-bodysuit-taupe-crop-top-063cfdda.jpg" alt=""><img src="/media/ai-bodysuit-taupe-crop-waist-3ce66a34.jpg" alt=""><img src="/media/ai-bodysuit-taupe-crop-legs-95c3b175.jpg" alt=""></div><img src="/media/ai-bodysuit-taupe-out-89d82ce8.jpg" alt="Gallery image on a product page"><span class="tag2" style="left:82px;top:8px">AI SHOOT</span></div>
+        <div class="copy"><b>Sleeveless logo bodysuit, taupe</b><span class="price">₹1,799 <small style="font-weight:400;color:var(--paper-muted)">· Free delivery</small></span>
+          <ul><li>Stretch cotton-modal, second-skin fit</li><li>Spaghetti straps, snap closure, logo at chest</li><li>Machine wash cold, do not tumble dry</li></ul>
+          <div class="vid hold" style="margin-top:4px"><img src="/media/ai-bodysuit-taupe-crop-top-063cfdda.jpg" alt="Bodysuit film frame, video to be added"><span class="pl"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2l10 6-10 6z"/></svg></span><span class="badge"><span>FILM · BODYSUIT</span><span>VIDEO TO COME</span></span></div>
           <span class="tag2" style="position:static;display:inline-block;width:max-content">LISTING COPY</span></div>
-        <div class="aplus"><div class="apm hero2"><img src="/media/bralette-beige-out5-1e522e13.jpg" alt="A+ brand story module"><div class="apt"><small>A+ · BRAND STORY</small><b>Wire-free. Cross-back. Worn all day.</b></div></div>
-        <div class="apm feat"><img src="/media/bralette-beige-out4-2716dea5.jpg" alt="A+ feature module"><ul><li>Cotton-modal blend, breathable</li><li>Signature logo band</li><li>Cross-back straps, no dig</li></ul></div>
-        <div class="apm size"><b>Find your size</b><table><tr><td>SIZE</td><td>XS</td><td>S</td><td>M</td><td>L</td><td>XL</td></tr><tr><td>UNDERBUST</td><td>63–67</td><td>68–72</td><td>73–77</td><td>78–82</td><td>83–87</td></tr></table><span class="care">WASH COLD · NO TUMBLE · SHADE DRY · CM</span></div><span class="tag2" style="right:30px;bottom:30px">A+ CONTENT</span></div>
+        <div class="aplus"><div class="apm hero2"><img src="/media/ai-bodysuit-taupe-crop-top-063cfdda.jpg" alt="A+ brand story module"><div class="apt"><small>A+ · BRAND STORY</small><b>Second skin. Snap closure. Worn under anything.</b></div></div>
+        <div class="apm feat"><img src="/media/ai-bodysuit-taupe-crop-waist-3ce66a34.jpg" alt="A+ feature module"><ul><li>Cotton-modal blend, breathable</li><li>Logo at chest, tonal</li><li>Snap closure, no ride-up</li></ul></div>
+        <div class="apm size"><b>Find your size</b><table><tr><td>SIZE</td><td>XS</td><td>S</td><td>M</td><td>L</td><td>XL</td></tr><tr><td>BUST</td><td>78–82</td><td>83–87</td><td>88–92</td><td>93–97</td><td>98–102</td></tr></table><span class="care">WASH COLD · NO TUMBLE · SHADE DRY · CM</span></div><span class="tag2" style="right:30px;bottom:30px">A+ CONTENT</span></div>
       </div>
     </div>
   </div>
@@ -893,58 +894,58 @@ table.spec2{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px
     <div class="work-row rv-stagger">
       <div>
   <div class="ba p45" style="--x:50%">
-    <img class="before" src="/media/bralette-beige-in_front-56795ed9.jpg" alt="flatlay of a beige bralette"><img class="after" src="/media/bralette-beige-out1-28221d29.jpg" alt="the bralette on a model">
+    <img class="before" src="/media/ai-bralette-white-in-903e173c.jpg" alt="flatlay of a white bralette"><img class="after" src="/media/ai-bralette-white-out-0ed22c67.jpg" alt="the bralette on a model">
     <span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div>
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
-    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a beige bralette with the bralette on a model">
+    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a white bralette with the bralette on a model">
   </div>
   <div class="ba-cap"><span>INNERWEAR · BRALETTE</span><span>DRAG</span></div>
 </div>
       <div>
   <div class="ba p45" style="--x:50%">
-    <img class="before" src="/media/sportsbra-black-in_front-6e726c2b.jpg" alt="flatlay of a black sports bra"><img class="after" src="/media/sportsbra-black-out3-8c08c3ea.jpg" alt="the sports bra on a model">
+    <img class="before" src="/media/ai-boxers-print-in-8210346c.jpg" alt="flatlay of printed boxer briefs"><img class="after" src="/media/ai-boxers-print-out-bc69820a.jpg" alt="the boxers on a model">
     <span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div>
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
-    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a black sports bra with the sports bra on a model">
+    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of printed boxer briefs with the boxers on a model">
   </div>
-  <div class="ba-cap"><span>ACTIVEWEAR · SPORTS BRA</span><span>DRAG</span></div>
+  <div class="ba-cap"><span>MENSWEAR · BOXERS</span><span>DRAG</span></div>
 </div>
       <div>
   <div class="ba p45" style="--x:50%">
-    <img class="before" src="/media/bodysuit-in_front-391d6bb3.jpg" alt="flatlay of a taupe bodysuit"><img class="after" src="/media/bodysuit-out1-21e9168b.jpg" alt="the bodysuit on a model">
+    <img class="before" src="/media/ai-puffer-kids-in-00285bef.jpg" alt="ghost shot of a kids' puffer jacket"><img class="after" src="/media/ai-puffer-kids-out-60813c54.jpg" alt="the jacket on a child">
     <span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div>
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
-    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a taupe bodysuit with the bodysuit on a model">
+    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare ghost shot of a kids' puffer jacket with the jacket on a child">
   </div>
-  <div class="ba-cap"><span>INNERWEAR · BODYSUIT</span><span>DRAG</span></div>
+  <div class="ba-cap"><span>KIDSWEAR · PUFFER</span><span>DRAG</span></div>
 </div>
       <div>
   <div class="ba p45" style="--x:50%">
-    <img class="before" src="/media/kids-sweater-in_front-a926704e.jpg" alt="flatlay of a bear-print sweater"><img class="after" src="/media/kids-sweater-out1-4baa31ca.jpg" alt="a boy wearing the sweater">
+    <img class="before" src="/media/ai-tee-kids-yellow-in-d575185b.jpg" alt="flatlay of a kids' tee"><img class="after" src="/media/ai-tee-kids-yellow-out-4bfd8336.jpg" alt="the tee on a girl">
     <span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div>
     <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
-    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a bear-print sweater with a boy wearing the sweater">
+    <input type="range" min="4" max="96" value="50" aria-label="Drag to compare flatlay of a kids' tee with the tee on a girl">
   </div>
-  <div class="ba-cap"><span>KIDSWEAR · KNITWEAR</span><span>DRAG</span></div>
+  <div class="ba-cap"><span>KIDSWEAR · TEE</span><span>DRAG</span></div>
 </div>
     </div>
     <div class="sub">AI FILMS AND REELS</div>
     <div class="reels rv-stagger">
-      <figure class="tall"><video autoplay muted loop playsinline preload="metadata" poster="/media/icecream-57cb722f.jpg" aria-label="Guilt-free ice cream reel"><source src="/media/icecream-f4946436.mp4" type="video/mp4"></video><span class="lbl">REEL · 9:16</span><figcaption><span>ICE CREAM</span><span>AI FILM</span></figcaption></figure>
-      <figure class="tall"><video autoplay muted loop playsinline preload="metadata" poster="/media/yoga-mats-9136697d.jpg" aria-label="Yoga mats reel"><source src="/media/yoga-mats-e747e0e2.mp4" type="video/mp4"></video><span class="lbl">REEL · 9:16</span><figcaption><span>YOGA MATS</span><span>AI FILM</span></figcaption></figure>
-      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="/media/at-green-fc56ed6e.jpg" aria-label="Luggage product film"><source src="/media/at-green-9467d99c.mp4" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>LUGGAGE</span><span>PRODUCT FILM</span></figcaption></figure>
-      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="/media/origami-kt-2ee972b1.jpg" aria-label="Kitchen towel product film"><source src="/media/origami-kt-e662e398.mp4" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>KITCHEN TOWELS</span><span>PRODUCT FILM</span></figcaption></figure>
+      <figure class="tall"><video autoplay muted loop playsinline preload="metadata" poster="/media/reel-icecream-21eb7793.jpg" aria-label="Guilt-free ice cream reel"><source src="/media/reel-icecream-42ad46a4.mp4" type="video/mp4"></video><span class="lbl">REEL · 9:16</span><figcaption><span>ICE CREAM</span><span>AI FILM</span></figcaption></figure>
+      <figure class="tall"><video autoplay muted loop playsinline preload="metadata" poster="/media/reel-yoga-mats-003a937b.jpg" aria-label="Yoga mats reel"><source src="/media/reel-yoga-mats-8d0e9bb6.mp4" type="video/mp4"></video><span class="lbl">REEL · 9:16</span><figcaption><span>YOGA MATS</span><span>AI FILM</span></figcaption></figure>
+      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="/media/film-luggage-green-169d72e6.jpg" aria-label="Luggage product film"><source src="/media/film-luggage-green-8d1acf73.mp4" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>LUGGAGE</span><span>PRODUCT FILM</span></figcaption></figure>
+      <figure class="wide"><video autoplay muted loop playsinline preload="metadata" poster="/media/film-towel-3729eca0.jpg" aria-label="Kitchen towel product film"><source src="/media/film-towel-0c11b2d6.mp4" type="video/mp4"></video><span class="lbl">PRODUCT FILM · 16:9</span><figcaption><span>KITCHEN TOWELS</span><span>PRODUCT FILM</span></figcaption></figure>
     </div>
     <div class="sub">DIGITAL AND AI CREATIVES · CAMPAIGNS AND BANNERS</div>
     <div class="creatives-grid rv-stagger">
-      <a href="/work/"><img src="/media/campaign-khayal-1-fd03df44.jpg" alt="Nutraceutical campaign creative: still feeling drained"><span class="lbl">CAMPAIGN</span></a>
-      <a href="/work/"><img src="/media/campaign-khayal-2-04a66483.jpg" alt="Nutraceutical campaign creative: fuel your cells"><span class="lbl">CAMPAIGN</span></a>
-      <a href="/work/" class="wide"><img src="/media/banner-luggage-465a01fa.jpg" alt="Luggage banner: built to explore"><span class="lbl">MARKETPLACE BANNER</span></a>
-      <a href="/work/"><img src="/media/campaign-khayal-3-b2b962f8.jpg" alt="Nutraceutical campaign creative: build endurance"><span class="lbl">CAMPAIGN</span></a>
-      <a href="/work/"><img src="/media/bn-casio-13775f10.jpg" alt="Watch banner"><span class="lbl">BANNER</span></a>
-      <a href="/work/" class="wide"><img src="/media/bn-samsonite-3b2c2406.jpg" alt="Luggage banner"><span class="lbl">MARKETPLACE BANNER</span></a>
+      <a href="/work/"><img src="/media/meta-drained-1a94c367.jpg" alt="Nutraceutical performance creative: still feeling drained"><span class="lbl">META AD</span></a>
+      <a href="/work/"><img src="/media/meta-endurance-a291ceae.jpg" alt="Nutraceutical performance creative: build lasting endurance"><span class="lbl">META AD</span></a>
+      <a href="/work/" class="wide"><img src="/media/banner-summer-sale-9a33563f.jpg" alt="Sportswear sale banner"><span class="lbl">BANNER</span></a>
+      <a href="/work/"><img src="/media/info-smartwatch-nits-09a592b2.jpg" alt="Smartwatch infographic"><span class="lbl">INFOGRAPHIC</span></a>
+      <a href="/work/"><img src="/media/meta-power-58540104.jpg" alt="Nutraceutical performance creative: power through your day"><span class="lbl">META AD</span></a>
+      <a href="/work/" class="wide"><img src="/media/banner-gym-4ec18365.jpg" alt="Fitness web banner"><span class="lbl">BANNER</span></a>
     </div>
-    <div class="cta-row"><a class="btn btn-ghost" href="/work/">All work, by service and category</a></div>
+    <div class="cta-row"><a class="btn btn-ghost" href="/work/">All work, by service</a></div>
   </div>
 </section>
 
@@ -954,19 +955,19 @@ table.spec2{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px
     <h2 class="rv">What a&nbsp;Brief Turns<br class="hb"> Into, <span class="hl">and&nbsp;How Many<br class="hb"> Days It Took.</span></h2>
     <div class="projects rv-stagger">
       <article class="proj">
-        <div class="cover" data-px="10"><img src="/media/kids-tee-out3-734758f3.jpg" alt="Kidswear AI shoot"><span class="ph">PLACEHOLDER</span></div>
+        <div class="cover" data-px="10"><img src="/media/ai-tee-kids-yellow-out-4bfd8336.jpg" alt="Kidswear AI shoot"><span class="ph">PLACEHOLDER</span></div>
         <div class="body"><span class="brand">KIDSWEAR · FASHION</span><h3>Season Drop, Shot Without a&nbsp;Shoot</h3>
           <dl><dt>BRIEF</dt><dd class="fill">Objective in one line: which SKUs, which channels, what deadline.</dd><dt>APPROACH</dt><dd class="fill">Flatlay in, on-model out; required angles; kids' models matched to age and size.</dd><dt>DELIVERED</dt><dd class="fill">Number of SKUs × angles, formats, marketplace adapts.</dd><dt>DAYS</dt><dd><b>—</b> from brief to files</dd></dl></div>
         <a class="more" href="/projects/">Read the project →</a>
       </article>
       <article class="proj">
-        <div class="cover" data-px="10"><img src="/media/campaign-khayal-3-b2b962f8.jpg" alt="Nutraceutical campaign creatives"><span class="ph">PLACEHOLDER</span></div>
+        <div class="cover" data-px="10"><img src="/media/meta-herbs-64c4640e.jpg" alt="Nutraceutical performance creatives"><span class="ph">PLACEHOLDER</span></div>
         <div class="body"><span class="brand">NUTRACEUTICALS · FMCG</span><h3>Campaign Creatives for&nbsp;a&nbsp;Launch</h3>
           <dl><dt>BRIEF</dt><dd class="fill">Objective in one line.</dd><dt>APPROACH</dt><dd class="fill">Creative direction, AI-assisted variants, human art direction and copy.</dd><dt>DELIVERED</dt><dd class="fill">Campaign statics, banners, reel cuts, sizes per channel.</dd><dt>DAYS</dt><dd><b>—</b> from brief to files</dd></dl></div>
         <a class="more" href="/projects/">Read the project →</a>
       </article>
       <article class="proj">
-        <div class="cover" data-px="10"><img src="/media/at-green-fc56ed6e.jpg" alt="Luggage product film"><span class="ph">PLACEHOLDER</span></div>
+        <div class="cover" data-px="10"><img src="/media/film-luggage-green-169d72e6.jpg" alt="Luggage product film"><span class="ph">PLACEHOLDER</span></div>
         <div class="body"><span class="brand">LUGGAGE · TRAVEL</span><h3>Product Films for&nbsp;a&nbsp;Colourway Launch</h3>
           <dl><dt>BRIEF</dt><dd class="fill">Objective in one line.</dd><dt>APPROACH</dt><dd class="fill">Product shots to AI film, motion and finishing, one edit per colourway.</dd><dt>DELIVERED</dt><dd class="fill">Film lengths and ratios, 9:16 and 16:9, per channel.</dd><dt>DAYS</dt><dd><b>—</b> from brief to files</dd></dl></div>
         <a class="more" href="/projects/">Read the project →</a>
@@ -1004,7 +1005,7 @@ table.spec2{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px
     <div class="need rv">
       <div class="need-head"><div><span class="k">TO START A BATCH</span><h3>What We Need from&nbsp;Your Side. That's It.</h3></div><p>Send these four and step 01 starts. No shoot day, no studio, no model casting on your side.</p></div>
       <ul class="need-grid rv-stagger">
-        <li><span class="n">01</span><div class="ico"><img src="/media/sportsbra-black-in_front-6e726c2b.jpg" alt="A flatlay packshot"></div><b>Product images or packshots</b><span class="d">Flatlay, mannequin or ghost. Front and back.</span></li>
+        <li><span class="n">01</span><div class="ico"><img src="/media/ai-bra-top-black-in-22c18eb3.jpg" alt="A flatlay packshot"></div><b>Product images or packshots</b><span class="d">Flatlay, mannequin or ghost. Front and back.</span></li>
         <li><span class="n">02</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h7"/><circle cx="9.5" cy="8.5" r="1"/></svg></div><b>Brand guidelines, if any</b><span class="d">Fonts, colours, model direction. A PDF is enough.</span></li>
         <li><span class="n">03</span><div class="ico"><table class="sheet"><tr><td>SKU</td><td>SIZE</td><td>COLOUR</td></tr><tr><td>SB-01</td><td>S–XL</td><td>Black</td></tr><tr><td>SB-02</td><td>S–XL</td><td>Beige</td></tr><tr><td>SB-03</td><td>M–XXL</td><td>Navy</td></tr></table></div><b>SKU list</b><span class="d">Sizes and colourways, in a sheet.</span></li>
         <li><span class="n">04</span><div class="ico"><div class="mk"><span>AMAZON</span><span>FLIPKART</span><span>MYNTRA</span><span>NYKAA</span><span>SHOPIFY</span><span>D2C</span></div></div><b>Marketplaces you sell on</b><span class="d">We adapt sizes and rules per channel.</span></li>
