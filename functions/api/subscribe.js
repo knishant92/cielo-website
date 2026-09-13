@@ -14,6 +14,7 @@ export async function onRequestPost({ request, env }) {
   const lead = {
     ts: new Date().toISOString(), pilot: "Newsletter", name: "", brand: "", email, phone: "", channels: "", skus: "", category: "",
     notes: "Newsletter sign-up", page: clean(data.page, 300), ip: request.headers.get("cf-connecting-ip") || "", country: request.cf?.country || "",
+    type: "Subscriber",
   };
   if (env.LEAD_WEBHOOK) {
     try {

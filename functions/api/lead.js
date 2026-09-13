@@ -16,6 +16,7 @@ export async function onRequestPost({ request, env }) {
     channels: Array.isArray(data.channels) ? data.channels.map((c) => clean(c, 40)).join(", ") : clean(data.channels, 200),
     skus: clean(data.skus, 40), category: clean(data.category, 120), notes: clean(data.notes, 2000),
     page: clean(data.page, 300), ip: request.headers.get("cf-connecting-ip") || "", country: request.cf?.country || "",
+    type: "Lead",
   };
   if (!lead.name || !lead.brand || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(lead.email)) return json({ ok: false, error: "missing fields" }, 422);
   if (env.LEAD_WEBHOOK) {
