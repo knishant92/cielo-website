@@ -6,7 +6,7 @@ head = (D/"_head.html").read_text(); scripts = (D/"_scripts.html").read_text(); 
 PAGES = {"home":"index.html","ai-shoot":"ai-shoot/index.html","creatives":"creatives/index.html","listings":"listings/index.html","post-production":"post-production/index.html","pdp":"complete-pdp/index.html","work":"work/index.html","about":"about/index.html","start-a-pilot":"start-a-pilot/index.html","project":"projects/sample-project/index.html"}
 NOINDEX = {"project"}  # mock page: reachable by URL, not listed or indexed
 LINKS = {  # label -> path (site nav + footer)
- "Services":"/#services","Work":"/work/","Projects":"/projects/","How we work":"/#how","Why Cielo":"/about/",
+ "Services":"/#services","Work":"/work/","Projects":"/projects/","Why Cielo":"/about/","About Cielo":"/about/",
  "AI Shoot":"/ai-shoot/","Creatives and films":"/creatives/","Listings":"/listings/","Post Production":"/post-production/","The complete PDP":"/complete-pdp/","Start a pilot":"/start-a-pilot/","Home":"/",
 }
 roots = [A/"shoot", A/"work", A]
@@ -45,7 +45,7 @@ SEO = {
  "creatives": ("Creatives and films · Cielo E-Commerce", "A+ pages, RPDs, infographics, banners, brand stores, campaign films and reels, adapted to every marketplace."),
  "listings": ("Listings · Cielo E-Commerce", "Listings built to be found, understood and approved first time. Copy, structure, images and upload, on every major marketplace."),
  "post-production": ("Post Production · Cielo E-Commerce", "Retouching, cut-outs, colour, marketplace formatting, adapts and video finishing. Under every shoot we make, and on its own for brands and retailers at volume."),
- "about": ("Why Cielo · Cielo E-Commerce", "One content engine: AI speed, human quality. Six years, 150+ clients, 50+ full-time content experts, one pipeline from shoot to live listing. The company, the operating model and the people."),
+ "about": ("About Cielo · Cielo E-Commerce", "One content engine: AI speed, human quality. Six years, 150+ clients, 50+ full-time content experts, one pipeline from shoot to live listing. The company, the operating model and the people."),
  "project": ("Project · Cielo E-Commerce", "A season drop, shot without a shoot. Brief, approach, delivery assets and days."),
  "pdp": ("The complete PDP · Cielo E-Commerce", "Audit, revamp and marketplace PDP content. A PDP that sells is all three services, assembled."),
  "work": ("Work · Cielo E-Commerce", "Stills, films, creatives, listings and retouching, by service and category."),
