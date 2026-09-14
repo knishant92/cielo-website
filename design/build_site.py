@@ -106,6 +106,7 @@ og.save(OUT/"media"/"og.jpg", quality=88)
 (OUT/"robots.txt").write_text("User-agent: *\nAllow: /\nSitemap: https://cieloecommerce.com/sitemap.xml\n")
 urls = ["/"] + [f"/{p.replace('index.html','')}" for n, p in PAGES.items() if p != "index.html" and n not in NOINDEX] + ["/projects/"]
 (OUT/"sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(f"  <url><loc>https://cieloecommerce.com{u}</loc></url>" for u in urls) + "\n</urlset>\n")
+(OUT/"_routes.json").write_text('{"version":1,"include":["/*"],"exclude":["/media/*"]}\n')  # pages and /api go through functions/ (access log); media stays pure CDN
 (OUT/"_redirects").write_text("/about/ /why-cielo/ 301\n/about /why-cielo/ 301\n")
 (OUT/"_headers").write_text("/media/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n")
 total = sum(f.stat().st_size for f in OUT.rglob("*") if f.is_file())
