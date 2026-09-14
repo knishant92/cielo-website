@@ -42,7 +42,7 @@
     var btn = f.querySelector('button'); btn.disabled = true; btn.textContent = 'Sending…';
     fetch('/api/subscribe', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email: em.value.trim(), website: f.elements.website.value, page: location.href})})
       .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
-      .then(function(){ msg.className = 'msg ok'; msg.textContent = 'You are on the list.'; f.reset(); btn.textContent = 'Subscribed'; })
+      .then(function(){ msg.className = 'msg ok'; msg.textContent = 'You are on the list.'; f.reset(); btn.textContent = 'Subscribed'; if (window.track) window.track('subscribe'); })
       .catch(function(){ msg.className = 'msg err'; msg.textContent = 'That did not go through. Email marketing.team@cieloecommerce.com instead.'; btn.disabled = false; btn.textContent = 'Subscribe'; });
   });
 })();

@@ -95,7 +95,7 @@
     data.page = location.href; data.ts = new Date().toISOString();
     fetch('/api/lead', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)})
       .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
-      .then(function(){ msg.className='msg ok'; msg.textContent = 'Got it. We reply with the pilot plan and quote within one working day.'; f.reset(); btn.textContent = 'Sent'; })
+      .then(function(){ msg.className='msg ok'; msg.textContent = 'Got it. We reply with the pilot plan and quote within one working day.'; f.reset(); btn.textContent = 'Sent'; if (window.track) window.track('lead'); })
       .catch(function(){ msg.className='msg err'; msg.textContent = 'That did not go through. Email marketing.team@cieloecommerce.com and we will pick it up.'; btn.disabled = false; btn.innerHTML = 'Send the brief'; });
   });
 })();
