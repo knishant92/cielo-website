@@ -1,0 +1,243 @@
+{{HEAD:Services · Cielo}}
+<style>
+.sv-hero{padding:72px 0 56px;border-bottom:1px solid var(--line-soft);position:relative;overflow:hidden}
+.sv-hero .hero-glow{right:-15%;top:-30%}
+.sv-hero .wrap{position:relative;z-index:1}
+.sv-hero h1{font-size:clamp(40px,6vw,72px);line-height:.98;font-weight:800;margin-top:22px;max-width:16ch}
+.sv-hero .lead{font-size:19px;max-width:52ch}
+.sv-index{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:44px}
+.sv-index a{display:grid;gap:6px;padding:14px 16px;background:var(--navy);border:1px solid var(--line-soft);border-radius:10px;transition:border-color .15s,transform .15s}
+.sv-index a:hover{border-color:var(--line);transform:translateY(-2px)}
+.sv-index a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.sv-index i{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--red)}
+.sv-index b{font-family:var(--display);font-size:16px;font-weight:700;letter-spacing:-.01em}
+.sv-index small{font-family:var(--mono);font-size:10.5px;color:var(--muted-2);letter-spacing:.06em}
+.sv{padding:84px 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:80px}
+.sv .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.sv.flip .wrap>.vis{order:-1}
+.sv .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--red)}
+.sv h2{font-size:clamp(28px,3.6vw,42px);line-height:1.04;font-weight:700;margin-top:14px}
+.sv .p{color:var(--muted);font-size:16.5px;margin:16px 0 0;max-width:50ch}
+.sv .svspec{margin-top:26px;display:grid;gap:0;border-top:1px solid var(--line-soft)}
+.sv .svspec>div{display:grid;grid-template-columns:118px 1fr;gap:18px;padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:14.5px}
+.sv .svspec dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted-2);text-transform:uppercase;padding-top:3px}
+.sv .svspec dd{margin:0;color:var(--text)}
+.sv .svspec dd span{color:var(--muted)}
+.sv .nums{display:flex;gap:28px;flex-wrap:wrap;margin-top:22px}
+.sv .nums div{font-family:var(--mono);font-size:10px;color:var(--muted-2);letter-spacing:.08em;line-height:1.3}
+.sv .nums b{display:block;font-family:var(--display);font-size:22px;color:var(--text);letter-spacing:-.02em;margin-bottom:3px;font-variant-numeric:tabular-nums}
+.sv .more{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-weight:600;font-size:14.5px;color:var(--text)}
+.sv .more:hover{text-decoration:underline;text-underline-offset:4px}
+.sv .vis{position:relative}
+.sv .vis .ba{max-height:520px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.sv .frame{border-radius:12px;overflow:hidden;background:var(--navy);border:1px solid var(--line-soft);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.sv .collage{aspect-ratio:4/3;height:auto}
+.sv .frame>img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top}
+.sv .grid4{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--line)}
+.sv .grid4 figure{margin:0;position:relative;background:var(--navy)}
+.sv .grid4 img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.sv .grid4 figcaption{position:absolute;left:8px;bottom:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:#fff;background:rgba(11,14,23,.75);padding:3px 7px;border-radius:3px}
+.sv .cap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:12px;letter-spacing:.04em}
+.sv .pdpv{padding:22px;display:grid;grid-template-columns:.9fr 1.1fr;gap:16px;align-items:center}
+.sv .pdpv img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px}
+.sv .parts{display:grid;gap:8px}
+.sv .parts span{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);padding:10px 12px;border:1px solid var(--line-soft);border-radius:6px;background:var(--navy-2)}
+.sv .parts i{font-style:normal;color:var(--red);font-weight:500}
+.sv-fit{padding:96px 0;border-bottom:1px solid var(--line-soft)}
+.sv-fit h2{font-size:clamp(30px,4.2vw,50px);line-height:1.04;font-weight:700;margin-top:18px;max-width:18ch}
+.sv-chain{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:44px;position:relative}
+.sv-chain>div{position:relative;padding:18px 16px 16px;background:var(--navy);border:1px solid var(--line-soft);border-radius:10px;min-height:150px}
+.sv-chain>div::after{content:"→";position:absolute;right:-13px;top:22px;color:var(--muted-2);font-size:16px;z-index:1}
+.sv-chain>div:last-child::after{content:none}
+.sv-chain i{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--red)}
+.sv-chain>div.in i,.sv-chain>div.out i{color:var(--blue)}
+.sv-chain b{display:block;font-family:var(--display);font-size:16px;margin-top:8px;letter-spacing:-.01em}
+.sv-chain p{color:var(--muted);font-size:13px;margin:6px 0 0}
+.sv-chain small{display:block;margin-top:10px;font-family:var(--mono);font-size:10px;color:var(--muted-2);letter-spacing:.06em}
+.sv-cta{padding:96px 0}
+.sv-cta .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.sv-cta h2{font-size:clamp(30px,4.2vw,50px);line-height:1.04;font-weight:700;margin-top:18px}
+.sv-cta .box{background:var(--navy);border:1px solid var(--line-soft);border-radius:14px;padding:28px 30px}
+.sv-cta .box .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--red)}
+.sv-cta .box ol{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+.sv-cta .box li{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:14.5px;color:var(--muted)}
+.sv-cta .box li i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--muted-2);padding-top:3px}
+.sv-cta .box li b{display:block;color:var(--text);font-family:var(--display);font-size:15px}
+@media (max-width:1000px){.sv-index{grid-template-columns:repeat(3,1fr)}.sv-chain{grid-template-columns:repeat(3,1fr)}.sv-chain>div::after{content:none}}
+@media (max-width:860px){.sv-hero{padding:52px 0 44px}.sv .wrap{grid-template-columns:1fr;gap:36px}.sv.flip .wrap>.vis{order:0}.sv{padding:60px 0}.sv .svspec>div{grid-template-columns:96px 1fr}.sv-cta .wrap{grid-template-columns:1fr;gap:32px}.sv-index{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.sv-chain{grid-template-columns:1fr 1fr}.sv-index{grid-template-columns:1fr}.sv .pdpv{grid-template-columns:1fr}}
+</style>
+{{NAV}}
+<section class="sv-hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow">Services</div>
+    <h1>Five Services.<br class="hb"> <span class="hl">One&nbsp;Team, One&nbsp;Pipeline.</span></h1>
+    <p class="lead">Shoot, creatives, listings and post production, produced together so nothing waits on another vendor. The complete PDP is all of them, assembled on one page.</p>
+    <div class="cta-row">
+      <a class="btn btn-red" href="/start-a-pilot/">Start a pilot</a>
+      <a class="btn btn-ghost" href="/work/">See the work</a>
+    </div>
+    <nav class="sv-index" aria-label="Jump to a service">
+      <a href="#ai-shoot"><i>01</i><b>AI Shoot</b><small>2–3 DAYS PER 100 SKUS</small></a>
+      <a href="#creatives"><i>02</i><b>Creatives and films</b><small>PER DELIVERABLE, AT BRIEF</small></a>
+      <a href="#listings"><i>03</i><b>Listings</b><small>4–7 DAYS PER BATCH</small></a>
+      <a href="#post-production"><i>04</i><b>Post Production</b><small>3–5 DAYS STANDARD</small></a>
+      <a href="#complete-pdp"><i>05</i><b>The complete PDP</b><small>AUDIT FIRST, THEN PARALLEL</small></a>
+    </nav>
+  </div>
+</section>
+
+<section class="sv" id="ai-shoot">
+  <div class="wrap">
+    <div>
+      <span class="k">01 · AI SHOOT</span>
+      <h2>Shoot-Quality Content for Every&nbsp;SKU. Without the&nbsp;Shoot.</h2>
+      <p class="p">On-model stills, lifestyle imagery and video from a flatlay or mannequin shot. Prints, fit and colour stay true to the garment, and a person signs off every asset before it ships.</p>
+      <dl class="svspec">
+        <div><dt>You get</dt><dd>Stills, lifestyle and video, the required angles per SKU, <span>marketplace-ready</span></dd></div>
+        <div><dt>You send</dt><dd>Flatlay or mannequin shots, brand guidelines, SKU list, <span>the marketplaces you sell on</span></dd></div>
+        <div><dt>Turnaround</dt><dd>2 to 3 days per batch of 100 SKUs, <span>video per storyboard</span></dd></div>
+      </dl>
+      <div class="nums"><div><b>10,000+</b>AI ASSETS DELIVERED</div><div><b>1,000+</b>SKUS CONVERTED</div><div><b>3x</b>FASTER THAN A STUDIO SHOOT</div></div>
+      <a class="more" href="/ai-shoot/">How an AI shoot works, what we need from you →</a>
+    </div>
+    <div class="vis">
+      <div class="ba p45" style="--x:50%">
+        <img class="before" src="{{IMG:site/ai-bra-black-in.jpg}}" alt="flatlay of a black bra"><img class="after" src="{{IMG:site/ai-bra-black-out.jpg}}" alt="the bra on a model">
+        <span class="tag l">INPUT</span><span class="tag r">SHIPPED</span><div class="bar"></div>
+        <div class="knob" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4L2 9l4 5M12 4l4 5-4 5"/></svg></div>
+        <input type="range" min="4" max="96" value="50" aria-label="Drag to compare the flatlay with the on-model output">
+      </div>
+      <div class="cap"><span>FLATLAY IN</span><span>ON-MODEL OUT · DRAG</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sv flip" id="creatives">
+  <div class="wrap">
+    <div>
+      <span class="k">02 · CREATIVES AND FILMS</span>
+      <h2>Creatives That Carry the Reason to&nbsp;Buy, on Every&nbsp;Touchpoint.</h2>
+      <p class="p">A+ pages, RPDs and infographics for the PDP. Banners and brand stores for the marketplace. Campaign films, reels and collaterals for the feed. Designed in your brand system, adapted to every size each channel asks for.</p>
+      <dl class="svspec">
+        <div><dt>You get</dt><dd>A+ and RPD sets, infographics, banners, brand stores, films and reels, <span>adapted per marketplace</span></dd></div>
+        <div><dt>You send</dt><dd>Product images, brand guidelines, copy points per SKU, <span>where it will run</span></dd></div>
+        <div><dt>Turnaround</dt><dd>Set per deliverable at brief, <span>post production 3 to 5 days standard</span></dd></div>
+      </dl>
+      <div class="nums"><div><b>1M+</b>CREATIVES DELIVERED</div><div><b>100+</b>BRAND STORES BUILT</div><div><b>1,000+</b>FILMS AND REELS PRODUCED</div></div>
+      <a class="more" href="/creatives/">Formats, adapts and turnarounds →</a>
+    </div>
+    <div class="vis">
+      <div class="frame"><div class="collage"><img src="{{IMG:site/meta-drained.jpg}}" alt="Performance creative for a nutraceutical brand"><img src="{{IMG:site/info-smartwatch-nits.jpg}}" alt="Smartwatch infographic"><img src="{{IMG:site/banner-yoga-mat.jpg}}" alt="Yoga mat banner"></div></div>
+      <div class="cap"><span>META AD · INFOGRAPHIC · BANNER</span><span>CLIENT BRAND SYSTEMS</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sv" id="listings">
+  <div class="wrap">
+    <div>
+      <span class="k">03 · LISTINGS</span>
+      <h2>Listings Built to Be Found, Understood and Approved First&nbsp;Time.</h2>
+      <p class="p">Keyword-led titles, bullets and descriptions written to each marketplace's rules. Compliant catalogue structures. Images adapted to spec. Uploaded by us, A+ and store banners included, so a batch goes from data sheet to live without a hand-back.</p>
+      <dl class="svspec">
+        <div><dt>You get</dt><dd>Keyword research, titles, bullets, descriptions, catalogue structure, images to spec, <span>upload included</span></dd></div>
+        <div><dt>You send</dt><dd>Product data sheet, product images, brand notes and USPs, <span>seller-panel access or flat-file handover</span></dd></div>
+        <div><dt>Turnaround</dt><dd>4 to 7 days per batch of 100 SKUs, <span>data in to live on one marketplace</span></dd></div>
+      </dl>
+      <div class="nums"><div><b>5M+</b>SKUS ENRICHED</div><div><b>All</b>MAJOR MARKETPLACES</div><div><b>4–7 days</b>PER BATCH, AVERAGE</div></div>
+      <a class="more" href="/listings/">Marketplaces, package, what we need →</a>
+    </div>
+    <div class="vis">
+      <div class="frame"><img src="{{IMG:site/store-nutra-pdp-top.jpg}}" alt="A live product page on a D2C store"></div>
+      <div class="cap"><span>D2C STORE · LIVE PRODUCT PAGE</span><span>LISTING</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sv flip" id="post-production">
+  <div class="wrap">
+    <div>
+      <span class="k">04 · POST PRODUCTION · UNDER ALL THREE, OR ON ITS OWN</span>
+      <h2>Retail-Ready Editing at&nbsp;Catalogue&nbsp;Scale.</h2>
+      <p class="p">Retouching, cut-outs and colour correction. Marketplace formatting, resizing and adaptations. Video editing and finishing. Every shoot and every creative we make passes through it, and your own studio's daily drop can too.</p>
+      <dl class="svspec">
+        <div><dt>You get</dt><dd>Retouching, cut-outs, colour correction, marketplace formatting and resizing, adapts, <span>video finishing</span></dd></div>
+        <div><dt>You send</dt><dd>Raw files on a shared drive or FTP, a spec sheet or the marketplace, colour references, <span>where it will run</span></dd></div>
+        <div><dt>Turnaround</dt><dd>3 to 5 days standard, <span>faster lanes agreed per batch when a launch needs it</span></dd></div>
+      </dl>
+      <div class="nums"><div><b>1.5M+</b>IMAGES A MONTH</div><div><b>1,500+</b>VIDEOS FINISHED</div><div><b>3–5 days</b>STANDARD TURNAROUND</div></div>
+      <a class="more" href="/post-production/">Retouching at volume, for brands and retailers →</a>
+    </div>
+    <div class="vis">
+      <div class="frame"><div class="grid4">
+        <figure><img src="{{IMG:site/info-luggage-handle.jpg}}" alt="Cut-out luggage on white"><figcaption>CUT-OUT · WHITE BG</figcaption></figure>
+        <figure><img src="{{IMG:site/banner-yoga-mat.jpg}}" alt="Colour-matched product on white"><figcaption>COLOUR · MARKETPLACE</figcaption></figure>
+        <figure><img src="{{IMG:site/banner-stretch.jpg}}" alt="Banner adapted to a wide placement"><figcaption>ADAPT · PLACEMENT</figcaption></figure>
+        <figure><img src="{{IMG:site/video/film-speaker.jpg}}" alt="Finished product film frame"><figcaption>VIDEO · FINISHED</figcaption></figure>
+      </div></div>
+      <div class="cap"><span>SIX JOBS, ONE QUEUE</span><span>3–5 DAYS</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sv" id="complete-pdp">
+  <div class="wrap">
+    <div>
+      <span class="k">05 · THE COMPLETE PDP · PUT TOGETHER</span>
+      <h2>A&nbsp;PDP That Sells Is All&nbsp;Three, Assembled.</h2>
+      <p class="p">Shoot for the gallery. Listing copy for the title, bullets and search terms. Creatives for A+ and infographics. Film for the reel. One brief, one page, built to answer every question a buyer has before they add to cart.</p>
+      <dl class="svspec">
+        <div><dt>Three ways in</dt><dd>Audit your top SKUs, revamp the ones that carry revenue, <span>adapt the page per marketplace</span></dd></div>
+        <div><dt>You send</dt><dd>The SKUs and the marketplaces, <span>everything else comes from the audit</span></dd></div>
+        <div><dt>Turnaround</dt><dd>Audit first, then shoot, copy and creatives run in parallel, <span>at each service's own pace</span></dd></div>
+      </dl>
+      <a class="more" href="/complete-pdp/">What an audit and a revamp cover →</a>
+    </div>
+    <div class="vis">
+      <div class="frame pdpv">
+        <img src="{{IMG:site/ai-bodysuit-taupe-out.jpg}}" alt="Gallery image on a product page">
+        <div class="parts" aria-label="Parts of the page and the service that makes each"><span><i>01</i>GALLERY · AI SHOOT</span><span><i>03</i>TITLE + BULLETS · LISTINGS</span><span><i>02</i>A+ / INFOGRAPHICS · CREATIVES</span><span><i>02</i>PRODUCT FILM · FILMS</span><span><i>04</i>EVERY FRAME · POST</span></div>
+      </div>
+      <div class="cap"><span>ONE PAGE, FOUR SERVICES</span><span>ILLUSTRATIVE</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sv-fit">
+  <div class="wrap">
+    <div class="eyebrow">How they fit</div>
+    <h2>One Brief In.<br class="hb"> <span class="hl">A&nbsp;Live Page&nbsp;Out.</span></h2>
+    <p class="lead">Each service stands on its own. Run together, the output of one is the input of the next, so nothing waits on a hand-back.</p>
+    <div class="sv-chain">
+      <div class="in"><i>IN</i><b>Your brief</b><p>Flatlays, data sheet, brand guide, marketplaces.</p><small>DAY 0</small></div>
+      <div><i>01</i><b>AI Shoot</b><p>Gallery angles, lifestyle, video.</p><small>2–3 DAYS / 100 SKUS</small></div>
+      <div><i>04</i><b>Post</b><p>Retouch, cut-out, colour, resize.</p><small>3–5 DAYS</small></div>
+      <div><i>02</i><b>Creatives</b><p>A+, infographics, banners, reels.</p><small>PER DELIVERABLE</small></div>
+      <div><i>03</i><b>Listings</b><p>Titles, bullets, structure, upload.</p><small>4–7 DAYS / BATCH</small></div>
+      <div class="out"><i>OUT</i><b>Live PDP</b><p>On every marketplace you sell on.</p><small>05 · THE COMPLETE PDP</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="sv-cta">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Start</div>
+      <h2>One Pilot Batch.<br class="hb"> <span class="hl">Any&nbsp;Service, Your&nbsp;SKUs.</span></h2>
+      <p class="lead">Pick the service, send one set of live SKUs, and see the output on your own products before you move any volume. The quote comes with the plan, within one working day.</p>
+      <div class="cta-row"><a class="btn btn-red" href="/start-a-pilot/">Start a pilot</a><a class="btn btn-ghost" href="mailto:marketing.team@cieloecommerce.com">Email the team</a></div>
+    </div>
+    <div class="box">
+      <span class="k">HOW A PILOT RUNS</span>
+      <ol>
+        <li><i>01</i><div><b>You pick a service and share SKUs</b>A real batch from your live catalogue. Flatlays, a data sheet or raw files, depending on the service.</div></li>
+        <li><i>02</i><div><b>We deliver the batch</b>Marketplace-ready, reviewed by a person, at the turnaround listed above.</div></li>
+        <li><i>03</i><div><b>You review, then scale</b>Extend to the full drop, or add the next service.</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+{{FOOT}}
+{{SCRIPTS}}
