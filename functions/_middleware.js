@@ -6,26 +6,26 @@
 export async function onRequest(context) {
   const { request, env, next } = context;
   const response = await next();
-  try {
-    if (env.LOGS) {
-      const u = new URL(request.url);
-      const h = request.headers;
-      const len = response.headers.get("content-length");
+  if (!env.LOGS) return response;
+  const u = new URL(request.url);
+  const h = request.headers;
+  const row = {
+    ip: h.get("cf-connecting-ip") || "-", method: request.method, target: u.pathname + u.search,
+    proto: request.cf?.httpProtocol || "HTTP/1.1", referer: h.get("referer") || "-", ua: h.get("user-agent") || "-",
+    country: request.cf?.country || "-", host: u.host, status: response.status,
+  };
+  // Pages sends no content-length, so measure a clone of the body after the response has gone out (waitUntil keeps the worker alive).
+  const copy = response.clone();
+  context.waitUntil((async () => {
+    let bytes = -1;
+    try { bytes = (await copy.arrayBuffer()).byteLength; } catch (e) {}
+    try {
       env.LOGS.writeDataPoint({
         indexes: [u.pathname.slice(0, 96)],
-        blobs: [
-          h.get("cf-connecting-ip") || "-",             // blob1 remote host
-          request.method,                               // blob2
-          u.pathname + u.search,                        // blob3 request target
-          request.cf?.httpProtocol || "HTTP/1.1",       // blob4
-          h.get("referer") || "-",                      // blob5
-          h.get("user-agent") || "-",                   // blob6
-          request.cf?.country || "-",                   // blob7 (extra: not in combined format)
-          u.host,                                       // blob8
-        ],
-        doubles: [response.status, len === null ? -1 : Number(len)], // double1 status, double2 bytes (-1 = unknown)
+        blobs: [row.ip, row.method, row.target, row.proto, row.referer, row.ua, row.country, row.host], // blob1..blob8
+        doubles: [row.status, bytes], // double1 status, double2 bytes (-1 = unknown)
       });
-    }
-  } catch (e) { console.error("access log write failed", String(e)); }
+    } catch (e) { console.error("access log write failed", String(e)); }
+  })());
   return response;
 }

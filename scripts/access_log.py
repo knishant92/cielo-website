@@ -7,7 +7,10 @@ Dates are UTC, start inclusive, end exclusive. Rows come from the cielo_access_l
 functions/_middleware.js (page requests only; /media/* is not logged). The token needs Account · Account Analytics · Read.
 Queried one day at a time; a day that hits the 10,000-row cap is reported on stderr so the gap is visible.
 """
-import os, sys, json, datetime, urllib.request
+import os, sys, json, datetime, ssl, urllib.request
+try:
+    import certifi; CTX = ssl.create_default_context(cafile=certifi.where())  # python.org builds ship without root certs
+except ImportError: CTX = ssl.create_default_context()
 
 ACCOUNT = "6e3c183d99afeaf8eaf6968f04ce8498"   # Marketing.team@cieloecommerce.com's Cloudflare account
 DATASET = "cielo_access_log"
@@ -16,7 +19,7 @@ CAP = 10000
 def query(sql, token):
     req = urllib.request.Request(f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT}/analytics_engine/sql",
                                  data=sql.encode(), headers={"Authorization": f"Bearer {token}"})
-    with urllib.request.urlopen(req) as r: return json.loads(r.read())
+    with urllib.request.urlopen(req, context=CTX) as r: return json.loads(r.read())
 
 def main():
     if len(sys.argv) != 3: sys.exit(__doc__)
