@@ -3,8 +3,8 @@
 import pathlib, re, shutil, hashlib, base64
 D = pathlib.Path(__file__).parent; ROOT = D.parent; A = ROOT/"assets"; OUT = ROOT/"site"
 head = (D/"_head.html").read_text() + "\n" + (D/"_tracking.html").read_text(); scripts = (D/"_scripts.html").read_text(); nav = (D/"_nav.html").read_text(); foot = (D/"_foot.html").read_text()
-PAGES = {"home":"index.html","ai-shoot":"ai-shoot/index.html","creatives":"creatives/index.html","listings":"listings/index.html","post-production":"post-production/index.html","pdp":"complete-pdp/index.html","work":"work/index.html","about":"why-cielo/index.html","start-a-pilot":"start-a-pilot/index.html","project":"projects/sample-project/index.html"}
-NOINDEX = {"project"}  # mock page: reachable by URL, not listed or indexed
+PAGES = {"home":"index.html","ai-shoot":"ai-shoot/index.html","creatives":"creatives/index.html","listings":"listings/index.html","post-production":"post-production/index.html","pdp":"complete-pdp/index.html","work":"work/index.html","about":"why-cielo/index.html","start-a-pilot":"start-a-pilot/index.html","project":"projects/sample-project/index.html","404":"404.html"}
+NOINDEX = {"project", "404"}  # mock page: reachable by URL, not listed or indexed
 LINKS = {  # label -> path (site nav + footer)
  "Services":"/#services","Work":"/work/","Projects":"/projects/","Why Cielo":"/why-cielo/",
  "AI Shoot":"/ai-shoot/","Creatives and films":"/creatives/","Listings":"/listings/","Post Production":"/post-production/","The complete PDP":"/complete-pdp/","Start a pilot":"/start-a-pilot/","Home":"/",
@@ -50,6 +50,7 @@ SEO = {
  "pdp": ("The complete PDP · Cielo E-Commerce", "Audit, revamp and marketplace PDP content. A PDP that sells is all three services, assembled."),
  "work": ("Work · Cielo E-Commerce", "Stills, films, creatives, listings and retouching, by service and category."),
  "start-a-pilot": ("Start a pilot · Cielo E-Commerce", "One real batch of your SKUs through the full pipeline. Quote comes with the plan."),
+ "404": ("Page not found · Cielo E-Commerce", "That page is not on the new Cielo site."),
 }
 def wrap(title, desc, body, canonical, noindex=False):
     robots = '<meta name="robots" content="noindex,nofollow">\n' if noindex else ""

@@ -1,0 +1,61 @@
+{{HEAD:Page not found · Cielo}}
+<style>
+.nf{padding:88px 0 104px;border-bottom:1px solid var(--line-soft);position:relative;overflow:hidden}
+.nf .hero-glow{right:-20%;top:-30%}
+.nf .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:start}
+.nf h1{font-size:clamp(40px,6vw,72px);line-height:.98;font-weight:800;margin-top:22px}
+.nf .lead{font-size:18px;max-width:46ch}
+.nf .path{margin-top:26px;font-family:var(--mono);font-size:12.5px;color:var(--muted-2);letter-spacing:.04em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.nf .path code{color:var(--muted);background:var(--navy);border:1px solid var(--line-soft);border-radius:4px;padding:4px 8px;max-width:100%;overflow-wrap:anywhere}
+.nf .cta-row{margin-top:30px}
+.nf-map{background:var(--navy);border:1px solid var(--line-soft);border-radius:14px;padding:26px 28px 22px}
+.nf-map .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--red);text-transform:uppercase}
+.nf-map ol{list-style:none;margin:14px 0 0;padding:0;counter-reset:nf}
+.nf-map li{counter-increment:nf;border-top:1px solid var(--line-soft)}
+.nf-map li:first-child{border-top:0}
+.nf-map a{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:baseline;padding:13px 0;transition:color .15s}
+.nf-map a::before{content:"0" counter(nf);font-family:var(--mono);font-size:11px;color:var(--muted-2);letter-spacing:.06em}
+.nf-map a b{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-.01em}
+.nf-map a span{display:block;color:var(--muted);font-size:13.5px;margin-top:2px}
+.nf-map a em{font-style:normal;color:var(--muted-2);font-size:14px;transition:transform .15s,color .15s}
+.nf-map a:hover em{color:var(--text);transform:translateX(3px)}
+.nf-map a:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;border-radius:6px}
+.nf .help{margin-top:24px;font-size:14.5px;color:var(--muted)}
+.nf .help a{color:var(--text);border-bottom:1px solid var(--line);padding-bottom:1px}
+.nf .help a:hover{border-color:var(--text)}
+@media (max-width:860px){.nf{padding:56px 0 72px}.nf .wrap{grid-template-columns:1fr;gap:36px}}
+</style>
+{{NAV}}
+<section class="nf" aria-labelledby="nf-h">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">404 · page not found</div>
+      <h1 id="nf-h">That Page Isn't&nbsp;Here.</h1>
+      <p class="lead">Cielo moved to a new site in September 2026 and the old links stopped working. Everything you might be looking for is in the list.</p>
+      <div class="path" id="nf-path" hidden>You asked for <code id="nf-code"></code></div>
+      <div class="cta-row">
+        <a class="btn btn-red" href="/">Go to the home page</a>
+        <a class="btn btn-ghost" href="/work/">See the work</a>
+      </div>
+      <p class="help">Looking for something specific? Write to <a href="mailto:marketing.team@cieloecommerce.com">marketing.team@cieloecommerce.com</a> and we will point you to it.</p>
+    </div>
+    <nav class="nf-map" aria-label="Site pages">
+      <div class="k">Where to go</div>
+      <ol>
+        <li><a href="/ai-shoot/"><div><b>AI Shoot</b><span>On-model and flat-lay imagery from product photos</span></div><em>→</em></a></li>
+        <li><a href="/creatives/"><div><b>Creatives and films</b><span>A+ pages, banners, infographics, reels</span></div><em>→</em></a></li>
+        <li><a href="/listings/"><div><b>Listings</b><span>Marketplace-ready listing packages</span></div><em>→</em></a></li>
+        <li><a href="/post-production/"><div><b>Post Production</b><span>Retouching, cut-outs, colour, resizing</span></div><em>→</em></a></li>
+        <li><a href="/complete-pdp/"><div><b>The complete PDP</b><span>Audit or revamp a product page end to end</span></div><em>→</em></a></li>
+        <li><a href="/work/"><div><b>Work</b><span>Shoots, films and creatives, by service</span></div><em>→</em></a></li>
+        <li><a href="/start-a-pilot/"><div><b>Start a pilot</b><span>Three SKUs, a quote within one working day</span></div><em>→</em></a></li>
+      </ol>
+    </nav>
+  </div>
+</section>
+{{FOOT}}
+<script>
+(function(){ var p = location.pathname; if (p && p !== '/404.html' && p !== '/404'){ document.getElementById('nf-code').textContent = p; document.getElementById('nf-path').hidden = false; } })();
+</script>
+{{SCRIPTS}}
